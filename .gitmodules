@@ -1,0 +1,3 @@
+[submodule "fremont-public-data"]
+	path = fremont-public-data
+	url = https://github.com/Fremont-project/fremont-public-data
