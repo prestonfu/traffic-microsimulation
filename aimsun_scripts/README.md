@@ -35,6 +35,6 @@ Once the Aimsun base network file and input data is available, please follow the
     - Flow detectors
     - Traffic management strategies. 
 7. Execute `create_simulation.py`. This will create the simulation.
-8. Run the simulation within Aimsun.
+8. Run the simulation within Aimsun by using the GUI or by executing `run_simulation.py`.
 
 After the last step, the simulation will produce an output database defined at `../utils/aimsun_folder_utils.aimsun_micro_databases_file()`. This output database can then be used to validate/calibrate the simulation using notebooks under `../calibration/`.
