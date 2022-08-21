@@ -22,10 +22,10 @@ To create and execute the microsimulation in Aimsun, you must have a Aimsun base
 
 Once the Aimsun base network file and input data is available, please follow the following steps:
 
-1. Change `__REPO_PATH` in `append_github_path_to_python.py` to your absolute path for this repository (traffic-microsimulation). Escape any special characters if necessary.
+1. Change `__REPO_PATH` in `append_github_path_to_python.py` to your absolute path for this repository (traffic-microsimulation).
 2. Change `MICRO_BASELINE = True` in `create_simulations.py` and `run_simulation.py`.
 3. Open Aimsun base network file in Aimsun.
-4. Import all Python files in `aimsun_scripts`, `calibration`, and `utils` into Aimsun by clicking File > Import > Python Script.
+4. Import all Python files in `aimsun_scripts` into Aimsun by clicking File > Import > Python Script.
 5. Execute `append_github_path_to_python.py`. This will let Aimsun know the location of the repository.
 6. Execute `import_model.py` This will import all necessary data (listed below) into Aimsun.
     - Centroid connections
