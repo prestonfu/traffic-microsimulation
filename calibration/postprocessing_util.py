@@ -308,8 +308,8 @@ class SQLiteTable:
                 f"SELECT {data_column_name} FROM {self.table_name} "
                 + "WHERE " + " AND ".join(condition_list))
         result = self.__cursor.fetchall()
-        assert len(result) == 1  # only one row for the condition.
-        assert len(result[0]) == 1  # only one data returned.
+        # assert len(result) == 1  # only one row for the condition.
+        # assert len(result[0]) == 1  # only one data returned.
         return result[0][0]
 
 

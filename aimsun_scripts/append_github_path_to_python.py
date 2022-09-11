@@ -4,7 +4,7 @@ import os
 import sys
 
 # PLEASE PUT YOUR PATH TO THE REPOSITORY HERE.
-__REPO_PATH = "Your path to the traffic-microsimulation repository"
+__REPO_PATH = "C:\\Users\\prest\\Documents\\Github\\traffic-microsimulation"
 UTILS_FOLDER_PATH = os.path.join(__REPO_PATH, "utils")
 AIMSUN_FOLDER_PATH = os.path.join(__REPO_PATH, "aimsun_scripts")
 

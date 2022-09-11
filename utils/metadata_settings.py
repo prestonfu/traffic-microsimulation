@@ -4,7 +4,7 @@ import datetime
 from typing import List
 
 # Set path to data folder. Default set for fremont example.
-__DATA_FOLDER_PATH = 'Your path to fremont-public-data folder'
+__DATA_FOLDER_PATH = 'C:\\Users\\prest\\Documents\\Github\\traffic-microsimulation\\fremont-public-data'
 
 # Set name of simulation epoch. Default set for fremont example.
 __SIMULATION_EPOCH = 'fremont_example'
