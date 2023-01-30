@@ -55,7 +55,7 @@ Metric: density (veh/km) | Coordinated but Osgood Road: 2.39, 5.53 | Fully Coord
 Metric: density (veh/km) | Osgood Road Fully Uncoordinated: 2.21, 7.21 | Fully Coordinated: 3.19, 7.87
 ```
 
-## Section Data on buffer zones, grouped by Mission Blvd/Osgood Road
+## Section Data, Mission Blvd Buffer Zones
 ```
 Mean Flow (Buffer=100)
 Metric: flow (veh/h) | Uncoordinated: 227.57, 511.59 | Fully Coordinated: 248.99, 515.46
@@ -231,7 +231,10 @@ Density by Lane (Buffer=1500)
 Metric: density (veh/km) | Uncoordinated: 2.53, 7.00 | Fully Coordinated: 2.84, 7.68
 Metric: density (veh/km) | Coordinated but Mission Blvd: 2.80, 8.29 | Fully Coordinated: 2.84, 7.68
 Metric: density (veh/km) | Mission Blvd Fully Uncoordinated: 2.11, 8.10 | Fully Coordinated: 2.92, 7.78
+```
 
+## Section Data, Osgood Road Buffer Zones
+```
 Mean Flow (Buffer=100)
 Metric: flow (veh/h) | Uncoordinated: 227.57, 511.59 | Fully Coordinated: 248.99, 515.46
 Metric: flow (veh/h) | Coordinated but Osgood Road: 241.11, 514.14 | Fully Coordinated: 248.99, 515.46
