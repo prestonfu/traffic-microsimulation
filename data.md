@@ -155,24 +155,32 @@ Metric: CO2 (g)
 Uncoordinated: 5759929.771341997
 Coordinated but Mission Blvd: 5591227.929343308
 Coordinated but Osgood Road: 5274194.5091144005
+Mission Blvd Fully Uncoordinated: 4692895.480375103
+Osgood Road Fully Uncoordinated: 4933330.0643258225
 Coordinated: 5769142.719584461
 
 Metric: NOx (g)
 Uncoordinated: 8804.494702889066
 Coordinated but Mission Blvd: 6263.866476837698
 Coordinated but Osgood Road: 5985.1172963924555
+Mission Blvd Fully Uncoordinated: 3004.4476342491103
+Osgood Road Fully Uncoordinated: 3282.6153392617884
 Coordinated: 6489.8041767069635
 
 Metric: VOC (g)
 Uncoordinated: 9364.918712592294
 Coordinated but Mission Blvd: 9844.148631229446
 Coordinated but Osgood Road: 8631.911978398497
+Mission Blvd Fully Uncoordinated: 7824.158400663276
+Osgood Road Fully Uncoordinated: 9329.735570771292
 Coordinated: 11266.288985255816
 
 Metric: PM (g)
 Uncoordinated: 463.2843061344858
 Coordinated but Mission Blvd: 353.40250911056114
 Coordinated but Osgood Road: 335.70380994276684
+Mission Blvd Fully Uncoordinated: 171.97021051713747
+Osgood Road Fully Uncoordinated: 185.64498627920935
 Coordinated: 362.94712511984903
 ```
 
