@@ -1,5 +1,8 @@
 # Fremont Project Data
 
+Pairs of floats indicate mean and standard deviation, in that order, unless 
+otherwise specified.
+
 ## 100% demand
 
 ### System/HCM
