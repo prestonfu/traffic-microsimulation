@@ -414,102 +414,362 @@ Metric: density (veh/km) | Osgood Road Fully Uncoordinated: 2.20, 7.72 | Fully C
 ## Road-specific section data
 ```
 Mean Flow on Mission Boulevard (veh/h)
-System Fully Uncoordinated | Mean: 319.92 | Standard Deviation: 51.97
-Mission Blvd Fully Uncoordinated | Mean: 194.72 | Standard Deviation: 26.10
-Mission Blvd Partially Uncoordinated | Mean: 374.90 | Standard Deviation: 57.35
-System Fully Coordinated | Mean: 388.72 | Standard Deviation: 47.29
+System Fully Uncoordinated | Mean: 460.40 | Standard Deviation: 71.26
+Mission Blvd Fully Uncoordinated | Mean: 267.91 | Standard Deviation: 36.18
+Mission Blvd Partially Uncoordinated | Mean: 542.94 | Standard Deviation: 86.17
+System Fully Coordinated | Mean: 564.36 | Standard Deviation: 70.91
 
 Mean Flow on Osgood Road (veh/h)
-System Fully Uncoordinated | Mean: 252.98 | Standard Deviation: 67.68
-Osgood Road Fully Uncoordinated | Mean: 248.26 | Standard Deviation: 51.52
-Osgood Road Partially Uncoordinated | Mean: 264.66 | Standard Deviation: 66.95
-System Fully Coordinated | Mean: 302.84 | Standard Deviation: 96.21
-
-Mean Travel Time on Mission Boulevard (s)
-System Fully Uncoordinated | Mean: 10.55 | Standard Deviation: 2.22
-Mission Blvd Fully Uncoordinated | Mean: 13.59 | Standard Deviation: 2.83
-Mission Blvd Partially Uncoordinated | Mean: 9.41 | Standard Deviation: 1.87
-System Fully Coordinated | Mean: 9.32 | Standard Deviation: 2.89
-
-Mean Travel Time on Osgood Road (s)
-System Fully Uncoordinated | Mean: 7.42 | Standard Deviation: 1.40
-Osgood Road Fully Uncoordinated | Mean: 6.95 | Standard Deviation: 0.56
-Osgood Road Partially Uncoordinated | Mean: 6.64 | Standard Deviation: 1.39
-System Fully Coordinated | Mean: 6.59 | Standard Deviation: 1.87
-
-Mean Delay Time on Mission Boulevard (s)
-System Fully Uncoordinated | Mean: 6.90 | Standard Deviation: 2.34
-Mission Blvd Fully Uncoordinated | Mean: 9.69 | Standard Deviation: 2.83
-Mission Blvd Partially Uncoordinated | Mean: 5.70 | Standard Deviation: 1.93
-System Fully Coordinated | Mean: 5.61 | Standard Deviation: 2.93
-
-Mean Delay Time on Osgood Road (s)
-System Fully Uncoordinated | Mean: 5.04 | Standard Deviation: 1.42
-Osgood Road Fully Uncoordinated | Mean: 4.51 | Standard Deviation: 0.56
-Osgood Road Partially Uncoordinated | Mean: 4.26 | Standard Deviation: 1.41
-System Fully Coordinated | Mean: 4.19 | Standard Deviation: 1.87
-
-Mean Speed on Mission Boulevard (km/h)
-System Fully Uncoordinated | Mean: 51.96 | Standard Deviation: 4.10
-Mission Blvd Fully Uncoordinated | Mean: 56.06 | Standard Deviation: 0.61
-Mission Blvd Partially Uncoordinated | Mean: 53.95 | Standard Deviation: 3.01
-System Fully Coordinated | Mean: 54.93 | Standard Deviation: 2.64
-
-Mean Speed on Osgood Road (km/h)
-System Fully Uncoordinated | Mean: 56.17 | Standard Deviation: 1.99
-Osgood Road Fully Uncoordinated | Mean: 58.15 | Standard Deviation: 0.84
-Osgood Road Partially Uncoordinated | Mean: 56.82 | Standard Deviation: 2.12
-System Fully Coordinated | Mean: 58.01 | Standard Deviation: 1.91
-
-Density by Lane on Mission Boulevard (veh/km)
-System Fully Uncoordinated | Mean: 7.96 | Standard Deviation: 2.25
-Mission Blvd Fully Uncoordinated | Mean: 5.63 | Standard Deviation: 0.86
-Mission Blvd Partially Uncoordinated | Mean: 7.76 | Standard Deviation: 2.50
-System Fully Coordinated | Mean: 8.18 | Standard Deviation: 2.78
-
-Density by Lane on Osgood Road (veh/km)
-System Fully Uncoordinated | Mean: 4.93 | Standard Deviation: 2.36
-Osgood Road Fully Uncoordinated | Mean: 4.09 | Standard Deviation: 0.86
-Osgood Road Partially Uncoordinated | Mean: 4.86 | Standard Deviation: 2.22
-System Fully Coordinated | Mean: 5.18 | Standard Deviation: 3.14
+System Fully Uncoordinated | Mean: 360.87 | Standard Deviation: 110.94
+Osgood Road Fully Uncoordinated | Mean: 354.74 | Standard Deviation: 80.61
+Osgood Road Partially Uncoordinated | Mean: 380.27 | Standard Deviation: 105.84
+System Fully Coordinated | Mean: 435.66 | Standard Deviation: 152.63
 
 Mean Flow on I-680 (veh/h)
-System Fully Uncoordinated | Mean: 2914.37 | Standard Deviation: 433.15
-Mission Blvd Fully Uncoordinated | Mean: 2867.27 | Standard Deviation: 440.77
-Mission Blvd Partially Uncoordinated | Mean: 2842.13 | Standard Deviation: 431.34
-Osgood Road Fully Uncoordinated | Mean: 2872.82 | Standard Deviation: 431.86
-Osgood Road Partially Uncoordinated | Mean: 2898.74 | Standard Deviation: 447.76
-System Fully Coordinated | Mean: 2784.91 | Standard Deviation: 469.88
+System Fully Uncoordinated | Mean: 4371.55 | Standard Deviation: 649.72
+Mission Blvd Fully Uncoordinated | Mean: 4300.90 | Standard Deviation: 661.16
+Mission Blvd Partially Uncoordinated | Mean: 4263.20 | Standard Deviation: 647.01
+Osgood Road Fully Uncoordinated | Mean: 4309.23 | Standard Deviation: 647.80
+Osgood Road Partially Uncoordinated | Mean: 4348.11 | Standard Deviation: 671.64
+System Fully Coordinated | Mean: 4177.36 | Standard Deviation: 704.82
+
+Mean Flow on Mission Boulevard Northbound (veh/h)
+System Fully Uncoordinated | Mean: 584.97 | Standard Deviation: 111.24
+Mission Blvd Fully Uncoordinated | Mean: 355.07 | Standard Deviation: 44.58
+Mission Blvd Partially Uncoordinated | Mean: 674.51 | Standard Deviation: 128.32
+System Fully Coordinated | Mean: 678.98 | Standard Deviation: 137.79
+
+Mean Flow on Osgood Road Northbound (veh/h)
+System Fully Uncoordinated | Mean: 390.15 | Standard Deviation: 106.62
+Osgood Road Fully Uncoordinated | Mean: 308.33 | Standard Deviation: 49.12
+Osgood Road Partially Uncoordinated | Mean: 408.00 | Standard Deviation: 97.88
+System Fully Coordinated | Mean: 448.63 | Standard Deviation: 144.02
+
+Mean Flow on I-680 Northbound (veh/h)
+System Fully Uncoordinated | Mean: 4823.87 | Standard Deviation: 293.40
+Mission Blvd Fully Uncoordinated | Mean: 4727.12 | Standard Deviation: 360.27
+Mission Blvd Partially Uncoordinated | Mean: 4804.40 | Standard Deviation: 309.09
+Osgood Road Fully Uncoordinated | Mean: 4642.75 | Standard Deviation: 348.00
+Osgood Road Partially Uncoordinated | Mean: 4757.20 | Standard Deviation: 347.50
+System Fully Coordinated | Mean: 4588.82 | Standard Deviation: 402.73
+
+Mean Flow on Mission Boulevard Southbound (veh/h)
+System Fully Uncoordinated | Mean: 337.90 | Standard Deviation: 49.80
+Mission Blvd Fully Uncoordinated | Mean: 181.96 | Standard Deviation: 32.33
+Mission Blvd Partially Uncoordinated | Mean: 413.14 | Standard Deviation: 73.66
+System Fully Coordinated | Mean: 451.17 | Standard Deviation: 98.19
+
+Mean Flow on Osgood Road Southbound (veh/h)
+System Fully Uncoordinated | Mean: 333.34 | Standard Deviation: 126.58
+Osgood Road Fully Uncoordinated | Mean: 398.52 | Standard Deviation: 120.65
+Osgood Road Partially Uncoordinated | Mean: 354.19 | Standard Deviation: 120.53
+System Fully Coordinated | Mean: 423.45 | Standard Deviation: 178.93
+
+Mean Flow on I-680 Southbound (veh/h)
+System Fully Uncoordinated | Mean: 4145.39 | Standard Deviation: 856.49
+Mission Blvd Fully Uncoordinated | Mean: 4087.79 | Standard Deviation: 852.77
+Mission Blvd Partially Uncoordinated | Mean: 3992.59 | Standard Deviation: 848.82
+Osgood Road Fully Uncoordinated | Mean: 4142.47 | Standard Deviation: 836.41
+Osgood Road Partially Uncoordinated | Mean: 4143.57 | Standard Deviation: 861.46
+System Fully Coordinated | Mean: 3971.63 | Standard Deviation: 873.32
+
+Mean Travel Time on Mission Boulevard (s)
+System Fully Uncoordinated | Mean: 10.97 | Standard Deviation: 2.38
+Mission Blvd Fully Uncoordinated | Mean: 13.51 | Standard Deviation: 2.76
+Mission Blvd Partially Uncoordinated | Mean: 9.85 | Standard Deviation: 2.42
+System Fully Coordinated | Mean: 9.62 | Standard Deviation: 2.90
+
+Mean Travel Time on Osgood Road (s)
+System Fully Uncoordinated | Mean: 7.78 | Standard Deviation: 1.43
+Osgood Road Fully Uncoordinated | Mean: 7.18 | Standard Deviation: 0.54
+Osgood Road Partially Uncoordinated | Mean: 6.98 | Standard Deviation: 1.40
+System Fully Coordinated | Mean: 6.88 | Standard Deviation: 1.82
 
 Mean Travel Time on I-680 (s)
-System Fully Uncoordinated | Mean: 14.79 | Standard Deviation: 1.60
-Mission Blvd Fully Uncoordinated | Mean: 12.97 | Standard Deviation: 1.03
-Mission Blvd Partially Uncoordinated | Mean: 15.03 | Standard Deviation: 1.70
-Osgood Road Fully Uncoordinated | Mean: 13.85 | Standard Deviation: 1.40
-Osgood Road Partially Uncoordinated | Mean: 14.55 | Standard Deviation: 1.40
-System Fully Coordinated | Mean: 17.92 | Standard Deviation: 4.47
+System Fully Uncoordinated | Mean: 14.46 | Standard Deviation: 1.43
+Mission Blvd Fully Uncoordinated | Mean: 12.78 | Standard Deviation: 0.94
+Mission Blvd Partially Uncoordinated | Mean: 14.65 | Standard Deviation: 1.50
+Osgood Road Fully Uncoordinated | Mean: 13.56 | Standard Deviation: 1.30
+Osgood Road Partially Uncoordinated | Mean: 14.24 | Standard Deviation: 1.27
+System Fully Coordinated | Mean: 17.33 | Standard Deviation: 4.25
+
+Mean Travel Time on Mission Boulevard Northbound (s)
+System Fully Uncoordinated | Mean: 12.71 | Standard Deviation: 1.56
+Mission Blvd Fully Uncoordinated | Mean: 15.47 | Standard Deviation: 5.19
+Mission Blvd Partially Uncoordinated | Mean: 11.17 | Standard Deviation: 1.63
+System Fully Coordinated | Mean: 10.67 | Standard Deviation: 2.42
+
+Mean Travel Time on Osgood Road Northbound (s)
+System Fully Uncoordinated | Mean: 7.33 | Standard Deviation: 1.33
+Osgood Road Fully Uncoordinated | Mean: 6.89 | Standard Deviation: 0.37
+Osgood Road Partially Uncoordinated | Mean: 6.35 | Standard Deviation: 1.13
+System Fully Coordinated | Mean: 6.47 | Standard Deviation: 1.79
+
+Mean Travel Time on I-680 Northbound (s)
+System Fully Uncoordinated | Mean: 19.94 | Standard Deviation: 2.81
+Mission Blvd Fully Uncoordinated | Mean: 18.34 | Standard Deviation: 0.27
+Mission Blvd Partially Uncoordinated | Mean: 19.83 | Standard Deviation: 2.81
+Osgood Road Fully Uncoordinated | Mean: 19.30 | Standard Deviation: 2.06
+Osgood Road Partially Uncoordinated | Mean: 19.79 | Standard Deviation: 2.76
+System Fully Coordinated | Mean: 27.69 | Standard Deviation: 14.25
+
+Mean Travel Time on Mission Boulevard Southbound (s)
+System Fully Uncoordinated | Mean: 9.25 | Standard Deviation: 4.03
+Mission Blvd Fully Uncoordinated | Mean: 11.58 | Standard Deviation: 1.38
+Mission Blvd Partially Uncoordinated | Mean: 8.53 | Standard Deviation: 4.27
+System Fully Coordinated | Mean: 8.60 | Standard Deviation: 4.27
+
+Mean Travel Time on Osgood Road Southbound (s)
+System Fully Uncoordinated | Mean: 8.20 | Standard Deviation: 1.63
+Osgood Road Fully Uncoordinated | Mean: 7.45 | Standard Deviation: 0.88
+Osgood Road Partially Uncoordinated | Mean: 7.58 | Standard Deviation: 1.81
+System Fully Coordinated | Mean: 7.26 | Standard Deviation: 2.01
+
+Mean Travel Time on I-680 Southbound (s)
+System Fully Uncoordinated | Mean: 11.71 | Standard Deviation: 2.42
+Mission Blvd Fully Uncoordinated | Mean: 10.00 | Standard Deviation: 1.35
+Mission Blvd Partially Uncoordinated | Mean: 12.06 | Standard Deviation: 2.57
+Osgood Road Fully Uncoordinated | Mean: 10.70 | Standard Deviation: 2.06
+Osgood Road Partially Uncoordinated | Mean: 11.47 | Standard Deviation: 2.14
+System Fully Coordinated | Mean: 12.14 | Standard Deviation: 2.51
+
+Mean Delay Time on Mission Boulevard (s)
+System Fully Uncoordinated | Mean: 7.09 | Standard Deviation: 2.42
+Mission Blvd Fully Uncoordinated | Mean: 9.57 | Standard Deviation: 2.76
+Mission Blvd Partially Uncoordinated | Mean: 5.96 | Standard Deviation: 2.44
+System Fully Coordinated | Mean: 5.74 | Standard Deviation: 2.93
+
+Mean Delay Time on Osgood Road (s)
+System Fully Uncoordinated | Mean: 5.22 | Standard Deviation: 1.39
+Osgood Road Fully Uncoordinated | Mean: 4.61 | Standard Deviation: 0.56
+Osgood Road Partially Uncoordinated | Mean: 4.42 | Standard Deviation: 1.36
+System Fully Coordinated | Mean: 4.32 | Standard Deviation: 1.79
 
 Mean Delay Time on I-680 (s)
-System Fully Uncoordinated | Mean: 3.58 | Standard Deviation: 1.61
-Mission Blvd Fully Uncoordinated | Mean: 1.75 | Standard Deviation: 1.04
-Mission Blvd Partially Uncoordinated | Mean: 3.82 | Standard Deviation: 1.70
-Osgood Road Fully Uncoordinated | Mean: 2.63 | Standard Deviation: 1.41
-Osgood Road Partially Uncoordinated | Mean: 3.34 | Standard Deviation: 1.40
-System Fully Coordinated | Mean: 6.71 | Standard Deviation: 4.47
+System Fully Uncoordinated | Mean: 3.25 | Standard Deviation: 1.44
+Mission Blvd Fully Uncoordinated | Mean: 1.56 | Standard Deviation: 0.95
+Mission Blvd Partially Uncoordinated | Mean: 3.44 | Standard Deviation: 1.50
+Osgood Road Fully Uncoordinated | Mean: 2.35 | Standard Deviation: 1.31
+Osgood Road Partially Uncoordinated | Mean: 3.03 | Standard Deviation: 1.27
+System Fully Coordinated | Mean: 6.12 | Standard Deviation: 4.25
+
+Mean Delay Time on Mission Boulevard Northbound (s)
+System Fully Uncoordinated | Mean: 8.67 | Standard Deviation: 1.58
+Mission Blvd Fully Uncoordinated | Mean: 11.39 | Standard Deviation: 5.18
+Mission Blvd Partially Uncoordinated | Mean: 7.12 | Standard Deviation: 1.64
+System Fully Coordinated | Mean: 6.64 | Standard Deviation: 2.46
+
+Mean Delay Time on Osgood Road Northbound (s)
+System Fully Uncoordinated | Mean: 4.68 | Standard Deviation: 1.29
+Osgood Road Fully Uncoordinated | Mean: 4.23 | Standard Deviation: 0.37
+Osgood Road Partially Uncoordinated | Mean: 3.70 | Standard Deviation: 1.10
+System Fully Coordinated | Mean: 3.82 | Standard Deviation: 1.76
+
+Mean Delay Time on I-680 Northbound (s)
+System Fully Uncoordinated | Mean: 3.09 | Standard Deviation: 2.81
+Mission Blvd Fully Uncoordinated | Mean: 1.48 | Standard Deviation: 0.28
+Mission Blvd Partially Uncoordinated | Mean: 2.98 | Standard Deviation: 2.80
+Osgood Road Fully Uncoordinated | Mean: 2.43 | Standard Deviation: 2.07
+Osgood Road Partially Uncoordinated | Mean: 2.93 | Standard Deviation: 2.75
+System Fully Coordinated | Mean: 10.84 | Standard Deviation: 14.25
+
+Mean Delay Time on Mission Boulevard Southbound (s)
+System Fully Uncoordinated | Mean: 5.53 | Standard Deviation: 4.08
+Mission Blvd Fully Uncoordinated | Mean: 7.79 | Standard Deviation: 1.39
+Mission Blvd Partially Uncoordinated | Mean: 4.79 | Standard Deviation: 4.29
+System Fully Coordinated | Mean: 4.86 | Standard Deviation: 4.30
+
+Mean Delay Time on Osgood Road Southbound (s)
+System Fully Uncoordinated | Mean: 5.72 | Standard Deviation: 1.59
+Osgood Road Fully Uncoordinated | Mean: 4.97 | Standard Deviation: 0.90
+Osgood Road Partially Uncoordinated | Mean: 5.10 | Standard Deviation: 1.78
+System Fully Coordinated | Mean: 4.78 | Standard Deviation: 1.98
+
+Mean Delay Time on I-680 Southbound (s)
+System Fully Uncoordinated | Mean: 3.33 | Standard Deviation: 2.42
+Mission Blvd Fully Uncoordinated | Mean: 1.60 | Standard Deviation: 1.35
+Mission Blvd Partially Uncoordinated | Mean: 3.67 | Standard Deviation: 2.57
+Osgood Road Fully Uncoordinated | Mean: 2.30 | Standard Deviation: 2.06
+Osgood Road Partially Uncoordinated | Mean: 3.08 | Standard Deviation: 2.14
+System Fully Coordinated | Mean: 3.75 | Standard Deviation: 2.51
+
+Mean Speed on Mission Boulevard (km/h)
+System Fully Uncoordinated | Mean: 54.87 | Standard Deviation: 2.24
+Mission Blvd Fully Uncoordinated | Mean: 56.14 | Standard Deviation: 0.55
+Mission Blvd Partially Uncoordinated | Mean: 56.70 | Standard Deviation: 2.19
+System Fully Coordinated | Mean: 56.96 | Standard Deviation: 2.58
+
+Mean Speed on Osgood Road (km/h)
+System Fully Uncoordinated | Mean: 57.27 | Standard Deviation: 1.44
+Osgood Road Fully Uncoordinated | Mean: 57.84 | Standard Deviation: 0.77
+Osgood Road Partially Uncoordinated | Mean: 58.18 | Standard Deviation: 1.39
+System Fully Coordinated | Mean: 58.90 | Standard Deviation: 1.87
 
 Mean Speed on I-680 (km/h)
-System Fully Uncoordinated | Mean: 97.13 | Standard Deviation: 1.95
-Mission Blvd Fully Uncoordinated | Mean: 98.66 | Standard Deviation: 1.97
-Mission Blvd Partially Uncoordinated | Mean: 97.21 | Standard Deviation: 1.79
-Osgood Road Fully Uncoordinated | Mean: 97.82 | Standard Deviation: 2.06
-Osgood Road Partially Uncoordinated | Mean: 97.44 | Standard Deviation: 1.84
-System Fully Coordinated | Mean: 95.94 | Standard Deviation: 1.76
+System Fully Uncoordinated | Mean: 97.78 | Standard Deviation: 1.86
+Mission Blvd Fully Uncoordinated | Mean: 99.30 | Standard Deviation: 1.87
+Mission Blvd Partially Uncoordinated | Mean: 97.81 | Standard Deviation: 1.70
+Osgood Road Fully Uncoordinated | Mean: 98.53 | Standard Deviation: 2.04
+Osgood Road Partially Uncoordinated | Mean: 98.07 | Standard Deviation: 1.74
+System Fully Coordinated | Mean: 96.60 | Standard Deviation: 1.76
+
+Mean Speed on Mission Boulevard Northbound (km/h)
+System Fully Uncoordinated | Mean: 53.81 | Standard Deviation: 2.20
+Mission Blvd Fully Uncoordinated | Mean: 54.90 | Standard Deviation: 0.93
+Mission Blvd Partially Uncoordinated | Mean: 56.24 | Standard Deviation: 1.99
+System Fully Coordinated | Mean: 56.49 | Standard Deviation: 2.52
+
+Mean Speed on Osgood Road Northbound (km/h)
+System Fully Uncoordinated | Mean: 57.01 | Standard Deviation: 1.46
+Osgood Road Fully Uncoordinated | Mean: 57.89 | Standard Deviation: 0.55
+Osgood Road Partially Uncoordinated | Mean: 58.01 | Standard Deviation: 1.25
+System Fully Coordinated | Mean: 58.68 | Standard Deviation: 1.92
+
+Mean Speed on I-680 Northbound (km/h)
+System Fully Uncoordinated | Mean: 98.36 | Standard Deviation: 1.56
+Mission Blvd Fully Uncoordinated | Mean: 99.56 | Standard Deviation: 0.82
+Mission Blvd Partially Uncoordinated | Mean: 98.52 | Standard Deviation: 1.53
+Osgood Road Fully Uncoordinated | Mean: 99.05 | Standard Deviation: 1.25
+Osgood Road Partially Uncoordinated | Mean: 98.66 | Standard Deviation: 1.42
+System Fully Coordinated | Mean: 95.03 | Standard Deviation: 6.91
+
+Mean Speed on Mission Boulevard Southbound (km/h)
+System Fully Uncoordinated | Mean: 55.91 | Standard Deviation: 2.41
+Mission Blvd Fully Uncoordinated | Mean: 57.36 | Standard Deviation: 0.68
+Mission Blvd Partially Uncoordinated | Mean: 57.16 | Standard Deviation: 2.47
+System Fully Coordinated | Mean: 57.42 | Standard Deviation: 2.73
+
+Mean Speed on Osgood Road Southbound (km/h)
+System Fully Uncoordinated | Mean: 57.51 | Standard Deviation: 1.53
+Osgood Road Fully Uncoordinated | Mean: 57.78 | Standard Deviation: 1.10
+Osgood Road Partially Uncoordinated | Mean: 58.34 | Standard Deviation: 1.63
+System Fully Coordinated | Mean: 59.12 | Standard Deviation: 1.98
+
+Mean Speed on I-680 Southbound (km/h)
+System Fully Uncoordinated | Mean: 97.50 | Standard Deviation: 3.21
+Mission Blvd Fully Uncoordinated | Mean: 99.17 | Standard Deviation: 2.57
+Mission Blvd Partially Uncoordinated | Mean: 97.46 | Standard Deviation: 2.99
+Osgood Road Fully Uncoordinated | Mean: 98.28 | Standard Deviation: 3.12
+Osgood Road Partially Uncoordinated | Mean: 97.78 | Standard Deviation: 3.02
+System Fully Coordinated | Mean: 97.39 | Standard Deviation: 2.75
+
+Density by Lane on Mission Boulevard (veh/km)
+System Fully Uncoordinated | Mean: 11.57 | Standard Deviation: 3.44
+Mission Blvd Fully Uncoordinated | Mean: 7.94 | Standard Deviation: 1.26
+Mission Blvd Partially Uncoordinated | Mean: 11.33 | Standard Deviation: 3.81
+System Fully Coordinated | Mean: 11.99 | Standard Deviation: 4.22
+
+Density by Lane on Osgood Road (veh/km)
+System Fully Uncoordinated | Mean: 7.16 | Standard Deviation: 3.59
+Osgood Road Fully Uncoordinated | Mean: 5.93 | Standard Deviation: 1.29
+Osgood Road Partially Uncoordinated | Mean: 7.09 | Standard Deviation: 3.36
+System Fully Coordinated | Mean: 7.56 | Standard Deviation: 4.72
 
 Density by Lane on I-680 (veh/km)
-System Fully Uncoordinated | Mean: 8.87 | Standard Deviation: 1.76
-Mission Blvd Fully Uncoordinated | Mean: 7.73 | Standard Deviation: 1.51
-Mission Blvd Partially Uncoordinated | Mean: 8.99 | Standard Deviation: 1.68
-Osgood Road Fully Uncoordinated | Mean: 8.09 | Standard Deviation: 1.81
-Osgood Road Partially Uncoordinated | Mean: 8.69 | Standard Deviation: 1.66
-System Fully Coordinated | Mean: 9.98 | Standard Deviation: 1.64
+System Fully Uncoordinated | Mean: 13.30 | Standard Deviation: 2.65
+Mission Blvd Fully Uncoordinated | Mean: 11.60 | Standard Deviation: 2.27
+Mission Blvd Partially Uncoordinated | Mean: 13.48 | Standard Deviation: 2.52
+Osgood Road Fully Uncoordinated | Mean: 12.13 | Standard Deviation: 2.72
+Osgood Road Partially Uncoordinated | Mean: 13.03 | Standard Deviation: 2.48
+System Fully Coordinated | Mean: 14.97 | Standard Deviation: 2.46
+
+Density by Lane on Mission Boulevard Northbound (veh/km)
+System Fully Uncoordinated | Mean: 13.85 | Standard Deviation: 3.67
+Mission Blvd Fully Uncoordinated | Mean: 9.10 | Standard Deviation: 1.48
+Mission Blvd Partially Uncoordinated | Mean: 13.14 | Standard Deviation: 3.80
+System Fully Coordinated | Mean: 13.70 | Standard Deviation: 3.98
+
+Density by Lane on Osgood Road Northbound (veh/km)
+System Fully Uncoordinated | Mean: 6.92 | Standard Deviation: 3.33
+Osgood Road Fully Uncoordinated | Mean: 4.82 | Standard Deviation: 0.66
+Osgood Road Partially Uncoordinated | Mean: 6.51 | Standard Deviation: 2.68
+System Fully Coordinated | Mean: 7.17 | Standard Deviation: 4.50
+
+Density by Lane on I-680 Northbound (veh/km)
+System Fully Uncoordinated | Mean: 15.62 | Standard Deviation: 1.23
+Mission Blvd Fully Uncoordinated | Mean: 14.56 | Standard Deviation: 1.23
+Mission Blvd Partially Uncoordinated | Mean: 15.50 | Standard Deviation: 1.20
+Osgood Road Fully Uncoordinated | Mean: 14.46 | Standard Deviation: 1.15
+Osgood Road Partially Uncoordinated | Mean: 15.33 | Standard Deviation: 1.06
+System Fully Coordinated | Mean: 19.14 | Standard Deviation: 7.39
+
+Density by Lane on Mission Boulevard Southbound (veh/km)
+System Fully Uncoordinated | Mean: 9.32 | Standard Deviation: 3.62
+Mission Blvd Fully Uncoordinated | Mean: 6.79 | Standard Deviation: 1.36
+Mission Blvd Partially Uncoordinated | Mean: 9.55 | Standard Deviation: 4.30
+System Fully Coordinated | Mean: 10.31 | Standard Deviation: 5.05
+
+Density by Lane on Osgood Road Southbound (veh/km)
+System Fully Uncoordinated | Mean: 7.39 | Standard Deviation: 4.03
+Osgood Road Fully Uncoordinated | Mean: 6.98 | Standard Deviation: 2.00
+Osgood Road Partially Uncoordinated | Mean: 7.63 | Standard Deviation: 4.30
+System Fully Coordinated | Mean: 7.92 | Standard Deviation: 5.34
+
+Density by Lane on I-680 Southbound (veh/km)
+System Fully Uncoordinated | Mean: 12.13 | Standard Deviation: 4.08
+Mission Blvd Fully Uncoordinated | Mean: 10.12 | Standard Deviation: 2.95
+Mission Blvd Partially Uncoordinated | Mean: 12.47 | Standard Deviation: 3.91
+Osgood Road Fully Uncoordinated | Mean: 10.97 | Standard Deviation: 3.71
+Osgood Road Partially Uncoordinated | Mean: 11.88 | Standard Deviation: 3.78
+System Fully Coordinated | Mean: 12.89 | Standard Deviation: 3.86
+
+Travel Distance by Section on Mission Boulevard (km)
+System Fully Uncoordinated | Mean: 8.05 | Standard Deviation: 1.70
+Mission Blvd Fully Uncoordinated | Mean: 4.61 | Standard Deviation: 0.82
+Mission Blvd Partially Uncoordinated | Mean: 9.49 | Standard Deviation: 1.75
+System Fully Coordinated | Mean: 9.91 | Standard Deviation: 1.57
+
+Travel Distance by Section on Osgood Road (km)
+System Fully Uncoordinated | Mean: 4.09 | Standard Deviation: 1.31
+Osgood Road Fully Uncoordinated | Mean: 4.08 | Standard Deviation: 0.94
+Osgood Road Partially Uncoordinated | Mean: 4.39 | Standard Deviation: 1.23
+System Fully Coordinated | Mean: 4.99 | Standard Deviation: 1.79
+
+Travel Distance by Section on I-680 (km)
+System Fully Uncoordinated | Mean: 390.05 | Standard Deviation: 47.09
+Mission Blvd Fully Uncoordinated | Mean: 385.24 | Standard Deviation: 49.28
+Mission Blvd Partially Uncoordinated | Mean: 382.35 | Standard Deviation: 46.70
+Osgood Road Fully Uncoordinated | Mean: 382.69 | Standard Deviation: 47.90
+Osgood Road Partially Uncoordinated | Mean: 386.74 | Standard Deviation: 49.90
+System Fully Coordinated | Mean: 370.32 | Standard Deviation: 53.45
+
+Travel Distance by Section on Mission Boulevard Northbound (km)
+System Fully Uncoordinated | Mean: 9.81 | Standard Deviation: 2.56
+Mission Blvd Fully Uncoordinated | Mean: 5.83 | Standard Deviation: 1.01
+Mission Blvd Partially Uncoordinated | Mean: 11.12 | Standard Deviation: 2.51
+System Fully Coordinated | Mean: 11.30 | Standard Deviation: 3.15
+
+Travel Distance by Section on Osgood Road Northbound (km)
+System Fully Uncoordinated | Mean: 4.59 | Standard Deviation: 1.26
+Osgood Road Fully Uncoordinated | Mean: 3.58 | Standard Deviation: 0.57
+Osgood Road Partially Uncoordinated | Mean: 4.88 | Standard Deviation: 1.17
+System Fully Coordinated | Mean: 5.30 | Standard Deviation: 1.69
+
+Travel Distance by Section on I-680 Northbound (km)
+System Fully Uncoordinated | Mean: 622.31 | Standard Deviation: 39.02
+Mission Blvd Fully Uncoordinated | Mean: 606.76 | Standard Deviation: 48.12
+Mission Blvd Partially Uncoordinated | Mean: 619.86 | Standard Deviation: 41.02
+Osgood Road Fully Uncoordinated | Mean: 593.73 | Standard Deviation: 46.13
+Osgood Road Partially Uncoordinated | Mean: 612.86 | Standard Deviation: 46.31
+System Fully Coordinated | Mean: 588.39 | Standard Deviation: 53.69
+
+Travel Distance by Section on Mission Boulevard Southbound (km)
+System Fully Uncoordinated | Mean: 6.31 | Standard Deviation: 1.09
+Mission Blvd Fully Uncoordinated | Mean: 3.40 | Standard Deviation: 0.73
+Mission Blvd Partially Uncoordinated | Mean: 7.88 | Standard Deviation: 1.61
+System Fully Coordinated | Mean: 8.53 | Standard Deviation: 1.79
+
+Travel Distance by Section on Osgood Road Southbound (km)
+System Fully Uncoordinated | Mean: 3.61 | Standard Deviation: 1.44
+Osgood Road Fully Uncoordinated | Mean: 4.56 | Standard Deviation: 1.41
+Osgood Road Partially Uncoordinated | Mean: 3.93 | Standard Deviation: 1.36
+System Fully Coordinated | Mean: 4.70 | Standard Deviation: 2.05
+
+Travel Distance by Section on I-680 Southbound (km)
+System Fully Uncoordinated | Mean: 273.93 | Standard Deviation: 54.92
+Mission Blvd Fully Uncoordinated | Mean: 274.48 | Standard Deviation: 54.82
+Mission Blvd Partially Uncoordinated | Mean: 263.60 | Standard Deviation: 53.78
+Osgood Road Fully Uncoordinated | Mean: 277.17 | Standard Deviation: 53.75
+Osgood Road Partially Uncoordinated | Mean: 273.69 | Standard Deviation: 55.01
+System Fully Coordinated | Mean: 261.29 | Standard Deviation: 55.56
 ```
