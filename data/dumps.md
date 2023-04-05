@@ -1077,4 +1077,4 @@ Metric: density (veh/km) | Mission Blvd L/V Coordinated Northbound: 2.07, 5.62 |
 Travel Distance by Section 
 Metric: travel (km) | System Fully Coordinated: 17.38, 285.17 | System Fully Uncoordinated: 11.57, 252.72
 Metric: travel (km) | Mission Blvd L/V Coordinated Northbound: 20.46, 321.47 | System Fully Uncoordinated: 11.57, 252.72
-
+```

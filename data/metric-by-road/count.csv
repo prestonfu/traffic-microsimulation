@@ -1,0 +1,28 @@
+direction,road,label,mean,std,interval
+Northbound,Mission Boulevard,System Fully Uncoordinated,111.57854438071524,18.90791889158385,111.58 ± 37.82
+Northbound,Mission Boulevard,System Fully Coordinated,125.31876722911386,23.29761613183031,125.32 ± 46.60
+Northbound,Mission Boulevard,Mission Blvd L/V Coordinated Northbound,141.51007625272334,20.624700381022993,141.51 ± 41.25
+Northbound,Osgood Road,System Fully Uncoordinated,69.02537337507576,16.45239401011824,69.03 ± 32.90
+Northbound,Osgood Road,System Fully Coordinated,79.94985046696355,23.218086813060193,79.95 ± 46.44
+Northbound,Osgood Road,Mission Blvd L/V Coordinated Northbound,63.992930771489945,11.92843678267531,63.99 ± 23.86
+Northbound,I-680,System Fully Uncoordinated,803.9787581699347,48.900830209074826,803.98 ± 97.80
+Northbound,I-680,System Fully Coordinated,764.8039215686276,67.12222288535486,764.80 ± 134.24
+Northbound,I-680,Mission Blvd L/V Coordinated Northbound,787.0375816993464,71.14242805934622,787.04 ± 142.28
+Southbound,Mission Boulevard,System Fully Uncoordinated,82.21904805638825,10.270978146872736,82.22 ± 20.54
+Southbound,Mission Boulevard,System Fully Coordinated,98.1062152032355,13.717782809685573,98.11 ± 27.44
+Southbound,Mission Boulevard,Mission Blvd L/V Coordinated Northbound,90.37253374870197,17.498955339516336,90.37 ± 35.00
+Southbound,Osgood Road,System Fully Uncoordinated,59.67907744486578,19.68861070788238,59.68 ± 39.38
+Southbound,Osgood Road,System Fully Coordinated,74.71536189443567,28.114658379547425,74.72 ± 56.23
+Southbound,Osgood Road,Mission Blvd L/V Coordinated Northbound,56.028552414313424,14.013279604636852,56.03 ± 28.03
+Southbound,I-680,System Fully Uncoordinated,693.1842917478884,143.35576237296004,693.18 ± 286.71
+Southbound,I-680,System Fully Coordinated,665.6288580246913,146.0411915078152,665.63 ± 292.08
+Southbound,I-680,Mission Blvd L/V Coordinated Northbound,701.7545077972709,144.11874593108598,701.75 ± 288.24
+,Mission Boulevard,System Fully Uncoordinated,96.52329261732,13.28617200600874,96.52 ± 26.57
+,Mission Boulevard,System Fully Coordinated,111.39443913794288,12.734873624979059,111.39 ± 25.47
+,Mission Boulevard,Mission Blvd L/V Coordinated Northbound,115.32961190855927,18.023437772374425,115.33 ± 36.05
+,Osgood Road,System Fully Uncoordinated,64.19804144559049,16.92301794433685,64.20 ± 33.85
+,Osgood Road,System Fully Coordinated,77.24687175580841,24.13879699436611,77.25 ± 48.28
+,Osgood Road,Mission Blvd L/V Coordinated Northbound,59.879913694943276,12.549092530167297,59.88 ± 25.10
+,I-680,System Fully Uncoordinated,745.5039008916325,94.75802194562206,745.50 ± 189.52
+,I-680,System Fully Coordinated,712.4615269204388,106.33826813391339,712.46 ± 212.68
+,I-680,Mission Blvd L/V Coordinated Northbound,742.0270704732511,104.41412506545569,742.03 ± 208.83
