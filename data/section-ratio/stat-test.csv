@@ -1,0 +1,22 @@
+metric,scenario_1,scenario_2,t_statistic,p_value
+Mean Flow,System Fully Uncoordinated,System Fully Coordinated,-6.115127984152044,1.068551237208393e-09
+Mean Flow,System Fully Uncoordinated,Mission Blvd L/V Coordinated Northbound,4.372641468241167,1.2643037649646066e-05
+Mean Flow,System Fully Coordinated,Mission Blvd L/V Coordinated Northbound,7.794588947152759,8.526444472762383e-15
+Mean Travel Time,System Fully Uncoordinated,System Fully Coordinated,-1.6266699498702053,0.10389524693222935
+Mean Travel Time,System Fully Uncoordinated,Mission Blvd L/V Coordinated Northbound,0.750141414542927,0.45322142824645184
+Mean Travel Time,System Fully Coordinated,Mission Blvd L/V Coordinated Northbound,6.344004049361958,2.534486531168083e-10
+Mean Delay Time,System Fully Uncoordinated,System Fully Coordinated,-1.622826704504801,0.1047145274610238
+Mean Delay Time,System Fully Uncoordinated,Mission Blvd L/V Coordinated Northbound,0.7538156952841649,0.4510120816932587
+Mean Delay Time,System Fully Coordinated,Mission Blvd L/V Coordinated Northbound,6.35260672384139,2.3982513544163383e-10
+Mean Speed,System Fully Uncoordinated,System Fully Coordinated,-2.125653613318354,0.03360040314797631
+Mean Speed,System Fully Uncoordinated,Mission Blvd L/V Coordinated Northbound,-15.707815917092468,9.900364499354296e-54
+Mean Speed,System Fully Coordinated,Mission Blvd L/V Coordinated Northbound,-18.63760425090709,6.8438175250777815e-74
+Density by Lane,System Fully Uncoordinated,System Fully Coordinated,-6.892534336446997,6.449715841740177e-12
+Density by Lane,System Fully Uncoordinated,Mission Blvd L/V Coordinated Northbound,13.643285174014219,2.654391780072089e-41
+Density by Lane,System Fully Coordinated,Mission Blvd L/V Coordinated Northbound,14.514671028416318,2.3228877503539273e-46
+Travel Distance by Section,System Fully Uncoordinated,System Fully Coordinated,1.4471234476204684,0.1479499305984311
+Travel Distance by Section,System Fully Uncoordinated,Mission Blvd L/V Coordinated Northbound,2.6869785006169415,0.007245242550520461
+Travel Distance by Section,System Fully Coordinated,Mission Blvd L/V Coordinated Northbound,0.25567379058700856,0.7982182143176195
+Vehicle Count,System Fully Uncoordinated,System Fully Coordinated,-6.115127984152043,1.0685512372084006e-09
+Vehicle Count,System Fully Uncoordinated,Mission Blvd L/V Coordinated Northbound,4.372641468241166,1.2643037649646182e-05
+Vehicle Count,System Fully Coordinated,Mission Blvd L/V Coordinated Northbound,7.794588947152758,8.526444472762383e-15
