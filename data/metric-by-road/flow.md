@@ -1,29 +1,29 @@
-| Direction   | Road              | Label                                   | Interval          |
+| Direction   | Road              | Scenario                                | Interval          |
 |:------------|:------------------|:----------------------------------------|:------------------|
-| Northbound  | Mission Boulevard | System Fully Uncoordinated              | 446.31 ± 151.26   |
-| Northbound  | Mission Boulevard | System Fully Coordinated                | 501.28 ± 186.38   |
-| Northbound  | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 566.04 ± 165.00   |
-| Northbound  | Osgood Road       | System Fully Uncoordinated              | 276.10 ± 131.62   |
-| Northbound  | Osgood Road       | System Fully Coordinated                | 319.80 ± 185.74   |
-| Northbound  | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 255.97 ± 95.43    |
-| Northbound  | I-680             | System Fully Uncoordinated              | 3215.92 ± 391.21  |
-| Northbound  | I-680             | System Fully Coordinated                | 3059.22 ± 536.98  |
-| Northbound  | I-680             | Mission Blvd L/V Coordinated Northbound | 3148.15 ± 569.14  |
-| Southbound  | Mission Boulevard | System Fully Uncoordinated              | 328.88 ± 82.17    |
-| Southbound  | Mission Boulevard | System Fully Coordinated                | 392.42 ± 109.74   |
-| Southbound  | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 361.49 ± 139.99   |
-| Southbound  | Osgood Road       | System Fully Uncoordinated              | 238.72 ± 157.51   |
-| Southbound  | Osgood Road       | System Fully Coordinated                | 298.86 ± 224.92   |
-| Southbound  | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 224.11 ± 112.11   |
-| Southbound  | I-680             | System Fully Uncoordinated              | 2772.74 ± 1146.85 |
-| Southbound  | I-680             | System Fully Coordinated                | 2662.52 ± 1168.33 |
-| Southbound  | I-680             | Mission Blvd L/V Coordinated Northbound | 2807.02 ± 1152.95 |
-|             | Mission Boulevard | System Fully Uncoordinated              | 386.09 ± 106.29   |
-|             | Mission Boulevard | System Fully Coordinated                | 445.58 ± 101.88   |
-|             | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 461.32 ± 144.19   |
-|             | Osgood Road       | System Fully Uncoordinated              | 256.79 ± 135.38   |
-|             | Osgood Road       | System Fully Coordinated                | 308.99 ± 193.11   |
-|             | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 239.52 ± 100.39   |
-|             | I-680             | System Fully Uncoordinated              | 2982.02 ± 758.06  |
-|             | I-680             | System Fully Coordinated                | 2849.85 ± 850.71  |
-|             | I-680             | Mission Blvd L/V Coordinated Northbound | 2968.11 ± 835.31  |
+| Northbound  | Mission Boulevard | System Fully Uncoordinated              | 644.91 ± 1512.64  |
+| Northbound  | Mission Boulevard | System Fully Coordinated                | 728.74 ± 1313.93  |
+| Northbound  | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 833.36 ± 1382.06  |
+| Northbound  | Osgood Road       | System Fully Uncoordinated              | 390.63 ± 291.69   |
+| Northbound  | Osgood Road       | System Fully Coordinated                | 451.41 ± 319.32   |
+| Northbound  | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 362.59 ± 348.68   |
+| Northbound  | I-680             | System Fully Uncoordinated              | 4823.87 ± 1202.25 |
+| Northbound  | I-680             | System Fully Coordinated                | 4588.82 ± 1029.92 |
+| Northbound  | I-680             | Mission Blvd L/V Coordinated Northbound | 4722.23 ± 1262.00 |
+| Southbound  | Mission Boulevard | System Fully Uncoordinated              | 451.68 ± 1107.76  |
+| Southbound  | Mission Boulevard | System Fully Coordinated                | 546.13 ± 994.66   |
+| Southbound  | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 496.73 ± 1356.92  |
+| Southbound  | Osgood Road       | System Fully Uncoordinated              | 336.36 ± 297.34   |
+| Southbound  | Osgood Road       | System Fully Coordinated                | 426.76 ± 369.06   |
+| Southbound  | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 310.02 ± 339.91   |
+| Southbound  | I-680             | System Fully Uncoordinated              | 4158.57 ± 1695.95 |
+| Southbound  | I-680             | System Fully Coordinated                | 3993.16 ± 1296.78 |
+| Southbound  | I-680             | Mission Blvd L/V Coordinated Northbound | 4210.09 ± 1913.21 |
+| Both        | Mission Boulevard | System Fully Uncoordinated              | 545.98 ± 1331.88  |
+| Both        | Mission Boulevard | System Fully Coordinated                | 635.25 ± 1173.02  |
+| Both        | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 661.02 ± 1406.99  |
+| Both        | Osgood Road       | System Fully Uncoordinated              | 362.62 ± 299.12   |
+| Both        | Osgood Road       | System Fully Coordinated                | 438.69 ± 346.21   |
+| Both        | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 335.45 ± 347.63   |
+| Both        | I-680             | System Fully Uncoordinated              | 4472.74 ± 1610.54 |
+| Both        | I-680             | System Fully Coordinated                | 4274.45 ± 1309.03 |
+| Both        | I-680             | Mission Blvd L/V Coordinated Northbound | 4451.93 ± 1696.90 |

@@ -1,23 +1,23 @@
-| Metric                     | Scenario                                | Interval         |
-|:---------------------------|:----------------------------------------|:-----------------|
-| Mean Flow                  | System Fully Uncoordinated              | 112.14 ± 668.45  |
-| Mean Flow                  | System Fully Coordinated                | 117.35 ± 648.10  |
-| Mean Flow                  | Mission Blvd L/V Coordinated Northbound | 114.70 ± 700.09  |
-| Mean Travel Time           | System Fully Uncoordinated              | 8.91 ± 28.89     |
-| Mean Travel Time           | System Fully Coordinated                | 9.88 ± 83.45     |
-| Mean Travel Time           | Mission Blvd L/V Coordinated Northbound | 8.39 ± 72.12     |
-| Mean Delay Time            | System Fully Uncoordinated              | 2.93 ± 25.84     |
-| Mean Delay Time            | System Fully Coordinated                | 3.91 ± 82.38     |
-| Mean Delay Time            | Mission Blvd L/V Coordinated Northbound | 2.54 ± 71.03     |
-| Mean Speed                 | System Fully Uncoordinated              | 43.56 ± 27.22    |
-| Mean Speed                 | System Fully Coordinated                | 43.66 ± 27.42    |
-| Mean Speed                 | Mission Blvd L/V Coordinated Northbound | 44.88 ± 28.77    |
-| Density by Lane            | System Fully Uncoordinated              | 2.78 ± 15.30     |
-| Density by Lane            | System Fully Coordinated                | 3.37 ± 19.92     |
-| Density by Lane            | Mission Blvd L/V Coordinated Northbound | 1.58 ± 9.38      |
-| Travel Distance by Section | System Fully Uncoordinated              | 101.95 ± 2083.66 |
-| Travel Distance by Section | System Fully Coordinated                | 100.75 ± 1970.58 |
-| Travel Distance by Section | Mission Blvd L/V Coordinated Northbound | 105.68 ± 2117.76 |
-| Vehicle Count              | System Fully Uncoordinated              | 672.86 ± 4010.68 |
-| Vehicle Count              | System Fully Coordinated                | 704.13 ± 3888.58 |
-| Vehicle Count              | Mission Blvd L/V Coordinated Northbound | 688.19 ± 4200.52 |
+| Metric                          | Scenario                                | Interval         |
+|:--------------------------------|:----------------------------------------|:-----------------|
+| Mean Flow (veh/h)               | System Fully Uncoordinated              | 127.81 ± 894.00  |
+| Mean Flow (veh/h)               | System Fully Coordinated                | 134.46 ± 866.67  |
+| Mean Flow (veh/h)               | Mission Blvd L/V Coordinated Northbound | 121.55 ± 911.06  |
+| Mean Travel Time (s)            | System Fully Uncoordinated              | 8.81 ± 24.40     |
+| Mean Travel Time (s)            | System Fully Coordinated                | 9.59 ± 71.30     |
+| Mean Travel Time (s)            | Mission Blvd L/V Coordinated Northbound | 8.18 ± 70.32     |
+| Mean Delay Time (s)             | System Fully Uncoordinated              | 2.95 ± 21.81     |
+| Mean Delay Time (s)             | System Fully Coordinated                | 3.70 ± 70.39     |
+| Mean Delay Time (s)             | Mission Blvd L/V Coordinated Northbound | 2.42 ± 69.56     |
+| Mean Speed (km/h)               | System Fully Uncoordinated              | 44.11 ± 23.86    |
+| Mean Speed (km/h)               | System Fully Coordinated                | 44.32 ± 23.92    |
+| Mean Speed (km/h)               | Mission Blvd L/V Coordinated Northbound | 45.39 ± 24.77    |
+| Density by Lane (veh/km)        | System Fully Uncoordinated              | 3.14 ± 20.44     |
+| Density by Lane (veh/km)        | System Fully Coordinated                | 3.80 ± 25.71     |
+| Density by Lane (veh/km)        | Mission Blvd L/V Coordinated Northbound | 1.64 ± 12.17     |
+| Travel Distance by Section (km) | System Fully Uncoordinated              | 121.41 ± 2854.61 |
+| Travel Distance by Section (km) | System Fully Coordinated                | 119.99 ± 2700.16 |
+| Travel Distance by Section (km) | Mission Blvd L/V Coordinated Northbound | 118.05 ± 2823.70 |
+| Vehicle Count (veh)             | System Fully Uncoordinated              | 766.84 ± 5363.99 |
+| Vehicle Count (veh)             | System Fully Coordinated                | 806.75 ± 5200.00 |
+| Vehicle Count (veh)             | Mission Blvd L/V Coordinated Northbound | 729.28 ± 5466.35 |
