@@ -1,8 +1,8 @@
 | Direction       | Road              | Scenario                                | Interval     |
 |:----------------|:------------------|:----------------------------------------|:-------------|
-| Northbound      | Mission Boulevard | System Fully Coordinated                | 5.65 ± 27.17 |
-| Northbound      | Mission Boulevard | Mission Blvd Zero Offset Northbound     | 2.17 ± 12.14 |
-| Northbound      | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 1.99 ± 10.19 |
+| Northbound      | Mission Boulevard | System Fully Coordinated                | 4.35 ± 20.19 |
+| Northbound      | Mission Boulevard | Mission Blvd Zero Offset Northbound     | 1.94 ± 11.30 |
+| Northbound      | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 1.76 ± 9.25  |
 | Northbound      | Osgood Road       | System Fully Coordinated                | 3.32 ± 16.21 |
 | Northbound      | Osgood Road       | Mission Blvd Zero Offset Northbound     | 1.53 ± 11.37 |
 | Northbound      | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 1.58 ± 11.55 |
@@ -18,9 +18,9 @@
 | Southbound      | I-680             | System Fully Coordinated                | 3.37 ± 10.47 |
 | Southbound      | I-680             | Mission Blvd Zero Offset Northbound     | 2.02 ± 7.28  |
 | Southbound      | I-680             | Mission Blvd L/V Coordinated Northbound | 1.94 ± 6.82  |
-| Both Directions | Mission Boulevard | System Fully Coordinated                | 4.28 ± 21.04 |
-| Both Directions | Mission Boulevard | Mission Blvd Zero Offset Northbound     | 2.00 ± 10.96 |
-| Both Directions | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 1.86 ± 9.55  |
+| Both Directions | Mission Boulevard | System Fully Coordinated                | 3.64 ± 16.60 |
+| Both Directions | Mission Boulevard | Mission Blvd Zero Offset Northbound     | 1.89 ± 10.50 |
+| Both Directions | Mission Boulevard | Mission Blvd L/V Coordinated Northbound | 1.75 ± 9.07  |
 | Both Directions | Osgood Road       | System Fully Coordinated                | 3.95 ± 19.16 |
 | Both Directions | Osgood Road       | Mission Blvd Zero Offset Northbound     | 2.14 ± 15.24 |
 | Both Directions | Osgood Road       | Mission Blvd L/V Coordinated Northbound | 2.03 ± 14.12 |
