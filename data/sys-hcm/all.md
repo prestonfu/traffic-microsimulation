@@ -1,26 +1,44 @@
 | Metric           | Scenario                                | Interval           |
 |:-----------------|:----------------------------------------|:-------------------|
-| density          | Status Quo                              | 2.80 ± 1.31        |
-| density          | Mission Blvd L/V Coordinated Northbound | 3.02 ± 1.49        |
-| density          | Mission Blvd Zero Offset                | 3.12 ± 1.21        |
-| flow             | Status Quo                              | 15153.44 ± 5084.27 |
-| flow             | Mission Blvd L/V Coordinated Northbound | 15172.17 ± 4960.34 |
-| flow             | Mission Blvd Zero Offset                | 15106.00 ± 5129.14 |
-| ttime            | Status Quo                              | 57.30 ± 11.09      |
-| ttime            | Mission Blvd L/V Coordinated Northbound | 59.74 ± 13.25      |
-| ttime            | Mission Blvd Zero Offset                | 60.72 ± 11.61      |
-| speed            | Status Quo                              | 68.81 ± 12.71      |
-| speed            | Mission Blvd L/V Coordinated Northbound | 66.77 ± 13.54      |
-| speed            | Mission Blvd Zero Offset                | 66.35 ± 11.70      |
-| travel           | Status Quo                              | 27396.99 ± 9105.49 |
-| travel           | Mission Blvd L/V Coordinated Northbound | 27657.11 ± 9019.90 |
-| travel           | Mission Blvd Zero Offset                | 27644.85 ± 9267.29 |
-| input_count      | Status Quo                              | 3829.74 ± 1140.64  |
-| input_count      | Mission Blvd L/V Coordinated Northbound | 3837.62 ± 1116.14  |
-| input_count      | Mission Blvd Zero Offset                | 3834.90 ± 1139.39  |
-| totalWaitingTime | Status Quo                              | 0.00 ± 0.00        |
-| totalWaitingTime | Mission Blvd L/V Coordinated Northbound | 0.02 ± 0.21        |
-| totalWaitingTime | Mission Blvd Zero Offset                | 0.30 ± 1.73        |
-| vWait            | Status Quo                              | 1.21 ± 2.90        |
-| vWait            | Mission Blvd L/V Coordinated Northbound | 3.76 ± 18.99       |
-| vWait            | Mission Blvd Zero Offset                | 10.39 ± 43.37      |
+| density          | System Fully Coordinated                | 5.47 ± 4.77        |
+| density          | Mission Blvd Zero Offset Northbound     | 2.94 ± 1.24        |
+| density          | Mission Blvd L/V Coordinated Northbound | 3.04 ± 1.32        |
+| flow             | System Fully Coordinated                | 14313.61 ± 4549.58 |
+| flow             | Mission Blvd Zero Offset Northbound     | 15214.50 ± 4816.28 |
+| flow             | Mission Blvd L/V Coordinated Northbound | 15164.72 ± 4870.36 |
+| ttime            | System Fully Coordinated                | 78.21 ± 43.21      |
+| ttime            | Mission Blvd Zero Offset Northbound     | 58.62 ± 10.06      |
+| ttime            | Mission Blvd L/V Coordinated Northbound | 60.22 ± 11.70      |
+| speed            | System Fully Coordinated                | 62.69 ± 16.73      |
+| speed            | Mission Blvd Zero Offset Northbound     | 72.04 ± 8.86       |
+| speed            | Mission Blvd L/V Coordinated Northbound | 71.01 ± 10.92      |
+| fuelc            | System Fully Coordinated                | 2056.59 ± 668.48   |
+| fuelc            | Mission Blvd Zero Offset Northbound     | 2440.78 ± 979.61   |
+| fuelc            | Mission Blvd L/V Coordinated Northbound | 2447.96 ± 1017.17  |
+| batteryc         | System Fully Coordinated                | 0.00 ± 0.00        |
+| batteryc         | Mission Blvd Zero Offset Northbound     | 0.00 ± 0.00        |
+| batteryc         | Mission Blvd L/V Coordinated Northbound | 0.00 ± 0.00        |
+| travel           | System Fully Coordinated                | 27215.90 ± 7130.31 |
+| travel           | Mission Blvd Zero Offset Northbound     | 27944.89 ± 8675.84 |
+| travel           | Mission Blvd L/V Coordinated Northbound | 27848.92 ± 8819.57 |
+| queue_delay      | System Fully Coordinated                | 14.23 ± 8.95       |
+| queue_delay      | Mission Blvd Zero Offset Northbound     | 9.26 ± 3.44        |
+| queue_delay      | Mission Blvd L/V Coordinated Northbound | 9.46 ± 3.43        |
+| queue_length     | System Fully Coordinated                | 2.33 ± 2.97        |
+| queue_length     | Mission Blvd Zero Offset Northbound     | 0.78 ± 0.42        |
+| queue_length     | Mission Blvd L/V Coordinated Northbound | 0.78 ± 0.47        |
+| queued_vehicles  | System Fully Coordinated                | 21.12 ± 9.14       |
+| queued_vehicles  | Mission Blvd Zero Offset Northbound     | 15.70 ± 5.22       |
+| queued_vehicles  | Mission Blvd L/V Coordinated Northbound | 15.62 ± 5.37       |
+| nbstops          | System Fully Coordinated                | 0.34 ± 0.10        |
+| nbstops          | Mission Blvd Zero Offset Northbound     | 0.34 ± 0.09        |
+| nbstops          | Mission Blvd L/V Coordinated Northbound | 0.33 ± 0.09        |
+| input_count      | System Fully Coordinated                | 3801.83 ± 1094.48  |
+| input_count      | Mission Blvd Zero Offset Northbound     | 3848.73 ± 1122.14  |
+| input_count      | Mission Blvd L/V Coordinated Northbound | 3840.03 ± 1124.15  |
+| totalWaitingTime | System Fully Coordinated                | 63.54 ± 162.64     |
+| totalWaitingTime | Mission Blvd Zero Offset Northbound     | 0.00 ± 0.00        |
+| totalWaitingTime | Mission Blvd L/V Coordinated Northbound | 0.00 ± 0.00        |
+| vWait            | System Fully Coordinated                | 338.56 ± 806.89    |
+| vWait            | Mission Blvd Zero Offset Northbound     | 1.17 ± 2.30        |
+| vWait            | Mission Blvd L/V Coordinated Northbound | 0.96 ± 1.79        |
