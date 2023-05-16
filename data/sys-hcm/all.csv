@@ -1,43 +1,25 @@
 metric,scenario,mean,std
-density,System Fully Coordinated,5.467388731216001,2.384889091395153
-density,Mission Blvd Zero Offset Northbound,2.9437865325180286,0.617862579794215
-density,Mission Blvd L/V Coordinated Northbound,3.0435769505914547,0.6580948153483315
-flow,System Fully Coordinated,14313.61111111111,2274.787803803894
-flow,Mission Blvd Zero Offset Northbound,15214.5,2408.140198865362
-flow,Mission Blvd L/V Coordinated Northbound,15164.72222222222,2435.1816836795115
-ttime,System Fully Coordinated,78.2067094631656,21.6052128089348
-ttime,Mission Blvd Zero Offset Northbound,58.618172909499,5.030886709039915
-ttime,Mission Blvd L/V Coordinated Northbound,60.224072635315245,5.849786045053465
-speed,System Fully Coordinated,62.69205320779451,8.366567512945727
-speed,Mission Blvd Zero Offset Northbound,72.03768469619736,4.4285835759831516
-speed,Mission Blvd L/V Coordinated Northbound,71.01119233581981,5.4610690859591315
-fuelc,System Fully Coordinated,2056.5919549608698,334.2409866698447
-fuelc,Mission Blvd Zero Offset Northbound,2440.7797047457484,489.8072111283951
-fuelc,Mission Blvd L/V Coordinated Northbound,2447.956383371015,508.5828833271022
-batteryc,System Fully Coordinated,0.0,0.0
-batteryc,Mission Blvd Zero Offset Northbound,0.0,0.0
-batteryc,Mission Blvd L/V Coordinated Northbound,0.0,0.0
-travel,System Fully Coordinated,27215.89510172597,3565.152616138366
-travel,Mission Blvd Zero Offset Northbound,27944.89451944211,4337.920417995532
-travel,Mission Blvd L/V Coordinated Northbound,27848.923406208225,4409.784665719283
-queue_delay,System Fully Coordinated,14.22937973703271,4.475889346496393
-queue_delay,Mission Blvd Zero Offset Northbound,9.260177079340831,1.7222968903200448
-queue_delay,Mission Blvd L/V Coordinated Northbound,9.458788166549486,1.7158362016933029
-queue_length,System Fully Coordinated,2.330364617903447,1.4854798658588448
-queue_length,Mission Blvd Zero Offset Northbound,0.7755796827293243,0.2095124480422963
-queue_length,Mission Blvd L/V Coordinated Northbound,0.7830853798840657,0.23376032315178596
-queued_vehicles,System Fully Coordinated,21.12322094620742,4.571558649856732
-queued_vehicles,Mission Blvd Zero Offset Northbound,15.703403950308134,2.609741252727823
-queued_vehicles,Mission Blvd L/V Coordinated Northbound,15.615211203040127,2.6830088734961106
-nbstops,System Fully Coordinated,0.33962278086472186,0.05143533885730054
-nbstops,Mission Blvd Zero Offset Northbound,0.3368867839321746,0.043070132430827086
-nbstops,Mission Blvd L/V Coordinated Northbound,0.3341058402735652,0.045498144140755946
-input_count,System Fully Coordinated,3801.8333333333335,547.2410026449458
-input_count,Mission Blvd Zero Offset Northbound,3848.7291666666665,561.0721487196104
-input_count,Mission Blvd L/V Coordinated Northbound,3840.0277777777774,562.0761627407954
-totalWaitingTime,System Fully Coordinated,63.53842813392773,81.32105075884691
-totalWaitingTime,Mission Blvd Zero Offset Northbound,0.0005239948280276055,0.0009222999887595453
-totalWaitingTime,Mission Blvd L/V Coordinated Northbound,0.0007514353331029549,0.0018139562691866686
-vWait,System Fully Coordinated,338.55555555555554,403.44557866413567
-vWait,Mission Blvd Zero Offset Northbound,1.1666666666666667,1.148407845545364
-vWait,Mission Blvd L/V Coordinated Northbound,0.9583333333333335,0.897191000189623
+density,Status Quo,2.8023876924206217,0.6541068418225281
+density,Mission Blvd L/V Coordinated Northbound,3.022723858798576,0.7437064813903146
+density,Mission Blvd Zero Offset,3.1230655173164297,0.6045275354471592
+flow,Status Quo,15153.444444444443,2542.132663704075
+flow,Mission Blvd L/V Coordinated Northbound,15172.166666666664,2480.1695847425685
+flow,Mission Blvd Zero Offset,15106.000000000005,2564.5678751932905
+ttime,Status Quo,57.298253547414724,5.544913383747145
+ttime,Mission Blvd L/V Coordinated Northbound,59.740231816823126,6.626107568898924
+ttime,Mission Blvd Zero Offset,60.722604441964336,5.805815220078417
+speed,Status Quo,68.81151657641949,6.353850444536268
+speed,Mission Blvd L/V Coordinated Northbound,66.76667372411232,6.7709984999182735
+speed,Mission Blvd Zero Offset,66.35153909626125,5.851098580202652
+travel,Status Quo,27396.991714061136,4552.746978641572
+travel,Mission Blvd L/V Coordinated Northbound,27657.112761585377,4509.947857071404
+travel,Mission Blvd Zero Offset,27644.845245861186,4633.644468344084
+input_count,Status Quo,3829.736111111111,570.3195475101144
+input_count,Mission Blvd L/V Coordinated Northbound,3837.625,558.0693281304752
+input_count,Mission Blvd Zero Offset,3834.9027777777787,569.6950067930167
+totalWaitingTime,Status Quo,0.0005610757651810836,0.0013915938988435634
+totalWaitingTime,Mission Blvd L/V Coordinated Northbound,0.02291966285585161,0.10715078871392456
+totalWaitingTime,Mission Blvd Zero Offset,0.29961528396410386,0.8661582011409313
+vWait,Status Quo,1.208333333333333,1.450678668428614
+vWait,Mission Blvd L/V Coordinated Northbound,3.763888888888889,9.49369440704534
+vWait,Mission Blvd Zero Offset,10.388888888888888,21.68453369593882
