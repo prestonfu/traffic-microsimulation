@@ -1,7 +1,0 @@
-metric,scenario,mean,std
-Instantaneous Relative Gap,System Fully Coordinated,0.16273017267594225,0.12754756447769963
-Instantaneous Relative Gap,Mission Blvd Zero Offset Northbound,0.02557895460114296,0.010919948844535109
-Instantaneous Relative Gap,Mission Blvd L/V Coordinated Northbound,0.025713068270555656,0.010129399477457723
-Experienced Relative Gap,System Fully Coordinated,0.4405078255373207,0.4557412815591065
-Experienced Relative Gap,Mission Blvd Zero Offset Northbound,0.06703512647266809,0.04574588970324203
-Experienced Relative Gap,Mission Blvd L/V Coordinated Northbound,0.08286026228581456,0.08542960927885625

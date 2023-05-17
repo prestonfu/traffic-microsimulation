@@ -1,0 +1,22 @@
+metric,scenario,mean,std
+Mean Flow (veh/h),System Fully Coordinated,133.25927193449485,486.2005972300001
+Mean Flow (veh/h),Mission Blvd Zero Offset Northbound,121.76502015362409,511.92634724447026
+Mean Flow (veh/h),Mission Blvd L/V Coordinated Northbound,121.60228914746399,511.92270906696723
+Mean Travel Time (s),System Fully Coordinated,8.514085905518252,7.338744506126809
+Mean Travel Time (s),Mission Blvd Zero Offset Northbound,7.467421211800122,5.964866366187868
+Mean Travel Time (s),Mission Blvd L/V Coordinated Northbound,7.574810544601795,5.96475093411211
+Mean Delay Time (s),System Fully Coordinated,2.5095764313787248,5.048474913642946
+Mean Delay Time (s),Mission Blvd Zero Offset Northbound,1.5962609290727516,3.2175816224606484
+Mean Delay Time (s),Mission Blvd L/V Coordinated Northbound,1.7039871404294626,3.2738837797169804
+Mean Speed (km/h),System Fully Coordinated,43.983295379831915,11.785063304644389
+Mean Speed (km/h),Mission Blvd Zero Offset Northbound,44.9967556101964,12.155616875721405
+Mean Speed (km/h),Mission Blvd L/V Coordinated Northbound,45.04157646841764,12.142044856251283
+Density by Lane (veh/km),System Fully Coordinated,3.3271376321946744,11.447368292521844
+Density by Lane (veh/km),Mission Blvd Zero Offset Northbound,1.4363970869974714,4.965918049641267
+Density by Lane (veh/km),Mission Blvd L/V Coordinated Northbound,1.48732380038638,5.358799588664561
+Travel Distance by Section (km),System Fully Coordinated,152.54504383724463,1562.07512279668
+Travel Distance by Section (km),Mission Blvd Zero Offset Northbound,153.19882153223463,1640.4140728649065
+Travel Distance by Section (km),Mission Blvd L/V Coordinated Northbound,152.8195785605776,1635.663534127949
+Vehicle Count (veh),System Fully Coordinated,799.5556316069645,2917.203583380043
+Vehicle Count (veh),Mission Blvd Zero Offset Northbound,730.590120921743,3071.558083466794
+Vehicle Count (veh),Mission Blvd L/V Coordinated Northbound,729.6137348847823,3071.536254401797

@@ -1,0 +1,7 @@
+metric,scenario,mean,std
+co2,Status Quo,0.0,0.0
+co2,Mission Blvd L/V Coordinated Northbound,4613003.023543623,702237.9872522198
+co2,Mission Blvd Zero Offset,4616346.750964162,717003.0222444226
+nox,Status Quo,0.0,0.0
+nox,Mission Blvd L/V Coordinated Northbound,953.4130541355181,158.23945688147657
+nox,Mission Blvd Zero Offset,959.5059099010172,163.8155112326993
