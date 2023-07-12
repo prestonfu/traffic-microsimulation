@@ -19,13 +19,13 @@ def verify_filepath(filepath: str, filetype_extension: str):
     """
     if not path.exists(path.dirname(filepath)):
         raise FileNotFoundError(
-            f"The given filepath {filepath} is not a valid filepath.")
-    if f'.{filetype_extension}' not in filepath:
-        raise ValueError(
-            f"Filepath does not point to a .{filetype_extension} file.")
+            f"The given filepath {filepath} is not a valid filepath."
+        )
+    if f".{filetype_extension}" not in filepath:
+        raise ValueError(f"Filepath does not point to a .{filetype_extension} file.")
 
 
-def verify_attributes(obj: Any, attribute_list: List[Any], message: str = ''):
+def verify_attributes(obj: Any, attribute_list: List[Any], message: str = ""):
     """Determine that the given object contains all attributes in the manually
     defined list of attributes.
 

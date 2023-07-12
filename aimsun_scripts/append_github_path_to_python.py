@@ -11,11 +11,12 @@ AIMSUN_FOLDER_PATH = os.path.join(__REPO_PATH, "aimsun_scripts")
 
 if not __REPO_PATH:
     model.reportError(
-        'append_github_path_to_python',
-        "Please change __REPO_PATH to your local repository path.")
+        "append_github_path_to_python",
+        "Please change __REPO_PATH to your local repository path.",
+    )
 
 for path in [UTILS_FOLDER_PATH, AIMSUN_FOLDER_PATH]:
     if path not in sys.path:
         sys.path.append(path)
 
-print('Done')
+print("Done")

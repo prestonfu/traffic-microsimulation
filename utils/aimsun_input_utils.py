@@ -100,7 +100,7 @@ import pickle
 from typing import NewType
 import warnings
 
-from verification_utils import verify_filepath
+from utils.verification_utils import verify_filepath
 
 ExternalId = NewType('ExternalId', str)
 InternalId = NewType('InternalId', int)

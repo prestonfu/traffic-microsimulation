@@ -14,12 +14,12 @@ import enum
 import pickle
 from typing import List
 
-from aimsun_attribute_utils import (
+from utils.aimsun_attribute_utils import (
     micro_dynamic_simulator_engine_attributes,
     micro_experiment_attributes
 )
-import aimsun_input_utils
-from verification_utils import verify_filepath, verify_attributes
+from utils import aimsun_input_utils
+from utils.verification_utils import verify_filepath, verify_attributes
 
 
 class AimsunScheduleDemandItem(aimsun_input_utils.AimsunObject):

@@ -9,9 +9,9 @@ module_path = os.path.abspath(os.path.join('..', 'Utils'))
 if module_path not in sys.path:
     sys.path.append(module_path)
 
-import aimsun_config_utils
-import aimsun_folder_utils
-import aimsun_input_utils
+from calibration import aimsun_config_utils
+from calibration import aimsun_folder_utils
+from calibration import aimsun_input_utils
 
 
 CONFIG_DEFAULT_VALUES: Dict[str, Union[float, int, bool]] = {

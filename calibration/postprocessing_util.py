@@ -1,6 +1,7 @@
 """Data classes for Aimsun Micro/Macrosimulation output analysis."""
 
 from __future__ import annotations
+import utils.aimsun_input_utils
 
 import datetime
 import enum
@@ -9,14 +10,8 @@ import sqlite3
 import sys
 from typing import Any, Dict
 
-sys.path.append(os.path.abspath(os.path.join('..', 'utils')))
-
-import aimsun_input_utils
-
-
 ALL_VEHICLE_TYPES = 0
 ALL_TIME_AGGREGATED = 0
-
 
 
 class SimInfoColumns(enum.Enum):
@@ -28,6 +23,7 @@ class SimInfoColumns(enum.Enum):
         TOTAL_DURATION: Duration of the simulation in seconds.
         NUM_TIME_INTERVALS: Number of time intervals within the simulation.
     """
+
     START_TIME_INTERVAL = "from_time"
     TOTAL_DURATION = "duration"
     NUM_TIME_INTERVALS = "totalstatintervals"
@@ -59,6 +55,7 @@ class MaSectColumns(enum.Enum):
         COST: Cost of the Volume-Delay Function (VDF) for the specified road
             section at a certain time interval.
     """
+
     STA_EXPERIMENT_ID = "did"
     SECTION_INTERNAL_ID = "oid"
     SECTION_EXTERNAL_ID = "eid"
@@ -91,6 +88,7 @@ class MaDetColumns(enum.Enum):
         FLOW: Number of vehicles through the specified detector at a certain
             time interval. Units are vehicles per hour.
     """
+
     STA_EXPERIMENT_ID = "did"
     DETECTOR_INTERNAL_ID = "oid"
     DETECTOR_EXTERNAL_ID = "eid"
@@ -116,6 +114,7 @@ class MiSysColumns(enum.Enum):
         DELAY_TIME: Delay time in the entire network at a certain time
             interval. Units are in seconds.
     """
+
     VEHICLE_TYPE = "sid"
     TIME_INTERVAL = "ent"
     FLOW = "flow"
@@ -141,6 +140,7 @@ class MiSectColumns(enum.Enum):
         MEAN_SPEED: Average speed through the specified road section at a
             certain time interval.
     """
+
     REPLICATION_INTERNAL_ID = "did"
     SECTION_INTERNAL_ID = "oid"
     SECTION_EXTERNAL_ID = "eid"
@@ -169,6 +169,7 @@ class MiDetColumns(enum.Enum):
         FLOW: Number of vehicles through the specified detector at a certain
             time interval. Units are vehicles per hour.
     """
+
     REPLICATION_INTERNAL_ID = "did"
     DETECTOR_INTERNAL_ID = "oid"
     DETECTOR_EXTERNAL_ID = "eid"
@@ -195,6 +196,7 @@ class TotalRgapColumns(enum.Enum):
         RGAP_INSTANT: Instaneous relative gap of the total network at the given
             time interval.
     """
+
     REPLICATION_INTERNAL_ID = "did"
     VEHICLE_TYPE = "sid"
     TIME_INTERVAL = "ent"
@@ -222,6 +224,7 @@ class MicentOriginColumns(enum.Enum):
         DISTANCE: Total travel distance of all vehicles between the specified
             origin and destination centroids in kilometers.
     """
+
     ORIGIN_CENTROID_INTERNAL_ID = "oid"
     ORIGIN_CENTROID_EXTERNAL_ID = "eid"
     NUM_VEHICLES = "nbveh"
@@ -252,6 +255,7 @@ class MicentDestinationColumns(enum.Enum):
         DISTANCE: Total travel distance of all vehicles between the specified
             origin and destination centroids in kilometers.
     """
+
     ORIGIN_CENTROID_INTERNAL_ID = "oid"
     ORIGIN_CENTROID_EXTERNAL_ID = "eid"
     NUM_VEHICLES = "nbveh"
@@ -271,6 +275,7 @@ class SQLiteTable:
             from Python.
         table_name: Name of the table.
     """
+
     __cursor: sqlite3.Cursor
     table_name: str
 
@@ -279,8 +284,7 @@ class SQLiteTable:
         self.table_name = table_name
 
     def get_data_on_condition(
-        self, data_column_name: str,
-        condition_column_name_value: Dict[str, str] = None
+        self, data_column_name: str, condition_column_name_value: Dict[str, str] = None
     ) -> Any:
         """Gets data on condition.
 
@@ -296,17 +300,17 @@ class SQLiteTable:
                 condition_column_name_value.
         """
         if condition_column_name_value is None:
-            self.__cursor.execute(
-                f"SELECT {data_column_name} FROM {self.table_name}")
+            self.__cursor.execute(f"SELECT {data_column_name} FROM {self.table_name}")
         else:
             condition_list = [
                 f"{condition_column_name} = '{condition_value}'"
-                for condition_column_name, condition_value
-                in condition_column_name_value.items()
+                for condition_column_name, condition_value in condition_column_name_value.items()
             ]
             self.__cursor.execute(
                 f"SELECT {data_column_name} FROM {self.table_name} "
-                + "WHERE " + " AND ".join(condition_list))
+                + "WHERE "
+                + " AND ".join(condition_list)
+            )
         result = self.__cursor.fetchall()
         # assert len(result) == 1  # only one row for the condition.
         # assert len(result[0]) == 1  # only one data returned.
@@ -328,6 +332,7 @@ class AimsunOutputDatabase:
         meta_cols: SQL table that contains the fields stored and its type for
             all other tables. Named META_COLS.
     """
+
     database: sqlite3.Connection
     sim_info: SQLiteTable
     meta_info: SQLiteTable
@@ -351,6 +356,7 @@ class AimsunMacroOutputDatabase(AimsunOutputDatabase):
         detectors_table: SQL table data that maps various microsimulation data
             to each detector ID. Named 'MADET' in the original SQLite file.
     """
+
     sections_table: SQLiteTable
     detectors_table: SQLiteTable
 
@@ -360,9 +366,7 @@ class AimsunMacroOutputDatabase(AimsunOutputDatabase):
         self.detectors_table = SQLiteTable(self.database, "MADET")
         # Add more tables here if needed.
 
-    def get_road_section_flow(
-        self, road_id: aimsun_input_utils.InternalId
-    ) -> float:
+    def get_road_section_flow(self, road_id: aimsun_input_utils.InternalId) -> float:
         """Get flow of a specified road section. Used for Macrosimulations.
 
         Args:
@@ -372,8 +376,11 @@ class AimsunMacroOutputDatabase(AimsunOutputDatabase):
         """
         return self.sections_table.get_data_on_condition(
             MaSectColumns.FLOW.value,
-            {MaSectColumns.SECTION_INTERNAL_ID.value: road_id,
-             MaSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES})
+            {
+                MaSectColumns.SECTION_INTERNAL_ID.value: road_id,
+                MaSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+            },
+        )
 
     def get_detector_flow(
         self, detector_external_id: aimsun_input_utils.ExternalId
@@ -389,8 +396,11 @@ class AimsunMacroOutputDatabase(AimsunOutputDatabase):
         """
         return self.detectors_table.get_data_on_condition(
             MaDetColumns.FLOW.value,
-            {MaDetColumns.DETECTOR_EXTERNAL_ID.value: detector_external_id,
-             MaDetColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES})
+            {
+                MaDetColumns.DETECTOR_EXTERNAL_ID.value: detector_external_id,
+                MaDetColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+            },
+        )
 
     # Define more methods as needed.
 
@@ -404,6 +414,7 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         detectors_table: SQL table data that maps various microsimulation data
             to each detector ID. Named 'MIDETEC' in the original SQLite file.
     """
+
     sections_table: SQLiteTable
     detectors_table: SQLiteTable
     total_rgap_table: SQLiteTable
@@ -430,19 +441,21 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
                 output database.
         """
         start_time_seconds = self.sim_info.get_data_on_condition(
-            SimInfoColumns.START_TIME_INTERVAL.value)
+            SimInfoColumns.START_TIME_INTERVAL.value
+        )
         time_step = self.sim_info.get_data_on_condition(
-            SimInfoColumns.TOTAL_DURATION.value) \
-            // self.sim_info.get_data_on_condition(
-                SimInfoColumns.NUM_TIME_INTERVALS.value)
-        time_index = (time_interval.hour * 3600 + time_interval.minute * 60
-                      - start_time_seconds) // time_step + 1
+            SimInfoColumns.TOTAL_DURATION.value
+        ) // self.sim_info.get_data_on_condition(
+            SimInfoColumns.NUM_TIME_INTERVALS.value
+        )
+        time_index = (
+            time_interval.hour * 3600 + time_interval.minute * 60 - start_time_seconds
+        ) // time_step + 1
         assert isinstance(time_index, int) and time_index >= 1
         return time_index
 
     def get_road_section_flow(
-        self, road_id: aimsun_input_utils.InternalId,
-        time_interval: datetime.time
+        self, road_id: aimsun_input_utils.InternalId, time_interval: datetime.time
     ) -> float:
         """Get flow of a road section at the specified time interval.
         Used for Microsimulations.
@@ -457,13 +470,15 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         time_interval_int = self.convert_time_to_int(time_interval)
         return self.sections_table.get_data_on_condition(
             MiSectColumns.MEAN_FLOW.value,
-            {MiSectColumns.SECTION_INTERNAL_ID.value: road_id,
-             MiSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
-             MiSectColumns.TIME_INTERVAL.value: str(time_interval_int)})
+            {
+                MiSectColumns.SECTION_INTERNAL_ID.value: road_id,
+                MiSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+                MiSectColumns.TIME_INTERVAL.value: str(time_interval_int),
+            },
+        )
 
     def get_road_section_speed(
-        self, road_id: aimsun_input_utils.InternalId,
-        time_interval: datetime.time
+        self, road_id: aimsun_input_utils.InternalId, time_interval: datetime.time
     ) -> float:
         """Get average speed of a road section at the specified time interval.
         Used for Microsimulations.
@@ -478,13 +493,15 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         time_interval_int = self.convert_time_to_int(time_interval)
         return self.sections_table.get_data_on_condition(
             MiSectColumns.MEAN_SPEED.value,
-            {MiSectColumns.SECTION_INTERNAL_ID.value: road_id,
-             MiSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
-             MiSectColumns.TIME_INTERVAL.value: str(time_interval_int)})
+            {
+                MiSectColumns.SECTION_INTERNAL_ID.value: road_id,
+                MiSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+                MiSectColumns.TIME_INTERVAL.value: str(time_interval_int),
+            },
+        )
 
     def get_road_section_travel_time(
-        self, road_id: aimsun_input_utils.InternalId,
-        time_interval: datetime.time
+        self, road_id: aimsun_input_utils.InternalId, time_interval: datetime.time
     ) -> float:
         """Get travel time of a road section at the specified time interval.
         Used for Microsimulations.
@@ -500,13 +517,17 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         time_interval_int = self.convert_time_to_int(time_interval)
         return self.sections_table.get_data_on_condition(
             MiSectColumns.MEAN_TRAVEL_TIME.value,
-            {MiSectColumns.SECTION_INTERNAL_ID.value: road_id,
-             MiSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
-             MiSectColumns.TIME_INTERVAL.value: str(time_interval_int)})
+            {
+                MiSectColumns.SECTION_INTERNAL_ID.value: road_id,
+                MiSectColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+                MiSectColumns.TIME_INTERVAL.value: str(time_interval_int),
+            },
+        )
 
     def get_detector_flow(
-        self, detector_external_id: aimsun_input_utils.ExternalId,
-        time_interval: datetime.time
+        self,
+        detector_external_id: aimsun_input_utils.ExternalId,
+        time_interval: datetime.time,
     ) -> float:
         """Get simulated flow through a detector at the specified time interval.
         Used for Microsimulations.
@@ -521,9 +542,12 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         time_interval_int = self.convert_time_to_int(time_interval)
         return self.detectors_table.get_data_on_condition(
             MiDetColumns.FLOW.value,
-            {MiDetColumns.DETECTOR_EXTERNAL_ID.value: detector_external_id,
-             MiDetColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
-             MiDetColumns.TIME_INTERVAL.value: str(time_interval_int)})
+            {
+                MiDetColumns.DETECTOR_EXTERNAL_ID.value: detector_external_id,
+                MiDetColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+                MiDetColumns.TIME_INTERVAL.value: str(time_interval_int),
+            },
+        )
 
     def get_total_delay_time(self, time_interval: datetime.time) -> float:
         """Get total delay time across the network.
@@ -536,12 +560,13 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         time_interval_int = self.convert_time_to_int(time_interval)
         return self.system_table.get_data_on_condition(
             MiSysColumns.DELAY_TIME.value,
-            {MiDetColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
-             MiDetColumns.TIME_INTERVAL.value: str(time_interval_int)})
+            {
+                MiDetColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+                MiDetColumns.TIME_INTERVAL.value: str(time_interval_int),
+            },
+        )
 
-    def get_total_instantaneous_rgap(
-        self, time_interval: datetime.time
-    ) -> float:
+    def get_total_instantaneous_rgap(self, time_interval: datetime.time) -> float:
         """Get instantaneous relative gap for the entire network at the given
         time interval.
 
@@ -553,13 +578,14 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         time_interval_int = self.convert_time_to_int(time_interval)
         rgap_instant = self.total_rgap_table.get_data_on_condition(
             TotalRgapColumns.RGAP_INSTANT.value,
-            {TotalRgapColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
-             TotalRgapColumns.TIME_INTERVAL.value: str(time_interval_int)})
+            {
+                TotalRgapColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+                TotalRgapColumns.TIME_INTERVAL.value: str(time_interval_int),
+            },
+        )
         return rgap_instant
 
-    def get_total_experienced_rgap(
-        self, time_interval: datetime.time
-    ) -> float:
+    def get_total_experienced_rgap(self, time_interval: datetime.time) -> float:
         """Get experienced relative gap for the entire network at the given
         time interval.
 
@@ -571,8 +597,11 @@ class AimsunMicroOutputDatabase(AimsunOutputDatabase):
         time_interval_int = self.convert_time_to_int(time_interval)
         rgap_experience = self.total_rgap_table.get_data_on_condition(
             TotalRgapColumns.RGAP_EXPERIENCED.value,
-            {TotalRgapColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
-             TotalRgapColumns.TIME_INTERVAL.value: str(time_interval_int)})
+            {
+                TotalRgapColumns.VEHICLE_TYPE.value: ALL_VEHICLE_TYPES,
+                TotalRgapColumns.TIME_INTERVAL.value: str(time_interval_int),
+            },
+        )
         return rgap_experience
 
     # Define more methods as needed.

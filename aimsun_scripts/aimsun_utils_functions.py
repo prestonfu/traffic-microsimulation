@@ -20,28 +20,28 @@ import sqlite3
 import sys
 from typing import Any, Dict, Mapping, NewType, List, Tuple
 
-import aimsun_config_utils
-import aimsun_input_utils
+from aimsun_scripts import aimsun_config_utils
+from aimsun_scripts import aimsun_input_utils
 
 
-GKControlPhaseSignal = NewType('GKControlPhaseSignal', Any)
-GKControlPlan = NewType('GKControlPlan', Any)
-GKControlJunction = NewType('GKControlJunction', Any)
-GKDataBaseInfo = NewType('GKDataBaseInfo', Any)
-GKDetector = NewType('GKDetector', Any)
-GKExperiment = NewType('GKExperiment', Any)
-GKMasterControlPlan = NewType('GKMasterControlPlan', Any)
-GKMetering = NewType('GKMetering', Any)
-GKModel = NewType('GKModel', Any)
-GKPolicy = NewType('GKPolicy', Any)
-GKObject = NewType('GKObject', Any)
-GKRealDataSet = NewType('GKRealDataSet', Any)
-GKStrategy = NewType('GKStrategy', Any)
-GKScenarioInputData = NewType('GKScenarioInputData', Any)
-GKSectionObject = NewType('GKSectionObject', Any)
-GKSystem = NewType('GKSystem', Any)
-GKTurningClosingChange = NewType('GKTurningClosingChange', Any)
-MacroExperiment = NewType('MacroExperiment', Any)
+GKControlPhaseSignal = NewType("GKControlPhaseSignal", Any)
+GKControlPlan = NewType("GKControlPlan", Any)
+GKControlJunction = NewType("GKControlJunction", Any)
+GKDataBaseInfo = NewType("GKDataBaseInfo", Any)
+GKDetector = NewType("GKDetector", Any)
+GKExperiment = NewType("GKExperiment", Any)
+GKMasterControlPlan = NewType("GKMasterControlPlan", Any)
+GKMetering = NewType("GKMetering", Any)
+GKModel = NewType("GKModel", Any)
+GKPolicy = NewType("GKPolicy", Any)
+GKObject = NewType("GKObject", Any)
+GKRealDataSet = NewType("GKRealDataSet", Any)
+GKStrategy = NewType("GKStrategy", Any)
+GKScenarioInputData = NewType("GKScenarioInputData", Any)
+GKSectionObject = NewType("GKSectionObject", Any)
+GKSystem = NewType("GKSystem", Any)
+GKTurningClosingChange = NewType("GKTurningClosingChange", Any)
+MacroExperiment = NewType("MacroExperiment", Any)
 
 
 # ****************************************************************************
@@ -50,7 +50,7 @@ MacroExperiment = NewType('MacroExperiment', Any)
 
 
 def create_detector_external_id(
-    internal_id: aimsun_input_utils.InternalId
+    internal_id: aimsun_input_utils.InternalId,
 ) -> aimsun_input_utils.ExternalId:
     """Takes in a road_section_internal_id and converts it to a usable external
     ID for detector objects.
@@ -62,12 +62,10 @@ def create_detector_external_id(
         external_id: A string that concatenates a detector tag with its
             internal ID.
     """
-    return f'act_det_{internal_id}'
+    return f"act_det_{internal_id}"
 
 
-def get_list_of_objects(
-    object_type: str, aimsun_model: GKModel
-) -> List[GKObject]:
+def get_list_of_objects(object_type: str, aimsun_model: GKModel) -> List[GKObject]:
     """Takes in an object type and the Aimsun model. Using the model's root
     folder, the function returns a list of objects within the model's catalog
     that have the same type as the given object_type.
@@ -86,8 +84,9 @@ def get_list_of_objects(
     folder = aimsun_model.getCreateRootFolder().findFolder(object_type)
     if folder is None:
         aimsun_model.reportError(
-            'aimsun_utils_functions',
-            f"There are no objects with the associated type {object_type}.")
+            "aimsun_utils_functions",
+            f"There are no objects with the associated type {object_type}.",
+        )
         sys.exit()
     return list(map(aimsun_model.getCatalog().find, folder.getContents()))
 
@@ -95,7 +94,7 @@ def get_list_of_objects(
 def get_object_per_external_id(
     external_id: aimsun_input_utils.ExternalId,
     object_types: List[str],
-    aimsun_model: GKModel
+    aimsun_model: GKModel,
 ):
     """Takes in an External ID, list of object types, and the Aimsun model. The
     function takes the External ID and searches the model's catalog for the
@@ -120,28 +119,29 @@ def get_object_per_external_id(
     """
     if not isinstance(external_id, str):
         aimsun_model.reportError(
-            "aimsun_utils_functions",
-            f"External id type {external_id} is not str.")
+            "aimsun_utils_functions", f"External id type {external_id} is not str."
+        )
         return None
-    aimsun_objects = aimsun_model.getCatalog().findObjectsByExternalId(
-        external_id)
+    aimsun_objects = aimsun_model.getCatalog().findObjectsByExternalId(external_id)
     if not aimsun_objects:
         aimsun_model.reportError(
-            "aimsun_utils_functions",
-            f"No objects have external id {external_id}.")
+            "aimsun_utils_functions", f"No objects have external id {external_id}."
+        )
         return None
     if len(set(aimsun_obj.getId() for aimsun_obj in aimsun_objects)) != 1:
         aimsun_model.reportError(
             "aimsun_utils_functions",
             f"Multiple objects have the external id {external_id}. This should"
-            " not happen.")
+            " not happen.",
+        )
         return None
     aimsun_object = aimsun_objects[0]
     if aimsun_object.getTypeName() not in object_types:
         aimsun_model.reportError(
             "aimsun_utils_functions",
             f"{external_id} type is not in {object_types} but "
-            f"{aimsun_object.getTypeName()}.")
+            f"{aimsun_object.getTypeName()}.",
+        )
         return None
     return aimsun_object
 
@@ -149,7 +149,7 @@ def get_object_per_external_id(
 def get_object_per_internal_id(
     internal_id: aimsun_input_utils.InternalId,
     object_types: List[str],
-    aimsun_model: GKModel
+    aimsun_model: GKModel,
 ) -> GKObject:
     """Takes in an Internal ID, list of object types, and the Aimsun model. The
     function takes the Internal ID and searches the model's catalog for the
@@ -177,14 +177,15 @@ def get_object_per_internal_id(
     return aimsun_object
     if aimsun_object is None:
         aimsun_model.reportError(
-            "aimsun_utils_functions",
-            f"No objects have internal id {internal_id}.")
+            "aimsun_utils_functions", f"No objects have internal id {internal_id}."
+        )
         return None
     if aimsun_object.getTypeName() not in object_types:
         aimsun_model.reportError(
             "aimsun_utils_functions",
             f"{internal_id} type is not in {object_types} but "
-            f"{aimsun_object.getTypeName()}.")
+            f"{aimsun_object.getTypeName()}.",
+        )
         return None
     return aimsun_object
 
@@ -195,9 +196,7 @@ def get_object_per_internal_id(
 
 
 def create_new_configuration(
-    centroid_config_ext_id: str,
-    aimsun_model: GKModel,
-    aimsun_system
+    centroid_config_ext_id: str, aimsun_model: GKModel, aimsun_system
 ):
     """Takes in a centroid configuration External ID, Aimsun model, and Aimsun
     system objects. The function searches the catalog for the associated
@@ -218,24 +217,26 @@ def create_new_configuration(
         centroid_config_ext_id: An External ID of type string. Should point to
             a new centroid config object.
     """
-    centroid_config = aimsun_system.newObject(
-        "GKCentroidConfiguration", aimsun_model)
-    if aimsun_model.getCatalog().findObjectByExternalId(
-            centroid_config_ext_id) is not None:
+    centroid_config = aimsun_system.newObject("GKCentroidConfiguration", aimsun_model)
+    if (
+        aimsun_model.getCatalog().findObjectByExternalId(centroid_config_ext_id)
+        is not None
+    ):
         aimsun_model.reportError(
             "create_centroids",
-            f"{centroid_config_ext_id} centroid configuration already exists.")
+            f"{centroid_config_ext_id} centroid configuration already exists.",
+        )
         sys.exit()
     centroid_config.setName(centroid_config_ext_id)
     centroid_config.setExternalId(centroid_config_ext_id)
     centroid_config.activate()
-    aimsun_model.getCreateRootFolder().findFolder(
-        "GKModel::centroidsConf").append(centroid_config)
+    aimsun_model.getCreateRootFolder().findFolder("GKModel::centroidsConf").append(
+        centroid_config
+    )
 
 
 def get_vehicle_type_id(
-    vehicle_type_name: aimsun_input_utils.VehicleTypeName,
-    aimsun_model: GKModel
+    vehicle_type_name: aimsun_input_utils.VehicleTypeName, aimsun_model: GKModel
 ) -> aimsun_input_utils.VehicleTypeInternalId:
     """Takes in the vehicle type name and Aimsun model. It compares the vehicle
     type name with the VehicleTypeNames defined in aimsun_input_utils. If it
@@ -252,20 +253,17 @@ def get_vehicle_type_id(
             either VehicleTypeName defined within aimsun_input_utils.
     """
     if vehicle_type_name == aimsun_input_utils.VehicleTypeName.RESIDENT:
-        return (aimsun_input_utils.VehicleTypeInternalId
-                .RESIDENT_TYPE_INTERNAL_ID)
+        return aimsun_input_utils.VehicleTypeInternalId.RESIDENT_TYPE_INTERNAL_ID
     if vehicle_type_name == aimsun_input_utils.VehicleTypeName.TRAVELER:
-        return (aimsun_input_utils.VehicleTypeInternalId
-                .TRAVELLER_TYPE_INTERNAL_ID)
+        return aimsun_input_utils.VehicleTypeInternalId.TRAVELLER_TYPE_INTERNAL_ID
     aimsun_model.reportError(
-        "create_OD_demand",
-        f"Vehicle type name {vehicle_type_name} is not correct.")
+        "create_OD_demand", f"Vehicle type name {vehicle_type_name} is not correct."
+    )
     sys.exit()
 
 
 def create_new_centroid(
-    configuration, cen_ext_id: str, gk_point,
-    aimsun_model: GKModel
+    configuration, cen_ext_id: str, gk_point, aimsun_model: GKModel
 ):
     """Creates a centroid at location given by the GKPoint. The new centroid is
     part of the centroid configuration. A centroid is the center of mass for a
@@ -294,9 +292,7 @@ def create_new_centroid(
     return centroid
 
 
-def create_new_connection(
-    source_object, destination_object, aimsun_model: GKModel
-):
+def create_new_connection(source_object, destination_object, aimsun_model: GKModel):
     """Creates a centroid connection between the source and the destination. A
     centroid connection is the connection between the centroid and Aimsun road
     sections within its respective TAZ.
@@ -323,7 +319,7 @@ def create_centroids(
     centroid_connections_obj: aimsun_input_utils.CentroidConfiguration,
     aimsun_model: GKModel,
     aimsun_system,
-    create_gk_point
+    create_gk_point,
 ):
     """Create a centroid configuration corresponding to the
     centroid_connections_obj.
@@ -359,41 +355,45 @@ def create_centroids(
             definition can be found within the python script
             end_to_end_model_importer.
     """
-    centroid_configuration_external_id =\
-        centroid_connections_obj.external_id
+    centroid_configuration_external_id = centroid_connections_obj.external_id
     create_new_configuration(
-        centroid_configuration_external_id, aimsun_model, aimsun_system)
+        centroid_configuration_external_id, aimsun_model, aimsun_system
+    )
     config = aimsun_model.getCatalog().findObjectByExternalId(
-        centroid_configuration_external_id)
+        centroid_configuration_external_id
+    )
 
     network = aimsun_model.getCatalog().findByName(
-        aimsun_input_utils.NETWORK_LAYER_NAME)
-    osm = aimsun_model.getCatalog().findByName(
-        aimsun_input_utils.OSM_LAYER_NAME)
+        aimsun_input_utils.NETWORK_LAYER_NAME
+    )
+    osm = aimsun_model.getCatalog().findByName(aimsun_input_utils.OSM_LAYER_NAME)
     network.setAllowObjectsEdition(True)
     osm.setAllowObjectsEdition(True)
     if not network.allowObjectsEdition():
         aimsun_model.reportError(
-            "create_centroids",
-            "Error Network ObjectsEdition not allowed.")
+            "create_centroids", "Error Network ObjectsEdition not allowed."
+        )
         sys.exit()
     if not osm.allowObjectsEdition():
         aimsun_model.reportError(
-            "create_centroids",
-            "Error OSM ObjectsEdition not allowed.")
+            "create_centroids", "Error OSM ObjectsEdition not allowed."
+        )
         sys.exit()
 
     missing_road_sections = set()
-    for centroid_connection in (
-            centroid_connections_obj.centroid_connection_list):
+    for centroid_connection in centroid_connections_obj.centroid_connection_list:
         lat = centroid_connection.center_latitude_epsg_32610
         lon = centroid_connection.center_longitude_epsg_32610
         centroid = create_new_centroid(
-            config, centroid_connection.external_id, create_gk_point(lon, lat),
-            aimsun_model)
+            config,
+            centroid_connection.external_id,
+            create_gk_point(lon, lat),
+            aimsun_model,
+        )
         for from_section_id in centroid_connection.from_section_internal_ids:
             from_section = get_object_per_internal_id(
-                from_section_id, ['GKSection'], aimsun_model)
+                from_section_id, ["GKSection"], aimsun_model
+            )
             if from_section is None:
                 missing_road_sections.add(from_section_id)
             else:
@@ -401,7 +401,8 @@ def create_centroids(
 
         for to_section_id in centroid_connection.to_section_internal_ids:
             to_section = get_object_per_internal_id(
-                to_section_id, ['GKSection'], aimsun_model)
+                to_section_id, ["GKSection"], aimsun_model
+            )
             if to_section is None:
                 missing_road_sections.add(to_section_id)
             else:
@@ -409,18 +410,18 @@ def create_centroids(
 
     if missing_road_sections:
         aimsun_model.reportError(
-            "create_centroids",
-            f"WARNING: sections {missing_road_sections} not found.")
+            "create_centroids", f"WARNING: sections {missing_road_sections} not found."
+        )
     network.setAllowObjectsEdition(False)
     osm.setAllowObjectsEdition(False)
     if network.allowObjectsEdition():
         aimsun_model.reportError(
-            "create_centroids",
-            "Error Network ObjectsEdition allowed.")
+            "create_centroids", "Error Network ObjectsEdition allowed."
+        )
     if osm.allowObjectsEdition():
         aimsun_model.reportError(
-            "create_centroids",
-            "Error OSM ObjectsEdition allowed.")
+            "create_centroids", "Error OSM ObjectsEdition allowed."
+        )
 
 
 def create_od_matrices(
@@ -428,7 +429,7 @@ def create_od_matrices(
     aimsun_model: GKModel,
     aimsun_system,
     get_duration,
-    get_from_time
+    get_from_time,
 ):
     """This function loads the OD matrix to AIMSUN from the OD matrix file. An
     OD matrix (Origin-Destination matrix) provides the number of trips
@@ -451,17 +452,22 @@ def create_od_matrices(
     """
     centroid_conf = get_object_per_external_id(
         od_demand_matrices.centroid_configuration_external_id,
-        ['GKCentroidConfiguration'], aimsun_model)
+        ["GKCentroidConfiguration"],
+        aimsun_model,
+    )
 
     existing_od_demand_matrix = set()
     for od_matrix in od_demand_matrices.od_matrices:
         od_demand_external_id = aimsun_input_utils.od_matrix_name_generation(
-            od_matrix.begin_time_interval, od_matrix.vehicle_type)
-        if aimsun_model.getCatalog().findObjectByExternalId(
-                od_demand_external_id) is not None:
+            od_matrix.begin_time_interval, od_matrix.vehicle_type
+        )
+        if (
+            aimsun_model.getCatalog().findObjectByExternalId(od_demand_external_id)
+            is not None
+        ):
             aimsun_model.reportError(
-                "load_od_demand",
-                f"{od_demand_external_id} already exists.")
+                "load_od_demand", f"{od_demand_external_id} already exists."
+            )
             sys.exit()
         matrix = aimsun_system.newObject("GKODMatrix", aimsun_model)
         matrix.setName(od_demand_external_id)
@@ -471,8 +477,9 @@ def create_od_matrices(
         # set vehicle ID
         gk_vehicle = get_object_per_internal_id(
             get_vehicle_type_id(od_matrix.vehicle_type, aimsun_model),
-            ['GKVehicle'],
-            aimsun_model)
+            ["GKVehicle"],
+            aimsun_model,
+        )
         if gk_vehicle is None:
             sys.exit()
         matrix.setVehicle(gk_vehicle)
@@ -480,17 +487,19 @@ def create_od_matrices(
         matrix.setFrom(get_from_time(od_matrix.begin_time_interval))
 
         matrix.setDuration(
-            get_duration(od_matrix.begin_time_interval,
-                         od_matrix.end_time_interval))
+            get_duration(od_matrix.begin_time_interval, od_matrix.end_time_interval)
+        )
 
         for od_trips_count in od_matrix.od_trips_count:
             # extract values from line
             from_centroid = get_object_per_external_id(
-                od_trips_count.origin_centroid_external_id, ['GKCentroid'],
-                aimsun_model)
+                od_trips_count.origin_centroid_external_id, ["GKCentroid"], aimsun_model
+            )
             to_centroid = get_object_per_external_id(
-                od_trips_count.destination_centroid_external_id, ['GKCentroid'],
-                aimsun_model)
+                od_trips_count.destination_centroid_external_id,
+                ["GKCentroid"],
+                aimsun_model,
+            )
             if from_centroid is None or to_centroid is None:
                 sys.exit()
             trips = od_trips_count.num_trips
@@ -505,7 +514,7 @@ def create_od_matrices(
 def set_section_object_attributes(
     aimsun_model: GKModel,
     gk_section_obj: GKSectionObject,
-    aimsun_section_object: aimsun_input_utils.AimsunSectionObject
+    aimsun_section_object: aimsun_input_utils.AimsunSectionObject,
 ):
     """Takes in the Aimsun model, an Aimsun GKSectionObject, and an
     associated Python AimsunSectionObject. The function sets the attributes of
@@ -521,23 +530,25 @@ def set_section_object_attributes(
         gk_section: An Aimsun GKSectionObject that needs its attributes set.
     """
     gk_section_obj.setExternalId(aimsun_section_object.external_id)
-    if not hasattr(aimsun_section_object, 'name'):
+    if not hasattr(aimsun_section_object, "name"):
         aimsun_section_object.name = aimsun_section_object.external_id
     gk_section_obj.setName(aimsun_section_object.name)
     gk_section = get_object_per_internal_id(
-        aimsun_section_object.aimsun_section_internal_id, ['GKSection'],
-        aimsun_model)
+        aimsun_section_object.aimsun_section_internal_id, ["GKSection"], aimsun_model
+    )
     if gk_section is None:
         sys.exit()
-    if hasattr(aimsun_section_object, 'layer_id'):
+    if hasattr(aimsun_section_object, "layer_id"):
         gk_layer = get_object_per_internal_id(
-            aimsun_section_object.layer_id, ['GKLayer'], aimsun_model)
+            aimsun_section_object.layer_id, ["GKLayer"], aimsun_model
+        )
         if gk_layer is None:
             sys.exit()
         if gk_section.getLayer() != gk_layer:
             aimsun_model.reportError(
                 "aimsun_utils_functions",
-                "The section's layer is not the aimsun_section_object's layer.")
+                "The section's layer is not the aimsun_section_object's layer.",
+            )
             sys.exit()
     else:
         gk_layer = gk_section.getLayer()
@@ -549,7 +560,7 @@ def set_section_object_attributes(
 def get_section_object_attributes(
     aimsun_model: GKModel,
     gk_section: GKSectionObject,
-    aimsun_section_object: aimsun_input_utils.AimsunSectionObject
+    aimsun_section_object: aimsun_input_utils.AimsunSectionObject,
 ):
     """Takes in the Aimsun model, an Aimsun GKSectionObject, and an associated
     Python AimsunSectionObject. The function gets the attributes of the Aimsun
@@ -567,19 +578,18 @@ def get_section_object_attributes(
     aimsun_section_object.name = gk_section.getName()
     if gk_section.getLayer() is None:
         aimsun_model.reportError(
-            'aimsun_utils_functions',
-            f'Aimsun Object {gk_section.getId()} is not associated '
-            'to a layer.')
+            "aimsun_utils_functions",
+            f"Aimsun Object {gk_section.getId()} is not associated " "to a layer.",
+        )
         sys.exit()
     aimsun_section_object.layer_id = gk_section.getLayer().getId()
     if gk_section.getSection() is None:
         aimsun_model.reportError(
-            'aimsun_utils_functions',
-            f'Aimsun Object {gk_section.getId()} is not associated '
-            'to a section.')
+            "aimsun_utils_functions",
+            f"Aimsun Object {gk_section.getId()} is not associated " "to a section.",
+        )
         sys.exit()
-    aimsun_section_object.aimsun_section_internal_id = (
-        gk_section.getSection().getId())
+    aimsun_section_object.aimsun_section_internal_id = gk_section.getSection().getId()
     aimsun_section_object.from_lane = gk_section.getFromLane()
     aimsun_section_object.to_lane = gk_section.getToLane()
     aimsun_section_object.length = gk_section.getLength()
@@ -588,7 +598,7 @@ def get_section_object_attributes(
 
 def update_speed_and_capacity(
     speed_and_capacities: aimsun_input_utils.SectionSpeedLimitsAndCapacities,
-    aimsun_model: GKModel
+    aimsun_model: GKModel,
 ):
     """Update speed limits and capacities of Aimsun road sections from the
     speed_and_capacities object.
@@ -605,10 +615,10 @@ def update_speed_and_capacity(
             Stores the speed limit and road capacity data that will be matched
             to road sections within Aimsun.
     """
-    for speed_and_capacity in (
-            speed_and_capacities.speed_limit_and_capacity_list):
+    for speed_and_capacity in speed_and_capacities.speed_limit_and_capacity_list:
         section = get_object_per_internal_id(
-            speed_and_capacity.section_internal_id, ['GKSection'], aimsun_model)
+            speed_and_capacity.section_internal_id, ["GKSection"], aimsun_model
+        )
         if not section:
             continue
         section.setSpeed(speed_and_capacity.speed_limit_in_km_per_hour)
@@ -618,7 +628,7 @@ def update_speed_and_capacity(
 def create_metering(
     metering: aimsun_input_utils.Metering,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Create a GKMetering corresponding to the Metering.
 
@@ -643,24 +653,25 @@ def create_metering(
             error and quits.
     """
     # Creates new GKDetector object.
-    gk_metering = aimsun_system.newObject('GKMetering', aimsun_model)
+    gk_metering = aimsun_system.newObject("GKMetering", aimsun_model)
     set_section_object_attributes(aimsun_model, gk_metering, metering)
     gk_metering.setLanes(metering.to_lane, metering.from_lane)
     gk_metering.setLength(metering.length)
     gk_metering.setPosition(metering.position)
 
     # GKMetering attributes.
-    if metering.metering_type in [aimsun_input_utils.MeteringType.FLOW,
-                                  aimsun_input_utils.MeteringType.FLOW_ALINEA]:
+    if metering.metering_type in [
+        aimsun_input_utils.MeteringType.FLOW,
+        aimsun_input_utils.MeteringType.FLOW_ALINEA,
+    ]:
         gk_metering.setVehFlow(metering.vehicle_flow)
     gk_metering.setDataValue(
-        aimsun_model.getColumn("GKMetering::typeAtt"),
-        int(metering.metering_type))
+        aimsun_model.getColumn("GKMetering::typeAtt"), int(metering.metering_type)
+    )
 
 
 def convert_gkmetering_to_metering_class(
-    gk_metering: GKMetering,
-    aimsun_model: GKModel
+    gk_metering: GKMetering, aimsun_model: GKModel
 ) -> aimsun_input_utils.Metering:
     """Return Metering corresponding to the GKMetering to export.
 
@@ -681,14 +692,16 @@ def convert_gkmetering_to_metering_class(
     """
     metering = aimsun_input_utils.Metering()
     get_section_object_attributes(aimsun_model, gk_metering, metering)
-    metering.external_id = f'meter_on_{metering.aimsun_section_internal_id}'
+    metering.external_id = f"meter_on_{metering.aimsun_section_internal_id}"
 
     metering.metering_type = aimsun_input_utils.MeteringType(
-        gk_metering.getDataValue(
-            aimsun_model.getColumn("GKMetering::typeAtt"))[0])
+        gk_metering.getDataValue(aimsun_model.getColumn("GKMetering::typeAtt"))[0]
+    )
 
-    if metering.metering_type in [aimsun_input_utils.MeteringType.FLOW,
-                                  aimsun_input_utils.MeteringType.FLOW_ALINEA]:
+    if metering.metering_type in [
+        aimsun_input_utils.MeteringType.FLOW,
+        aimsun_input_utils.MeteringType.FLOW_ALINEA,
+    ]:
         metering.vehicle_flow = gk_metering.getVehFlow()
     return metering
 
@@ -712,9 +725,12 @@ def get_gk_detector_attributes(att: str, aimsun_model: GKModel) -> Any:
     attribute = aimsun_model.getColumn(f"GKDetector::{att}")
     if attribute is None:
         aimsun_model.reportError(
-            'aimsun_utils_functions',
-            (f'Attribute does not exists in Aimsun: GKDetector::{att}.'
-             ' Quitting on error.'))
+            "aimsun_utils_functions",
+            (
+                f"Attribute does not exists in Aimsun: GKDetector::{att}."
+                " Quitting on error."
+            ),
+        )
         sys.exit()
     return attribute
 
@@ -743,8 +759,7 @@ def get_gk_detector_attributes_value(
 
 
 def convert_gkdetector_to_detector_class(
-    gk_detector: GKDetector,
-    aimsun_model: GKModel
+    gk_detector: GKDetector, aimsun_model: GKModel
 ) -> aimsun_input_utils.Detector:
     """Returns the Detector object corresponding to the given GKDetector Aimsun
     object that is being exported. The function pulls the attributes of the
@@ -775,25 +790,35 @@ def convert_gkdetector_to_detector_class(
     # setCoverage(), we do not export detector coverage data as we do not know
     # how to import it back.
     detector.detect_count = get_gk_detector_attributes_value(
-        'countAtt', gk_detector, aimsun_model)
+        "countAtt", gk_detector, aimsun_model
+    )
     detector.detect_density = get_gk_detector_attributes_value(
-        'densityAtt', gk_detector, aimsun_model)
+        "densityAtt", gk_detector, aimsun_model
+    )
     detector.detect_equipped_vehicles = get_gk_detector_attributes_value(
-        'equippedAtt', gk_detector, aimsun_model)
+        "equippedAtt", gk_detector, aimsun_model
+    )
     detector.detect_headway = get_gk_detector_attributes_value(
-        'headwayAtt', gk_detector, aimsun_model)
+        "headwayAtt", gk_detector, aimsun_model
+    )
     detector.detect_occupancy = get_gk_detector_attributes_value(
-        'occupancyAtt', gk_detector, aimsun_model)
+        "occupancyAtt", gk_detector, aimsun_model
+    )
     detector.detect_presence = get_gk_detector_attributes_value(
-        'presenceAtt', gk_detector, aimsun_model)
+        "presenceAtt", gk_detector, aimsun_model
+    )
     detector.detect_speed = get_gk_detector_attributes_value(
-        'speedAtt', gk_detector, aimsun_model)
+        "speedAtt", gk_detector, aimsun_model
+    )
     detector.extended_length = get_gk_detector_attributes_value(
-        'extendedLengthAtt', gk_detector, aimsun_model)
+        "extendedLengthAtt", gk_detector, aimsun_model
+    )
     detector.number_of_lanes = get_gk_detector_attributes_value(
-        'numberOfLanesAtt', gk_detector, aimsun_model)
+        "numberOfLanesAtt", gk_detector, aimsun_model
+    )
     detector.offset = get_gk_detector_attributes_value(
-        'offsetAtt', gk_detector, aimsun_model)
+        "offsetAtt", gk_detector, aimsun_model
+    )
     detector.position_from_end = gk_detector.getPositionFromEnd()
     return detector
 
@@ -802,7 +827,7 @@ def create_detector(
     detector: aimsun_input_utils.Detector,
     is_flow_detector: bool,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Takes in a Python Detector object, a boolean denoting if the detector is
     a flow detector, the Aimsun model object, and Aimsun system object. The
@@ -825,18 +850,20 @@ def create_detector(
     gk_detector = aimsun_system.newObject("GKDetector", aimsun_model)
     set_section_object_attributes(aimsun_model, gk_detector, detector)
     gk_section = get_object_per_internal_id(
-        detector.aimsun_section_internal_id, ['GKSection'], aimsun_model)
+        detector.aimsun_section_internal_id, ["GKSection"], aimsun_model
+    )
     if gk_section is None:
         sys.exit()
     gk_layer = gk_section.getLayer()
     aimsun_model.getGeoModel().add(gk_layer, gk_detector)
     gk_detector.setLayer(gk_layer)
-    if hasattr(gk_detector, 'layer_id'):
+    if hasattr(gk_detector, "layer_id"):
         if gk_layer != get_object_per_internal_id(
-                detector.layer_id, ['GKLayer'], aimsun_model):
+            detector.layer_id, ["GKLayer"], aimsun_model
+        ):
             aimsun_model.reportError(
-                "create_detectors",
-                "The section's layer is not the detector's layer.")
+                "create_detectors", "The section's layer is not the detector's layer."
+            )
             sys.exit()
     gk_section.addTopObject(gk_detector)
 
@@ -844,10 +871,10 @@ def create_detector(
         gk_detector.setLength(4.5)
         gk_detector.setPosition(gk_section.length2D() / 2.0)
         # https://github.com/Fremont-project/whole-code-repo/issues/407
-        if detector.external_id == 'pems_detector_418422':
+        if detector.external_id == "pems_detector_418422":
             # HOV lane
             gk_detector.setLanes(0, 0)
-        elif detector.external_id == 'pems_detector_402793':
+        elif detector.external_id == "pems_detector_402793":
             gk_detector.setLanes(1, len(gk_section.getLanes()) - 1)
         else:
             # By defaults the detector covers all the lanes in this section.
@@ -858,19 +885,20 @@ def create_detector(
 
         # GKDetector attributes.
         for key, value in {
-            'countAtt': detector.detect_count,
-            'densityAtt': detector.detect_density,
-            'equippedAtt': detector.detect_equipped_vehicles,
-            'headwayAtt': detector.detect_headway,
-            'occupancyAtt': detector.detect_occupancy,
-            'presenceAtt': detector.detect_presence,
-            'speedAtt': detector.detect_speed,
-            'extendedLengthAtt': detector.extended_length,
-            'numberOfLanesAtt': detector.number_of_lanes,
-            'offsetAtt': detector.offset,
+            "countAtt": detector.detect_count,
+            "densityAtt": detector.detect_density,
+            "equippedAtt": detector.detect_equipped_vehicles,
+            "headwayAtt": detector.detect_headway,
+            "occupancyAtt": detector.detect_occupancy,
+            "presenceAtt": detector.detect_presence,
+            "speedAtt": detector.detect_speed,
+            "extendedLengthAtt": detector.extended_length,
+            "numberOfLanesAtt": detector.number_of_lanes,
+            "offsetAtt": detector.offset,
         }.items():
             gk_detector.setDataValue(
-                get_gk_detector_attributes(key, aimsun_model), value)
+                get_gk_detector_attributes(key, aimsun_model), value
+            )
         gk_detector.setPositionFromEnd(detector.position_from_end)
         gk_detector.setLanes(detector.from_lane, detector.to_lane)
 
@@ -879,7 +907,7 @@ def create_detectors(
     detectors: aimsun_input_utils.Detectors,
     is_flow_detectors: bool,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Creates a group of detectors from the list of Python Detector objects
     within the Python Detectors aggregate object.
@@ -895,16 +923,14 @@ def create_detectors(
             object is a group of flow detectors or not.
     """
     for detector in detectors.detector_list:
-        create_detector(
-            detector, is_flow_detectors, aimsun_model, aimsun_system)
+        create_detector(detector, is_flow_detectors, aimsun_model, aimsun_system)
 
 
 def create_control_metering(
     aimsun_control_plan: GKControlPlan,
     control_metering: aimsun_input_utils.ControlMetering,
-    mapping_control_metering_type: Dict[
-        aimsun_input_utils.ControlMeteringType, Any],
-    aimsun_model: GKModel
+    mapping_control_metering_type: Dict[aimsun_input_utils.ControlMeteringType, Any],
+    aimsun_model: GKModel,
 ):
     """Creates a new GKControlMetering object within the Aimsun Control Plan
     using the data saved within the Python ControlMetering object.
@@ -920,18 +946,19 @@ def create_control_metering(
     """
     metering_external_id = control_metering.metering_external_id
     aimsun_metering = get_object_per_external_id(
-        metering_external_id, ['GKMetering'], aimsun_model)
-    aimsun_control_metering = aimsun_control_plan.createControlMetering(
-        aimsun_metering)
+        metering_external_id, ["GKMetering"], aimsun_model
+    )
+    aimsun_control_metering = aimsun_control_plan.createControlMetering(aimsun_metering)
     aimsun_control_metering.setControlMeteringType(
-        mapping_control_metering_type[control_metering.control_metering_type])
+        mapping_control_metering_type[control_metering.control_metering_type]
+    )
     aimsun_model.getCommander().addCommand(None)
 
 
 def create_phase(
     control_plan_node: GKControlJunction,
     junction: aimsun_input_utils.ControlJunction,
-    aimsun_model: GKModel
+    aimsun_model: GKModel,
 ):
     """Creates a phase using the data from a Python ControlJunction object. A
     phase is an object that holds all the signal groups that will be green
@@ -955,7 +982,7 @@ def create_phase(
         aimsun_input_utils.ControlJunctionType.UNSPECIFIED,
         aimsun_input_utils.ControlJunctionType.UNCONTROLLED,
         aimsun_input_utils.ControlJunctionType.FIXED_CONTROL,
-        aimsun_input_utils.ControlJunctionType.EXTERNAL
+        aimsun_input_utils.ControlJunctionType.EXTERNAL,
     ]:
         for phase in junction.phases:
             # phase_characteristics is given by
@@ -975,7 +1002,8 @@ def create_phase(
 
         control_plan_node.setRestInRed(junction.rest_in_red)
         control_plan_node.setMatchesOffsetWithEndOfPhase(
-            junction.matches_offset_with_end_of_phase)
+            junction.matches_offset_with_end_of_phase
+        )
         control_plan_node.setYellowTime(junction.yellow_time)
         control_plan_node.setSingleEntry(junction.single_entry)
 
@@ -1006,36 +1034,36 @@ def create_phase(
                 aimsun_phase.addSignal(signal.signal)
 
             for control_detector in phase.detectors:
-                aimsun_detector = (
-                    get_object_per_external_id(
-                        control_detector.detector_external_id,
-                        ['GKDetector'], aimsun_model))
+                aimsun_detector = get_object_per_external_id(
+                    control_detector.detector_external_id, ["GKDetector"], aimsun_model
+                )
                 if aimsun_detector is None:
                     sys.exit()
                 gk_control_detector = aimsun_phase.createControlDetector(
-                    aimsun_detector)
+                    aimsun_detector
+                )
                 gk_control_detector.setLocking(control_detector.locking)
                 gk_control_detector.setCallDelay(control_detector.call_delay)
                 gk_control_detector.setPhaseActivation(
-                    control_detector.phase_activation)
-                gk_control_detector.setPhaseExtension(
-                    control_detector.phase_extension)
+                    control_detector.phase_activation
+                )
+                gk_control_detector.setPhaseExtension(control_detector.phase_extension)
                 aimsun_phase.addControlDetector(gk_control_detector)
     else:
         aimsun_model.reportError(
-            'import_master_control_plan',
+            "import_master_control_plan",
             "Error, the  type of the control junction type "
-            f"{junction.junction_type} is not correct.")
+            f"{junction.junction_type} is not correct.",
+        )
         sys.exit()
 
 
 def create_control_plan(
     control_plan: aimsun_input_utils.ControlPlan,
-    mapping_control_metering_type: Dict[
-        aimsun_input_utils.ControlMeteringType, Any],
+    mapping_control_metering_type: Dict[aimsun_input_utils.ControlMeteringType, Any],
     gk_object_status_modified,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Creates an Aimsun GKControlPlan object from the attributes of the
     ControlPlan Python object. A control plan is an object that manages the
@@ -1060,14 +1088,14 @@ def create_control_plan(
             does not exist.
     """
     aimsun_control_plan = aimsun_system.newObject("GKControlPlan", aimsun_model)
-    aimsun_model.getCreateRootFolder().findFolder(
-        'GKModel::controlPlans').append(aimsun_control_plan)
+    aimsun_model.getCreateRootFolder().findFolder("GKModel::controlPlans").append(
+        aimsun_control_plan
+    )
     aimsun_control_plan.setName(control_plan.name)
     aimsun_control_plan.setExternalId(control_plan.external_id)
     for junction in control_plan.control_junctions:
         node_id = int(junction.node_id)
-        node = get_object_per_internal_id(
-            node_id, ['GKNode'], aimsun_model)
+        node = get_object_per_internal_id(node_id, ["GKNode"], aimsun_model)
         if node is None:
             sys.exit()
         # We create a yellow box to forbid vehicles to engage in the
@@ -1081,8 +1109,11 @@ def create_control_plan(
         create_phase(control_plan_node, junction, aimsun_model)
     for control_metering in control_plan.control_meterings:
         create_control_metering(
-            aimsun_control_plan, control_metering,
-            mapping_control_metering_type, aimsun_model)
+            aimsun_control_plan,
+            control_metering,
+            mapping_control_metering_type,
+            aimsun_model,
+        )
     aimsun_control_plan.setStatus(gk_object_status_modified)
     return aimsun_control_plan
 
@@ -1093,8 +1124,7 @@ def import_master_control_plan(
     aimsun_system: GKSystem,
     gk_object_status_modified,
     create_master_control_plan_item,
-    mapping_control_metering_type: Dict[
-        aimsun_input_utils.ControlMeteringType, Any]
+    mapping_control_metering_type: Dict[aimsun_input_utils.ControlMeteringType, Any],
 ):
     """Takes in the Aimsun model and an imported master control plan and
     unpacks the metering, detector, and control plan data. Then the function
@@ -1115,12 +1145,10 @@ def import_master_control_plan(
     """
     # Import the meterings.
     for metering in imported_master_control_plan.meterings:
-        create_metering(
-            metering, aimsun_model, aimsun_system)
+        create_metering(metering, aimsun_model, aimsun_system)
     # Import the detectors.
     for detector in imported_master_control_plan.detectors:
-        create_detector(
-            detector, False, aimsun_model, aimsun_system)
+        create_detector(detector, False, aimsun_model, aimsun_system)
     # Import the control plans.
     for control_plan in imported_master_control_plan.control_plans:
         create_control_plan(
@@ -1128,19 +1156,20 @@ def import_master_control_plan(
             mapping_control_metering_type,
             gk_object_status_modified,
             aimsun_model,
-            aimsun_system)
+            aimsun_system,
+        )
     # Create the master control plan.
     master_control_plan_aimsun = aimsun_system.newObject(
-        'GKMasterControlPlan', aimsun_model)
+        "GKMasterControlPlan", aimsun_model
+    )
     master_control_plan_aimsun.setName(imported_master_control_plan.name)
-    master_control_plan_aimsun.setExternalId(
-        imported_master_control_plan.external_id)
+    master_control_plan_aimsun.setExternalId(imported_master_control_plan.external_id)
     for item in imported_master_control_plan.schedule:
         # Here we check if control plan already exists based on its name.
         # We should make sure that control plan name is unique!
         control_plan = get_object_per_external_id(
-            item.control_plan_external_id, ['GKControlPlan'],
-            aimsun_model)
+            item.control_plan_external_id, ["GKControlPlan"], aimsun_model
+        )
         if control_plan is None:
             sys.exit()
         # We add the control plan to the master control plan.
@@ -1150,15 +1179,16 @@ def import_master_control_plan(
         master_control_plan_item.setDuration(item.duration)
         master_control_plan_item.setZone(item.zone)
         master_control_plan_aimsun.addToSchedule(master_control_plan_item)
-    aimsun_model.getCreateRootFolder().findFolder(
-        'GKModel::masterControlPlans').append(master_control_plan_aimsun)
+    aimsun_model.getCreateRootFolder().findFolder("GKModel::masterControlPlans").append(
+        master_control_plan_aimsun
+    )
 
 
 def add_turning_closing_change(
     scenario_change: aimsun_input_utils.TurningClosingChange,
     aimsun_policy: GKPolicy,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Takes in the model, scenario, and policy in order to create a scenario
     within Aimsun. The scenario is then added onto the passed in policy.
@@ -1174,24 +1204,27 @@ def add_turning_closing_change(
             intersection.
     """
     aimsun_scenario_change = aimsun_system.newObject(
-        'GKTurningClosingChange', aimsun_model)
+        "GKTurningClosingChange", aimsun_model
+    )
     from_section = get_object_per_internal_id(
-        scenario_change.from_section_internal_id,
-        ['GKSection'], aimsun_model)
+        scenario_change.from_section_internal_id, ["GKSection"], aimsun_model
+    )
     to_section = get_object_per_internal_id(
-        scenario_change.to_section_internal_id,
-        ['GKSection'], aimsun_model)
+        scenario_change.to_section_internal_id, ["GKSection"], aimsun_model
+    )
     if not scenario_change.name:
         aimsun_model.reportError(
-            'import_traffic_management',
+            "import_traffic_management",
             f"The scenario change {scenario_change} does not have a name. "
-            "Quitting on error.")
+            "Quitting on error.",
+        )
         sys.exit()
     if not scenario_change.external_id:
         aimsun_model.reportError(
-            'import_traffic_management',
+            "import_traffic_management",
             f"The scenario change {scenario_change} does not have an External "
-            "ID. Quitting on error.")
+            "ID. Quitting on error.",
+        )
         sys.exit()
     aimsun_scenario_change.setName(scenario_change.name)
     aimsun_scenario_change.setExternalId(scenario_change.external_id)
@@ -1203,7 +1236,7 @@ def add_turning_closing_change(
 def import_scenarios(
     scenario: aimsun_input_utils.TrafficManagementStrategy,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Takes in the Aimsun model and the .pkl Traffic Management object and
     unpacks the data into Aimsun. It calls the method add_scenario_change in
@@ -1217,46 +1250,49 @@ def import_scenarios(
         scenario: The Python object containing the data for a
             Traffic Management strategy.
     """
-    aimsun_strategy = aimsun_system.newObject('GKStrategy', aimsun_model)
+    aimsun_strategy = aimsun_system.newObject("GKStrategy", aimsun_model)
     aimsun_strategy.setName(scenario.name)
     aimsun_strategy.setExternalId(scenario.external_id)
     for policy in scenario.policies:
-        aimsun_policy = aimsun_system.newObject('GKPolicy', aimsun_model)
+        aimsun_policy = aimsun_system.newObject("GKPolicy", aimsun_model)
         if not policy.name:
             aimsun_model.reportError(
-                'import_traffic_management',
-                f"The policy {policy} does not have a name. Quitting on error.")
+                "import_traffic_management",
+                f"The policy {policy} does not have a name. Quitting on error.",
+            )
             sys.exit()
         if not policy.external_id:
             aimsun_model.reportError(
-                'import_traffic_management',
+                "import_traffic_management",
                 f"The policy {policy} does not have an External ID. Quitting "
-                "on error.")
+                "on error.",
+            )
             sys.exit()
         aimsun_policy.setName(policy.name)
         aimsun_policy.setExternalId(policy.external_id)
         aimsun_strategy.addPolicy(aimsun_policy)
 
         for scenario_change in policy.scenario_changes:
-            if (scenario_change.scenario_change_type != aimsun_input_utils
-                    .ScenarioChangeType.TURNING_RESTRICTION):
+            if (
+                scenario_change.scenario_change_type
+                != aimsun_input_utils.ScenarioChangeType.TURNING_RESTRICTION
+            ):
                 aimsun_model.reportError(
-                    'import_traffic_management',
+                    "import_traffic_management",
                     f"The scenario type {scenario_change.scenario_change_type} "
-                    "is not a turning restriction. Quitting on error.")
+                    "is not a turning restriction. Quitting on error.",
+                )
                 sys.exit()
             add_turning_closing_change(
-                scenario_change,
-                aimsun_policy,
-                aimsun_model,
-                aimsun_system)
-    aimsun_model.getCreateRootFolder().findFolder(
-        'GKModel::strategies').append(aimsun_strategy)
+                scenario_change, aimsun_policy, aimsun_model, aimsun_system
+            )
+    aimsun_model.getCreateRootFolder().findFolder("GKModel::strategies").append(
+        aimsun_strategy
+    )
 
 
 def generate_turning_closing_change(
-    aimsun_scenario_change: GKTurningClosingChange,
-    aimsun_model: GKModel
+    aimsun_scenario_change: GKTurningClosingChange, aimsun_model: GKModel
 ) -> aimsun_input_utils.TurningClosingChange:
     """Takes the current Aimsun turning closing change and converts it into a
     Python object in order to export it to a .pkl file.
@@ -1276,40 +1312,52 @@ def generate_turning_closing_change(
     turning_change_external_id = aimsun_scenario_change.getExternalId()
     if not turning_closing_change_name and not turning_change_external_id:
         aimsun_model.reportError(
-            'export_traffic_management',
+            "export_traffic_management",
             "The scenario change does not have a name neither an external id. "
-            "Quitting on error.")
+            "Quitting on error.",
+        )
         sys.exit()
     if not turning_closing_change_name:
-        print(("The scenario change does not have a name. Setting it to "
-               f"external id {turning_change_external_id}."))
+        print(
+            (
+                "The scenario change does not have a name. Setting it to "
+                f"external id {turning_change_external_id}."
+            )
+        )
         turning_closing_change_name = turning_change_external_id
     if not turning_change_external_id:
-        print(("The scenario change does not have a external id. Setting it to "
-               f"name {turning_closing_change_name}."))
+        print(
+            (
+                "The scenario change does not have a external id. Setting it to "
+                f"name {turning_closing_change_name}."
+            )
+        )
         turning_change_external_id = turning_closing_change_name
     turning_closing_change.name = turning_closing_change_name
     turning_closing_change.external_id = turning_change_external_id
     turning_closing_change.to_section_internal_id = (
-        aimsun_scenario_change.getToSection().getId())
+        aimsun_scenario_change.getToSection().getId()
+    )
     turning_closing_change.from_section_internal_id = (
-        aimsun_scenario_change.getFromSection().getId())
-    turning_closing_change.scenario_change_type = (
-        aimsun_input_utils.ScenarioChangeType(
-            aimsun_scenario_change.getChangeType()))
-    if (turning_closing_change.scenario_change_type
-            != aimsun_input_utils.ScenarioChangeType.TURNING_RESTRICTION):
+        aimsun_scenario_change.getFromSection().getId()
+    )
+    turning_closing_change.scenario_change_type = aimsun_input_utils.ScenarioChangeType(
+        aimsun_scenario_change.getChangeType()
+    )
+    if (
+        turning_closing_change.scenario_change_type
+        != aimsun_input_utils.ScenarioChangeType.TURNING_RESTRICTION
+    ):
         aimsun_model.reportError(
-            'export_traffic_management',
-            "The code is wrong, please change it.")
+            "export_traffic_management", "The code is wrong, please change it."
+        )
     return turning_closing_change
 
 
 def generate_policy(
     aimsun_policy: GKPolicy,
-    mapping_scenario_change_type: Dict[
-        aimsun_input_utils.ScenarioChangeType, Any],
-    aimsun_model: GKModel
+    mapping_scenario_change_type: Dict[aimsun_input_utils.ScenarioChangeType, Any],
+    aimsun_model: GKModel,
 ) -> aimsun_input_utils.TrafficPolicy:
     """Takes the current Aimsun policy and converts it into a Python object
     in order to export it to a .pkl file. A policy is a collection of actions
@@ -1333,17 +1381,26 @@ def generate_policy(
     policy_external_id = aimsun_policy.getExternalId()
     if not policy_name and not policy_external_id:
         aimsun_model.reportError(
-            'export_traffic_management',
+            "export_traffic_management",
             "The policy does not have a name neither an external id. Quitting "
-            "on error.")
+            "on error.",
+        )
         sys.exit()
     if not policy_name:
-        print(("The policy does not have a name. Setting it to external id "
-               f"{policy_external_id}."))
+        print(
+            (
+                "The policy does not have a name. Setting it to external id "
+                f"{policy_external_id}."
+            )
+        )
         policy_name = policy_external_id
     if not policy_external_id:
-        print(("The policy does not have a external id. Setting it to name "
-               f"{policy_name}."))
+        print(
+            (
+                "The policy does not have a external id. Setting it to name "
+                f"{policy_name}."
+            )
+        )
         policy_external_id = policy_name
     policy.name = policy_name
     policy.external_id = policy_external_id
@@ -1351,23 +1408,28 @@ def generate_policy(
     aimsun_scenario_changes = aimsun_policy.getChanges()
     for aimsun_scenario_change in aimsun_scenario_changes:
         aimsun_scenario_change_type = aimsun_scenario_change.getChangeType()
-        if aimsun_scenario_change_type != mapping_scenario_change_type[
-                aimsun_input_utils.ScenarioChangeType.TURNING_RESTRICTION]:
+        if (
+            aimsun_scenario_change_type
+            != mapping_scenario_change_type[
+                aimsun_input_utils.ScenarioChangeType.TURNING_RESTRICTION
+            ]
+        ):
             aimsun_model.reportError(
-                'N2_export_traffic_management',
+                "N2_export_traffic_management",
                 f"The scenario type {aimsun_scenario_change_type} is not a "
-                "turning restriction. Quitting on error.")
+                "turning restriction. Quitting on error.",
+            )
             sys.exit()
-        policy.scenario_changes.append(generate_turning_closing_change(
-            aimsun_scenario_change, aimsun_model))
+        policy.scenario_changes.append(
+            generate_turning_closing_change(aimsun_scenario_change, aimsun_model)
+        )
     return policy
 
 
 def export_strategy(
     filepath: str,
-    mapping_scenario_change_type: Dict[
-        aimsun_input_utils.ScenarioChangeType, Any],
-    aimsun_model: GKModel
+    mapping_scenario_change_type: Dict[aimsun_input_utils.ScenarioChangeType, Any],
+    aimsun_model: GKModel,
 ):
     """Takes the current Aimsun strategy and converts it into a Python object
     in order to export it to a .pkl file.
@@ -1384,41 +1446,55 @@ def export_strategy(
     traffic_strategy = aimsun_input_utils.TrafficManagementStrategy()
     traffic_strategy.policies = []
 
-    aimsun_strategies = aimsun_model.getCatalog().getObjectsByType(
-        aimsun_model.getType('GKStrategy')).values()
+    aimsun_strategies = (
+        aimsun_model.getCatalog()
+        .getObjectsByType(aimsun_model.getType("GKStrategy"))
+        .values()
+    )
     if len(aimsun_strategies) != 1:
         aimsun_model.reportError(
-            'N2_export_traffic_management',
+            "N2_export_traffic_management",
             "There is more than one strategy. Please change the code. Quitting "
-            "on error.")
+            "on error.",
+        )
         sys.exit()
     aimsun_strategy = list(aimsun_strategies)[0]
     strategy_name = aimsun_strategy.getName()
     strategy_external_id = aimsun_strategy.getExternalId()
     if not strategy_name and not strategy_external_id:
         aimsun_model.reportError(
-            'N2_export_traffic_management',
+            "N2_export_traffic_management",
             "The strategy does not have a name neither an external id. Quitting"
-            " on error.")
+            " on error.",
+        )
         sys.exit()
     if not strategy_name:
-        print(("The strategy does not have a name. Setting it to external id "
-               f"{strategy_external_id}."))
+        print(
+            (
+                "The strategy does not have a name. Setting it to external id "
+                f"{strategy_external_id}."
+            )
+        )
         strategy_name = strategy_external_id
     if not strategy_external_id:
-        print(("The policy does not have a external id. Setting it to name "
-               f"{strategy_name}."))
+        print(
+            (
+                "The policy does not have a external id. Setting it to name "
+                f"{strategy_name}."
+            )
+        )
         strategy_external_id = strategy_name
     traffic_strategy.name = strategy_name
     traffic_strategy.external_id = strategy_external_id
     for aimsun_policy in aimsun_strategy.getPolicies():
-        traffic_strategy.policies.append(generate_policy(
-            aimsun_policy, mapping_scenario_change_type, aimsun_model))
+        traffic_strategy.policies.append(
+            generate_policy(aimsun_policy, mapping_scenario_change_type, aimsun_model)
+        )
     traffic_strategy.export_to_file(filepath)
 
 
 def generate_phase_signal(
-    control_phase_signal: GKControlPhaseSignal
+    control_phase_signal: GKControlPhaseSignal,
 ) -> aimsun_input_utils.ControlPhaseSignal:
     """Takes in an Aimsun GKControlPlanSignal object. Creates a Python object
     based on the signal data from the Aimsun object. A control phase signal
@@ -1438,10 +1514,13 @@ def generate_phase_signal(
 
 
 def generate_actuated_phases(
-    aimsun_model: GKModel, control_junction: GKControlJunction,
-    actuated_control_junction_enum: aimsun_input_utils.ControlJunctionType
-) -> Tuple[List[aimsun_input_utils.ActuatedControlPhase],
-           Mapping[aimsun_input_utils.ExternalId, aimsun_input_utils.Detector]]:
+    aimsun_model: GKModel,
+    control_junction: GKControlJunction,
+    actuated_control_junction_enum: aimsun_input_utils.ControlJunctionType,
+) -> Tuple[
+    List[aimsun_input_utils.ActuatedControlPhase],
+    Mapping[aimsun_input_utils.ExternalId, aimsun_input_utils.Detector],
+]:
     """Takes in a control_junction and unpacks the phase data from the junction.
     Each attribute of the phase is mirrored to an attribute of the associated
     Python object. The resulting list of Python objects are returned, to be
@@ -1465,11 +1544,13 @@ def generate_actuated_phases(
     phases = control_junction.getPhases()
     detectors = {}
 
-    if not (control_junction.getControlJunctionType()
-            == actuated_control_junction_enum):
+    if not (
+        control_junction.getControlJunctionType() == actuated_control_junction_enum
+    ):
         aimsun_model.reportError(
-            'export_master_control_plan',
-            "Error, the control junction should be actuated.")
+            "export_master_control_plan",
+            "Error, the control junction should be actuated.",
+        )
         sys.exit()
     for aimsun_control_phase in phases:
         phase = aimsun_input_utils.ActuatedControlPhase()
@@ -1478,15 +1559,14 @@ def generate_actuated_phases(
         phase.id_ring = aimsun_control_phase.getIdRing()
         phase.interphase = aimsun_control_phase.getInterphase()
         phase.recall = aimsun_input_utils.ControlPhaseRecall(
-            aimsun_control_phase.getRecall())
+            aimsun_control_phase.getRecall()
+        )
         phase.is_default = aimsun_control_phase.getIsDefault()
         phase.min_duration = aimsun_control_phase.getMinDuration()
         phase.max_duration = aimsun_control_phase.getMaxDuration()
         phase.passage_time = aimsun_control_phase.getPassageTime()
-        phase.permissive_period_from = (
-            aimsun_control_phase.getPermissivePeriodFrom())
-        phase.permissive_period_to = (
-            aimsun_control_phase.getPermissivePeriodTo())
+        phase.permissive_period_from = aimsun_control_phase.getPermissivePeriodFrom()
+        phase.permissive_period_to = aimsun_control_phase.getPermissivePeriodTo()
         phase.force_off = aimsun_control_phase.getForceOff()
         phase.hold = aimsun_control_phase.getHold()
         phase.maximum_initial = aimsun_control_phase.getMaximumInitial()
@@ -1497,30 +1577,32 @@ def generate_actuated_phases(
         phase.time_to_reduce = aimsun_control_phase.getTimeToReduce()
         for aimsun_signal in aimsun_control_phase.getSignals():
             phase.signals.append(generate_phase_signal(aimsun_signal))
-        for aimsun_detector, aimsun_control_detector in (
-                aimsun_control_phase.getControlDetectors().items()):
+        for (
+            aimsun_detector,
+            aimsun_control_detector,
+        ) in aimsun_control_phase.getControlDetectors().items():
             control_detector = aimsun_input_utils.ControlDetector()
-            detector_external_id = (
-                create_detector_external_id(
-                    aimsun_detector.getId()))
+            detector_external_id = create_detector_external_id(aimsun_detector.getId())
             control_detector.detector_external_id = detector_external_id
             control_detector.locking = aimsun_control_detector.getLocking()
             control_detector.call_delay = aimsun_control_detector.getCallDelay()
             control_detector.phase_activation = (
-                aimsun_control_detector.getPhaseActivation())
+                aimsun_control_detector.getPhaseActivation()
+            )
             control_detector.phase_extension = (
-                aimsun_control_detector.getPhaseExtension())
+                aimsun_control_detector.getPhaseExtension()
+            )
             phase.detectors.append(control_detector)
-            detectors[detector_external_id] = (
-                convert_gkdetector_to_detector_class(
-                    aimsun_detector, aimsun_model))
+            detectors[detector_external_id] = convert_gkdetector_to_detector_class(
+                aimsun_detector, aimsun_model
+            )
 
         actuated_control_phases.append(phase)
     return actuated_control_phases, detectors
 
 
 def generate_nonactuated_phases(
-    control_junction: GKControlJunction
+    control_junction: GKControlJunction,
 ) -> List[aimsun_input_utils.NonActuatedControlPhase]:
     """Takes in a control_junction and unpacks the phase data from the junction.
     Each attribute of the phase is mirrored to an attribute of the associated
@@ -1553,11 +1635,12 @@ def generate_nonactuated_phases(
 
 def generate_junctions(
     control_plan: GKControlPlan,
-    mapping_control_junction_type: Dict[
-        aimsun_input_utils.ControlJunctionType, Any],
-    aimsun_model: GKModel
-) -> Tuple[List[aimsun_input_utils.ControlJunction],
-           Mapping[aimsun_input_utils.ExternalId, aimsun_input_utils.Detector]]:
+    mapping_control_junction_type: Dict[aimsun_input_utils.ControlJunctionType, Any],
+    aimsun_model: GKModel,
+) -> Tuple[
+    List[aimsun_input_utils.ControlJunction],
+    Mapping[aimsun_input_utils.ExternalId, aimsun_input_utils.Detector],
+]:
     """Takes in a control plan and unpacks the junction data from the control
     plan. Each attribute is added to a Python object, and some of them are
     tested for validity, such as uniqueness in node_ids. The created Python
@@ -1584,77 +1667,95 @@ def generate_junctions(
         # We do not export unspecified and uncontrolled traffic signals has they
         # are not part of the traffic master control plan.
         if control_junction_type in [
-                mapping_control_junction_type[
-                    aimsun_input_utils.ControlJunctionType.FIXED_CONTROL],
-                mapping_control_junction_type[
-                    aimsun_input_utils.ControlJunctionType.EXTERNAL]]:
+            mapping_control_junction_type[
+                aimsun_input_utils.ControlJunctionType.FIXED_CONTROL
+            ],
+            mapping_control_junction_type[
+                aimsun_input_utils.ControlJunctionType.EXTERNAL
+            ],
+        ]:
             control_junction = aimsun_input_utils.NonActuatedControlJunction()
             node_id = aimsun_control_junction.getNodeId()
             if node_id in control_junction_ids:
                 aimsun_model.reportError(
-                    'export_master_control_plan',
+                    "export_master_control_plan",
                     f"{node_id} needs to be twice in the control_plan_dict. The"
                     " current code cannot do that, please change the code. "
-                    "Quitting on error.")
+                    "Quitting on error.",
+                )
                 sys.exit()
 
             control_junction.node_id = node_id
-            control_junction.junction_type = (
-                aimsun_input_utils.ControlJunctionType(control_junction_type))
+            control_junction.junction_type = aimsun_input_utils.ControlJunctionType(
+                control_junction_type
+            )
             control_junction.cycle = aimsun_control_junction.getCycle()
             control_junction.offset = aimsun_control_junction.getOffset()
             control_junction.phases = generate_nonactuated_phases(
-                aimsun_control_junction)
-        elif control_junction_type == mapping_control_junction_type[
-                aimsun_input_utils.ControlJunctionType.ACTUATED]:
+                aimsun_control_junction
+            )
+        elif (
+            control_junction_type
+            == mapping_control_junction_type[
+                aimsun_input_utils.ControlJunctionType.ACTUATED
+            ]
+        ):
             control_junction = aimsun_input_utils.ActuatedControlJunction()
             node_id = aimsun_control_junction.getNodeId()
             if node_id in control_junction_ids:
                 aimsun_model.reportError(
-                    'export_master_control_plan',
+                    "export_master_control_plan",
                     f"{node_id} needs to be twice in the control_plan_dict. The"
                     " current code cannot do that, please change the code. "
-                    "Quitting on error.")
+                    "Quitting on error.",
+                )
                 sys.exit()
             control_junction.node_id = node_id
-            control_junction.junction_type = (
-                aimsun_input_utils.ControlJunctionType(control_junction_type))
+            control_junction.junction_type = aimsun_input_utils.ControlJunctionType(
+                control_junction_type
+            )
             control_junction.cycle = aimsun_control_junction.getCycle()
             control_junction.offset = aimsun_control_junction.getOffset()
             control_junction.barriers = [0]
             for barrier in aimsun_control_junction.getBarriers():
                 control_junction.barriers.append(barrier)
-            control_junction.rest_in_red = (
-                aimsun_control_junction.getRestInRed())
+            control_junction.rest_in_red = aimsun_control_junction.getRestInRed()
             control_junction.matches_offset_with_end_of_phase = (
-                aimsun_control_junction.getMatchesOffsetWithEndOfPhase())
-            control_junction.yellow_time = (
-                aimsun_control_junction.getYellowTime())
-            control_junction.single_entry = (
-                aimsun_control_junction.getSingleEntry())
+                aimsun_control_junction.getMatchesOffsetWithEndOfPhase()
+            )
+            control_junction.yellow_time = aimsun_control_junction.getYellowTime()
+            control_junction.single_entry = aimsun_control_junction.getSingleEntry()
 
             phases = aimsun_control_junction.getPhases()
             control_junction.num_phases = len(phases)
-            (control_junction.phases,
-             dict_of_detectors_control_junction) = generate_actuated_phases(
-                aimsun_model, aimsun_control_junction,
+            (
+                control_junction.phases,
+                dict_of_detectors_control_junction,
+            ) = generate_actuated_phases(
+                aimsun_model,
+                aimsun_control_junction,
                 mapping_control_junction_type[
-                    aimsun_input_utils.ControlJunctionType.ACTUATED])
+                    aimsun_input_utils.ControlJunctionType.ACTUATED
+                ],
+            )
             dict_of_detectors.update(dict_of_detectors_control_junction)
         else:
             aimsun_model.reportError(
                 "export_master_control_plan",
                 f"{control_junction_type} type should not be in master control "
-                "plan. Please fix the code.")
+                "plan. Please fix the code.",
+            )
         control_junctions.append(control_junction)
     return control_junctions, dict_of_detectors
 
 
 def generate_meterings(
     aimsun_model: GKModel,
-    control_meterings: Dict[aimsun_input_utils.InternalId, GKMetering]
-) -> Tuple[List[aimsun_input_utils.ControlMetering],
-           Mapping[aimsun_input_utils.ExternalId, aimsun_input_utils.Metering]]:
+    control_meterings: Dict[aimsun_input_utils.InternalId, GKMetering],
+) -> Tuple[
+    List[aimsun_input_utils.ControlMetering],
+    Mapping[aimsun_input_utils.ExternalId, aimsun_input_utils.Metering],
+]:
     """Returns a dictionary corresponding to the control metering to export.
 
     Args:
@@ -1671,13 +1772,14 @@ def generate_meterings(
     for aimsun_control_metering in control_meterings.values():
         control_metering = aimsun_input_utils.ControlMetering()
         metering = convert_gkmetering_to_metering_class(
-            aimsun_control_metering.getMetering(), aimsun_model)
+            aimsun_control_metering.getMetering(), aimsun_model
+        )
         metering_external_id = metering.external_id
         if metering_external_id not in meterings:
             meterings[metering_external_id] = metering
-        control_metering.control_metering_type =\
-            aimsun_input_utils.ControlMeteringType(
-                aimsun_control_metering.getControlMeteringType())
+        control_metering.control_metering_type = aimsun_input_utils.ControlMeteringType(
+            aimsun_control_metering.getControlMeteringType()
+        )
         control_metering.metering_external_id = metering_external_id
         control_meters.append(control_metering)
     return control_meters, meterings
@@ -1685,9 +1787,8 @@ def generate_meterings(
 
 def generate_master_control_plan(
     aimsun_master_control_plan: GKMasterControlPlan,
-    mapping_control_junction_type: Dict[
-        aimsun_input_utils.ControlJunctionType, Any],
-    aimsun_model: GKModel
+    mapping_control_junction_type: Dict[aimsun_input_utils.ControlJunctionType, Any],
+    aimsun_model: GKModel,
 ) -> aimsun_input_utils.MasterControlPlan:
     """Returns the master control plan Python object. A master control plan is
     an object that holds a collection of control plans by both time intervals
@@ -1728,23 +1829,31 @@ def generate_master_control_plan(
         control_plan_external_id = control_plan.getExternalId()
         if not control_plan_name and not control_plan_external_id:
             aimsun_model.reportError(
-                'export_master_control_plan',
+                "export_master_control_plan",
                 "Control plan has neither an external id neither a name, "
-                "quitting on error")
+                "quitting on error",
+            )
             sys.exit()
         if not control_plan_external_id and control_plan_name:
-            print(("Control plan has no external id but a name, setting its "
-                   f"external id to the name {control_plan_name}"))
+            print(
+                (
+                    "Control plan has no external id but a name, setting its "
+                    f"external id to the name {control_plan_name}"
+                )
+            )
             control_plan_external_id = control_plan_name
             control_plan.setExternalId(control_plan_external_id)
         if not control_plan_name and control_plan_external_id:
-            print(("Control plan has no name but an external id, setting its "
-                   f"name to the external id {control_plan_external_id}"))
+            print(
+                (
+                    "Control plan has no name but an external id, setting its "
+                    f"name to the external id {control_plan_external_id}"
+                )
+            )
             control_plan_name = control_plan_external_id
             control_plan.setName(control_plan_name)
 
-        master_control_plan_item.control_plan_external_id = (
-            control_plan_external_id)
+        master_control_plan_item.control_plan_external_id = control_plan_external_id
         master_control_plan_item.duration = mcp_schedule_item.getDuration()
         master_control_plan_item.from_time = mcp_schedule_item.getFrom()
         master_control_plan_item.zone = mcp_schedule_item.getZone()
@@ -1760,18 +1869,21 @@ def generate_master_control_plan(
             converted_control_plan.external_id = control_plan_external_id
             converted_control_plan.offset = control_plan.getOffset()
             # Add the control junctions to the plan. Memoize the detectors.
-            (converted_control_plan.control_junctions,
-             dict_of_detectors_control_junctions) = generate_junctions(
-                control_plan, mapping_control_junction_type, aimsun_model)
+            (
+                converted_control_plan.control_junctions,
+                dict_of_detectors_control_junctions,
+            ) = generate_junctions(
+                control_plan, mapping_control_junction_type, aimsun_model
+            )
             dict_of_detectors.update(dict_of_detectors_control_junctions)
             # Add the control meterings to the plan. Memoize the meterings.
-            (converted_control_plan.control_meterings,
-             dict_of_meterings_control_plan) = generate_meterings(
-                aimsun_model, control_plan.getControlMeterings())
+            (
+                converted_control_plan.control_meterings,
+                dict_of_meterings_control_plan,
+            ) = generate_meterings(aimsun_model, control_plan.getControlMeterings())
             dict_of_meterings.update(dict_of_meterings_control_plan)
             # Save the control plan in master control plan object.
-            return_master_control_plan.control_plans.append(
-                converted_control_plan)
+            return_master_control_plan.control_plans.append(converted_control_plan)
 
     return_master_control_plan.meterings = list(dict_of_meterings.values())
     return_master_control_plan.detectors = list(dict_of_detectors.values())
@@ -1780,9 +1892,8 @@ def generate_master_control_plan(
 
 def export_master_control_plan(
     master_control_plan_file: str,
-    mapping_control_junction_type: Dict[
-        aimsun_input_utils.ControlJunctionType, Any],
-    aimsun_model: GKModel
+    mapping_control_junction_type: Dict[aimsun_input_utils.ControlJunctionType, Any],
+    aimsun_model: GKModel,
 ):
     """Export all traffic light master control plans and every traffic light
     control plan in Aimsun as a .pkl.
@@ -1799,24 +1910,26 @@ def export_master_control_plan(
         aimsun_report_error: If there isn't exactly one master control
             plan, the code throws and error and quits.
     """
-    mcp = get_list_of_objects(
-        'GKModel::masterControlPlans', aimsun_model)
+    mcp = get_list_of_objects("GKModel::masterControlPlans", aimsun_model)
     if len(mcp) > 1:
         aimsun_model.reportError(
-            'export_master_control_plan',
+            "export_master_control_plan",
             "Master Control Plan is not uniquely defined. The current code "
             "cannot take into account this possibility, please change the "
-            "code. Quitting on error.")
+            "code. Quitting on error.",
+        )
         sys.exit()
     if len(mcp) == 0:
         aimsun_model.reportError(
-            'export_master_control_plan',
+            "export_master_control_plan",
             "Master Control Plan does not exist. The current code cannot "
             "take into account this possibility, please change the code. "
-            "Quitting on error.")
+            "Quitting on error.",
+        )
         sys.exit()
     master_control_plan = generate_master_control_plan(
-        mcp[0], mapping_control_junction_type, aimsun_model)
+        mcp[0], mapping_control_junction_type, aimsun_model
+    )
     master_control_plan.export_to_file(master_control_plan_file)
 
 
@@ -1826,8 +1939,7 @@ def export_master_control_plan(
 
 
 def get_and_restore_real_dataset(
-    real_dataset_external_id: aimsun_input_utils.ExternalId,
-    aimsun_model: GKModel
+    real_dataset_external_id: aimsun_input_utils.ExternalId, aimsun_model: GKModel
 ) -> GKRealDataSet:
     """Restores the real data set with the External ID real_dataset_external_id.
     The function will return the dataset if found.
@@ -1848,21 +1960,25 @@ def get_and_restore_real_dataset(
             function raises an error and quits.
     """
     gk_real_dataset = get_object_per_external_id(
-        real_dataset_external_id, ['GKRealDataSet'], aimsun_model)
+        real_dataset_external_id, ["GKRealDataSet"], aimsun_model
+    )
     if gk_real_dataset is None:
         aimsun_model.reportError(
-            'T1_create_real_data_set',
+            "T1_create_real_data_set",
             "Cannot find a real data set with external ID "
-            f"{real_dataset_external_id}.")
+            f"{real_dataset_external_id}.",
+        )
         sys.exit()
     if not gk_real_dataset.restoreData():
         aimsun_model.reportError(
-            'T1_create_real_data_set',
-            f"Cannot restore real data set {real_dataset_external_id}.")
+            "T1_create_real_data_set",
+            f"Cannot restore real data set {real_dataset_external_id}.",
+        )
     if not gk_real_dataset.readed():
         aimsun_model.reportError(
-            'T1_create_real_data_set',
-            f"Real data set {real_dataset_external_id} has not been readed.")
+            "T1_create_real_data_set",
+            f"Real data set {real_dataset_external_id} has not been readed.",
+        )
     return gk_real_dataset
 
 
@@ -1874,7 +1990,7 @@ def create_real_data_set(
     columns,
     time_type,
     time,
-    path_to_csv_dataset_directory: str
+    path_to_csv_dataset_directory: str,
 ):
     """Creates an Aimsun GKRealDataSet from a Python AimsunFlowRealDataSet
     object.
@@ -1900,16 +2016,18 @@ def create_real_data_set(
         time: A GKTime or QTime object.
         path_to_csv_dataset_directory: path to csv directory.
     """
-    gk_real_dataset = aimsun_system.newObject('GKRealDataSet', aimsun_model)
+    gk_real_dataset = aimsun_system.newObject("GKRealDataSet", aimsun_model)
     gk_real_dataset.setName(real_data_set.external_id)
     gk_real_dataset.setExternalId(real_data_set.external_id)
-    aimsun_model.getCreateRootFolder().findFolder(
-        'GKModel::realDataSets').append(gk_real_dataset)
+    aimsun_model.getCreateRootFolder().findFolder("GKModel::realDataSets").append(
+        gk_real_dataset
+    )
 
-    restorer = gk_real_dataset.addRestorer('GKRealDataSetRestorerSimple')
+    restorer = gk_real_dataset.addRestorer("GKRealDataSetRestorerSimple")
     restorer.setBaseDate(time)
     restorer.setFileName(
-        os.path.join(path_to_csv_dataset_directory, real_data_set.filename))
+        os.path.join(path_to_csv_dataset_directory, real_data_set.filename)
+    )
     restorer.setIdType(id_type)
     restorer.setColumns(columns)
     # Skip the column names of the csv file.
@@ -1917,20 +2035,20 @@ def create_real_data_set(
     restorer.setSeparator(aimsun_input_utils.CSV_SEPARATOR)
     restorer.setTimeType(time_type)
     restorer.setVehicles([None, None, None])
-    restorer.setObjectType(aimsun_model.getType('GKDetector'))
+    restorer.setObjectType(aimsun_model.getType("GKDetector"))
     # Checks
     if not gk_real_dataset.restoreData():
         aimsun_model.reportError(
-            'T1_create_real_data_set',
-            "Cannot restore real data set.")
+            "T1_create_real_data_set", "Cannot restore real data set."
+        )
     if gk_real_dataset.getBaseDate() != time:
         aimsun_model.reportError(
-            'T1_create_real_data_set',
-            "Error in date handling, code should be changed.")
+            "T1_create_real_data_set", "Error in date handling, code should be changed."
+        )
     if not gk_real_dataset.readed():
         aimsun_model.reportError(
-            'T1_create_real_data_set',
-            "Real data set has not been readed.")
+            "T1_create_real_data_set", "Real data set has not been readed."
+        )
 
 
 # ****************************************************************************
@@ -1942,7 +2060,7 @@ def update_database_info(
     db_info: GKDataBaseInfo,
     database_info: aimsun_config_utils.AimsunDataBaseInfo,
     aimsun_model: GKModel,
-    path_to_database_directory: str
+    path_to_database_directory: str,
 ) -> GKDataBaseInfo:
     """Updates the Aimsun database information with the saved data within the
     Python AimsunDataBaseInfo object.
@@ -1967,7 +2085,8 @@ def update_database_info(
     db_info.setAutomaticallyCreated(database_info.automatically_created)
     db_info.setDriverName(database_info.database_driver_name)
     database_path = os.path.join(
-        path_to_database_directory, database_info.database_path)
+        path_to_database_directory, database_info.database_path
+    )
     db_info.setDatabaseName(database_path)
     if database_info.database_driver_name == "QSQLITE":
         conn = sqlite3.connect(database_path)
@@ -1975,8 +2094,8 @@ def update_database_info(
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         if cursor.fetchone():
             aimsun_model.reportError(
-                'aimsun_utils_functions',
-                'Error. Database is not empty.')
+                "aimsun_utils_functions", "Error. Database is not empty."
+            )
             sys.exit()
     return db_info
 
@@ -1984,7 +2103,7 @@ def update_database_info(
 def run_experiment(
     experiment_external_id: aimsun_input_utils.ExternalId,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Finds an experiment object using the given External ID. Then, runs the
     experiment. An experiment is a run of a scenario where parameters not
@@ -2003,25 +2122,25 @@ def run_experiment(
             being executed or if the experiment does not exist.
     """
     experiment = get_object_per_external_id(
-        experiment_external_id, ['MacroExperiment', 'GKExperiment'],
-        aimsun_model)
+        experiment_external_id, ["MacroExperiment", "GKExperiment"], aimsun_model
+    )
     if experiment is None:
         aimsun_model.reportError(
             "aimsun_utils_functions",
-            f"Experiment {experiment_external_id} does not exist.")
+            f"Experiment {experiment_external_id} does not exist.",
+        )
         sys.exit()
-    action_executed = aimsun_system.executeAction(
-        "execute", experiment, [], "")
+    action_executed = aimsun_system.executeAction("execute", experiment, [], "")
     if not action_executed:
         aimsun_model.reportError(
-            "aimsun_utils_functions",
-            f"Error running {experiment_external_id}.")
+            "aimsun_utils_functions", f"Error running {experiment_external_id}."
+        )
 
 
 def run_experiments(
     list_experiment_external_id: aimsun_input_utils.ExternalId,
     aimsun_model: GKModel,
-    aimsun_system: GKSystem
+    aimsun_system: GKSystem,
 ):
     """Runs Aimsun simulation experiments.
 
@@ -2045,39 +2164,40 @@ def create_traffic_demand(
     aimsun_model: GKModel,
     aimsun_system,
     create_schedule_demand_item,
-    create_gk_time_duration
+    create_gk_time_duration,
 ):
     """Create traffic demand object in Aimsun."""
     for traffic_demand in traffic_demand_list.traffic_demands:
         # Create the traffic demand.
-        gk_traffic_demand = aimsun_system.newObject(
-            "GKTrafficDemand", aimsun_model)
+        gk_traffic_demand = aimsun_system.newObject("GKTrafficDemand", aimsun_model)
         gk_traffic_demand.setName(traffic_demand.name)
         gk_traffic_demand.setExternalId(traffic_demand.external_id)
-        aimsun_model.getCreateRootFolder().findFolder(
-            "GKModel::trafficDemand").append(gk_traffic_demand)
+        aimsun_model.getCreateRootFolder().findFolder("GKModel::trafficDemand").append(
+            gk_traffic_demand
+        )
 
         for schedule_demand_item in traffic_demand.demand_items:
             gk_od_matrix = get_object_per_external_id(
-                schedule_demand_item.demand_external_id, ['GKODMatrix'],
-                aimsun_model)
+                schedule_demand_item.demand_external_id, ["GKODMatrix"], aimsun_model
+            )
 
             gk_schedule_demand_item = create_schedule_demand_item()
             seconds_from_midnight = create_gk_time_duration(
-                gk_od_matrix.getFrom()).toSeconds()[0]
+                gk_od_matrix.getFrom()
+            ).toSeconds()[0]
             gk_schedule_demand_item.setFrom(seconds_from_midnight)
             gk_schedule_demand_item.setDuration(
-                gk_od_matrix.getDuration().toSeconds()[0])
+                gk_od_matrix.getDuration().toSeconds()[0]
+            )
             gk_schedule_demand_item.setTrafficDemandItem(gk_od_matrix)
-            gk_schedule_demand_item.setFactor(
-                schedule_demand_item.demand_factor)
+            gk_schedule_demand_item.setFactor(schedule_demand_item.demand_factor)
             gk_traffic_demand.addToSchedule(gk_schedule_demand_item)
 
 
 def create_macroexperiment(
     macroexperiment: aimsun_config_utils.AimsunStaticMacroExperiment,
     aimsun_model: GKModel,
-    aimsun_system
+    aimsun_system,
 ) -> MacroExperiment:
     """Creates an experiment within Aimsun using the data from the python
     AimsunStaticMacroExperiment object. Each attribute of the python object is
@@ -2114,7 +2234,7 @@ def create_macroscenario(
     aimsun_model: GKModel,
     aimsun_system,
     create_q_date,
-    aimsun_output_directory_path
+    aimsun_output_directory_path,
 ):
     """Creates a scenario within Aimsun using the data from the Python
     AimsunStaticMacroScenario object. The function sets most attributes of the
@@ -2135,15 +2255,16 @@ def create_macroscenario(
             database.
     """
     master_control_plan = get_object_per_external_id(
-        macroscenario.master_control_plan_external_id, ["GKMasterControlPlan"],
-        aimsun_model)
+        macroscenario.master_control_plan_external_id,
+        ["GKMasterControlPlan"],
+        aimsun_model,
+    )
     demand = get_object_per_external_id(
-        macroscenario.traffic_demand_external_id, ["GKTrafficDemand"],
-        aimsun_model)
+        macroscenario.traffic_demand_external_id, ["GKTrafficDemand"], aimsun_model
+    )
 
     # Create scenario
-    aimsun_macro_scenario = aimsun_system.newObject(
-        "MacroScenario", aimsun_model)
+    aimsun_macro_scenario = aimsun_system.newObject("MacroScenario", aimsun_model)
     aimsun_macro_scenario.setName(macroscenario.name)
     aimsun_macro_scenario.setExternalId(macroscenario.external_id)
     # setting control plan of the scenario
@@ -2154,21 +2275,25 @@ def create_macroscenario(
     # setting the real data set and the date
     begin_date = macroscenario.begin_date
     aimsun_macro_scenario.setDate(
-        create_q_date(begin_date.year, begin_date.month, begin_date.day))
+        create_q_date(begin_date.year, begin_date.month, begin_date.day)
+    )
     real_dataset = get_and_restore_real_dataset(
-        macroscenario.real_dataset_external_id, aimsun_model)
+        macroscenario.real_dataset_external_id, aimsun_model
+    )
     if real_dataset is not None:
         aimsun_macro_scenario.setRealDataSet(real_dataset)
 
     # create the experiement
     experiment = create_macroexperiment(
-        macroscenario.experiment, aimsun_model, aimsun_system)
+        macroscenario.experiment, aimsun_model, aimsun_system
+    )
 
     def get_strategy(strategy_id: aimsun_input_utils.ExternalId) -> GKStrategy:
-        return get_object_per_external_id(
-            strategy_id, ['GKStrategy'], aimsun_model)
+        return get_object_per_external_id(strategy_id, ["GKStrategy"], aimsun_model)
+
     traffic_management_strategies = map(
-        get_strategy, macroscenario.traffic_strategy_external_ids)
+        get_strategy, macroscenario.traffic_strategy_external_ids
+    )
     for traffic_management_strategy in traffic_management_strategies:
         if traffic_management_strategy is not None:
             aimsun_macro_scenario.addStrategy(traffic_management_strategy)
@@ -2178,13 +2303,17 @@ def create_macroscenario(
     aimsun_macro_scenario.addExperiment(experiment)
 
     db_info = update_database_info(
-        aimsun_macro_scenario.getDB(True), macroscenario.database_info,
-        aimsun_model, aimsun_output_directory_path)
+        aimsun_macro_scenario.getDB(True),
+        macroscenario.database_info,
+        aimsun_model,
+        aimsun_output_directory_path,
+    )
     aimsun_macro_scenario.setDB(db_info)
 
     # adding the scenario to the scenario folder
-    aimsun_model.getCreateRootFolder().findFolder(
-        "GKModel::top::scenarios").append(aimsun_macro_scenario)
+    aimsun_model.getCreateRootFolder().findFolder("GKModel::top::scenarios").append(
+        aimsun_macro_scenario
+    )
 
 
 def create_macroscenarios(
@@ -2192,7 +2321,7 @@ def create_macroscenarios(
     aimsun_model: GKModel,
     aimsun_system,
     create_q_date,
-    aimsun_output_directory_path
+    aimsun_output_directory_path,
 ):
     """Creates all the scenarios associated with the imported Python
     AimsunStaticMacroScenarios object. The function loops through the
@@ -2210,11 +2339,14 @@ def create_macroscenarios(
         aimsun_output_directory_path: File path to the Aimsun simulation output
             database.
     """
-    for aimsun_static_macroscenario in (
-            macroscenarios.aimsun_static_macroscenarios):
+    for aimsun_static_macroscenario in macroscenarios.aimsun_static_macroscenarios:
         create_macroscenario(
-            aimsun_static_macroscenario, aimsun_model, aimsun_system,
-            create_q_date, aimsun_output_directory_path)
+            aimsun_static_macroscenario,
+            aimsun_model,
+            aimsun_system,
+            create_q_date,
+            aimsun_output_directory_path,
+        )
 
 
 def set_gk_scenario_config(
@@ -2223,7 +2355,7 @@ def set_gk_scenario_config(
     scenario_input_data: aimsun_config_utils.AimsunScenarioInputData,
     aimsun_model: GKModel,
     aimsun_system,
-    create_trajectory_condition
+    create_trajectory_condition,
 ) -> GKScenarioInputData:
     """Sets the scenario configurations based on the given input data. The
     function then loops through the centroid origin/destinations pairs and
@@ -2260,31 +2392,36 @@ def set_gk_scenario_config(
     gk_scenario_input_data.setDetectionInterval(detection_interval_time)
 
     gk_scenario_input_data.setTrajectoriesStatistics(
-        scenario_input_data.trajectories_statistics)
+        scenario_input_data.trajectories_statistics
+    )
     gk_scenario_input_data.setGlobalTrajectoriesStatistics(
-        scenario_input_data.global_trajectories_statistics)
+        scenario_input_data.global_trajectories_statistics
+    )
     gk_scenario_input_data.setSectionTrajectoriesStatistics(
-        scenario_input_data.section_trajectories_statistics)
+        scenario_input_data.section_trajectories_statistics
+    )
     # enable subsampling 5% of the trajectories that departs and finishes at
     # external centroids
     centroid_ids = aimsun_model.getCatalog().getObjectsByType(
-        aimsun_system.getActiveModel().getType("GKCentroid"))
+        aimsun_system.getActiveModel().getType("GKCentroid")
+    )
     for o_centroid_id in centroid_ids:
         for d_centroid_id in centroid_ids:
             trajectory_condition = create_trajectory_condition()
             trajectory_condition.origin = o_centroid_id
             trajectory_condition.destination = d_centroid_id
-            o_centroid_ext_id = aimsun_model.getCatalog().find(
-                o_centroid_id).getExternalId()
-            d_centroid_ext_id = aimsun_model.getCatalog().find(
-                d_centroid_id).getExternalId()
+            o_centroid_ext_id = (
+                aimsun_model.getCatalog().find(o_centroid_id).getExternalId()
+            )
+            d_centroid_ext_id = (
+                aimsun_model.getCatalog().find(d_centroid_id).getExternalId()
+            )
             if "ext" in o_centroid_ext_id and "ext" in d_centroid_ext_id:
                 # 5% for external to external.
                 trajectory_condition.percentage = 5
             else:
                 trajectory_condition.percentage = 0
-            gk_scenario_input_data.addTrajectoryListStatistics(
-                trajectory_condition)
+            gk_scenario_input_data.addTrajectoryListStatistics(trajectory_condition)
     # Alternative way: sample per vehicle type.
     return gk_scenario_input_data
 
@@ -2292,7 +2429,7 @@ def set_gk_scenario_config(
 def create_gk_experiment(
     experiment: aimsun_config_utils.AimsunMicroExperiment,
     aimsun_model: GKModel,
-    aimsun_system
+    aimsun_system,
 ) -> GKExperiment:
     """Creates a micro experiment from the generic GKExperiment Aimsun class.
     The attributes from the AimsunMicroExperiment are copied into an Aimsun
@@ -2311,7 +2448,7 @@ def create_gk_experiment(
             AimsunMicroExperiment.
     """
     # Creating the experiment
-    gk_experiment = aimsun_system.newObject('GKExperiment', aimsun_model)
+    gk_experiment = aimsun_system.newObject("GKExperiment", aimsun_model)
     gk_experiment.setName(experiment.name)
     gk_experiment.setExternalId(experiment.external_id)
     gk_experiment.setSimulatorEngine(experiment.dynamic_simulator_engine)
@@ -2322,150 +2459,157 @@ def create_gk_experiment(
         "GKExperiment::intervalsAtt": experiment.intervals,
         "GKExperiment::capacityWeigthAtt": experiment.capacity_weight,
         "GKExperiment::dynamicAtt": experiment.dynamic,
-        "GKExperiment::maxAssignPathsAtt": experiment.max_assign_paths
+        "GKExperiment::maxAssignPathsAtt": experiment.max_assign_paths,
     }
 
-    if experiment.dynamic_simulator_engine == \
-            aimsun_config_utils.DynamicSimulatorEngine.MICROSIMULATION:
-        aimsun_to_python_attributes.update({
-            "GKExperiment::simStepAtt": experiment.micro_sim_step,
-            "GKExperiment:carFollowingVersionAtt":
-            int(experiment.car_following_version),
-            "GKExperiment::carFollowingConsiderMinHeadwayAtt":
-            experiment.car_following_consider_min_headway,
-            "GKExperiment::applyTwoLanesAtt": experiment.apply_two_lanes,
-            "GKExperiment::applyTwopasAtt": experiment.apply_twopas_slope_model,
-            "GKExperiment::applyTwoDimAtt":
-            experiment.apply_non_lane_based_movement,
-            "GKExperiment::applyTwoWayAtt":
-            experiment.apply_two_way_overtaking_model,
-            "GKExperiment::queueUpSpeedAtt": experiment.micro_queue_up_speed,
-            "GKExperiment::queueLeavingSeepAtt":
-            experiment.micro_queue_leaving_speed,
-            "GKExperiment::activateExternalBehavioralModelAtt":
-            experiment.micro_activate_external_behavior_model,
-            "GKExperiment::reactionTimeTypeAtt":
-            int(experiment.reaction_time_type),
-            "GKExperiment::reactionAtStopAtt": experiment.reaction_at_stop,
-            "GKExperiment::reactionAtTrafficLightAtt":
-            experiment.reaction_at_traffic_light
-        })
+    if (
+        experiment.dynamic_simulator_engine
+        == aimsun_config_utils.DynamicSimulatorEngine.MICROSIMULATION
+    ):
+        aimsun_to_python_attributes.update(
+            {
+                "GKExperiment::simStepAtt": experiment.micro_sim_step,
+                "GKExperiment:carFollowingVersionAtt": int(
+                    experiment.car_following_version
+                ),
+                "GKExperiment::carFollowingConsiderMinHeadwayAtt": experiment.car_following_consider_min_headway,
+                "GKExperiment::applyTwoLanesAtt": experiment.apply_two_lanes,
+                "GKExperiment::applyTwopasAtt": experiment.apply_twopas_slope_model,
+                "GKExperiment::applyTwoDimAtt": experiment.apply_non_lane_based_movement,
+                "GKExperiment::applyTwoWayAtt": experiment.apply_two_way_overtaking_model,
+                "GKExperiment::queueUpSpeedAtt": experiment.micro_queue_up_speed,
+                "GKExperiment::queueLeavingSeepAtt": experiment.micro_queue_leaving_speed,
+                "GKExperiment::activateExternalBehavioralModelAtt": experiment.micro_activate_external_behavior_model,
+                "GKExperiment::reactionTimeTypeAtt": int(experiment.reaction_time_type),
+                "GKExperiment::reactionAtStopAtt": experiment.reaction_at_stop,
+                "GKExperiment::reactionAtTrafficLightAtt": experiment.reaction_at_traffic_light,
+            }
+        )
         if experiment.apply_two_lanes:
-            aimsun_to_python_attributes.update({
-                "GKExperiment::maxDistanceAtt": experiment.max_distance,
-                "GKExperiment::twoLanesCarFollowingModelAtt":
-                int(experiment.two_lane_car_following_model),
-                "GKExperiment::nbVehiclesAtt": experiment.micro_num_of_vehicles,
-                "GKExperiment::maxSpeedDiffAtt":
-                experiment.micro_max_speed_diff,
-                "GKExperiment::maxSpeedDiffRampAtt":
-                experiment.micro_max_speed_diff_ramp
-            })
+            aimsun_to_python_attributes.update(
+                {
+                    "GKExperiment::maxDistanceAtt": experiment.max_distance,
+                    "GKExperiment::twoLanesCarFollowingModelAtt": int(
+                        experiment.two_lane_car_following_model
+                    ),
+                    "GKExperiment::nbVehiclesAtt": experiment.micro_num_of_vehicles,
+                    "GKExperiment::maxSpeedDiffAtt": experiment.micro_max_speed_diff,
+                    "GKExperiment::maxSpeedDiffRampAtt": experiment.micro_max_speed_diff_ramp,
+                }
+            )
         if experiment.apply_two_way_overtaking_model:
-            aimsun_to_python_attributes.update({
-                "GKExperiment::delayTreshold": experiment.delay_time_threshold,
-                "GKExperiment::speedDiffMin":
-                experiment.speed_difference_min_threshold,
-                "GKExperiment::speedDiffMax":
-                experiment.speed_difference_max_threshold,
-                "GKExperiment::rankTreshold":
-                experiment.rank_threshold,
-                "GKExperiment::traveltimeTreshold":
-                experiment.remaining_travel_time_threshold,
-                "GKExperiment::numberOfSimultaneousOvertakingAllowed":
-                experiment.number_of_simultaneous_overtaking_allowed,
-                "GKExperiment::delayOfSimultaneousOvertakingAllowed":
-                experiment.delay_between_simultaneous_overtaking,
-                "GKExperiment::sensitivityFactorReducedGapCF":
-                experiment.sensitivity_factor_reduce_car_following,
-                "GKExperiment::speedAcceptance4Overtaking":
-                experiment.overtaking_speed_magnification,
-                "GKExperiment::speedDiffTreshold4OvertakingSpeedAcceptance":
-                experiment.speed_difference_overtaking_threshold
-            })
+            aimsun_to_python_attributes.update(
+                {
+                    "GKExperiment::delayTreshold": experiment.delay_time_threshold,
+                    "GKExperiment::speedDiffMin": experiment.speed_difference_min_threshold,
+                    "GKExperiment::speedDiffMax": experiment.speed_difference_max_threshold,
+                    "GKExperiment::rankTreshold": experiment.rank_threshold,
+                    "GKExperiment::traveltimeTreshold": experiment.remaining_travel_time_threshold,
+                    "GKExperiment::numberOfSimultaneousOvertakingAllowed": experiment.number_of_simultaneous_overtaking_allowed,
+                    "GKExperiment::delayOfSimultaneousOvertakingAllowed": experiment.delay_between_simultaneous_overtaking,
+                    "GKExperiment::sensitivityFactorReducedGapCF": experiment.sensitivity_factor_reduce_car_following,
+                    "GKExperiment::speedAcceptance4Overtaking": experiment.overtaking_speed_magnification,
+                    "GKExperiment::speedDiffTreshold4OvertakingSpeedAcceptance": experiment.speed_difference_overtaking_threshold,
+                }
+            )
         if not experiment.replications:
             aimsun_model.reportError(
-                'S2_create_dynamic_simulation',
-                'No replications for the experiment.')
+                "S2_create_dynamic_simulation", "No replications for the experiment."
+            )
             sys.exit()
         for replication in experiment.replications:
-            gk_replication = aimsun_system.newObject(
-                'GKReplication', aimsun_model)
+            gk_replication = aimsun_system.newObject("GKReplication", aimsun_model)
             gk_replication.setRandomSeed(replication.random_seed)
             gk_replication.setRecordSimulation(replication.results_to_generate)
             gk_experiment.addReplication(gk_replication)
-    elif experiment.dynamic_simulator_engine == \
-            aimsun_config_utils.DynamicSimulatorEngine.MESOSIMULATION:
+    elif (
+        experiment.dynamic_simulator_engine
+        == aimsun_config_utils.DynamicSimulatorEngine.MESOSIMULATION
+    ):
         aimsun_model.reportError(
-            'create_dynamic_simulation',
-            'Mesosimulation not implemented.')
+            "create_dynamic_simulation", "Mesosimulation not implemented."
+        )
         sys.exit()
-    elif experiment.dynamic_simulator_engine == \
-            aimsun_config_utils.DynamicSimulatorEngine.HYBRID_SIMULATION:
+    elif (
+        experiment.dynamic_simulator_engine
+        == aimsun_config_utils.DynamicSimulatorEngine.HYBRID_SIMULATION
+    ):
         aimsun_model.reportError(
-            'create_dynamic_simulation',
-            'Hybrid simulation not implemented.')
+            "create_dynamic_simulation", "Hybrid simulation not implemented."
+        )
         sys.exit()
-    elif experiment.dynamic_simulator_engine == \
-            aimsun_config_utils.DynamicSimulatorEngine.DYNAMIC_MACROSIMULATION:
+    elif (
+        experiment.dynamic_simulator_engine
+        == aimsun_config_utils.DynamicSimulatorEngine.DYNAMIC_MACROSIMULATION
+    ):
         aimsun_model.reportError(
-            'create_dynamic_simulation',
-            'Dynamic macrosimulation not implemented.')
+            "create_dynamic_simulation", "Dynamic macrosimulation not implemented."
+        )
         sys.exit()
     else:
         aimsun_model.reportError(
-            'S2_create_dynamic_simulation',
-            'Wrong dynamic simulator engine.')
+            "S2_create_dynamic_simulation", "Wrong dynamic simulator engine."
+        )
         sys.exit()
 
-    if (experiment.engine_mode
-            == aimsun_config_utils.DynamicSimulationEngineMode.
-            ITERATIVE_ASSIGNMENT):
+    if (
+        experiment.engine_mode
+        == aimsun_config_utils.DynamicSimulationEngineMode.ITERATIVE_ASSIGNMENT
+    ):
         gk_experiment.setStoppingCriteriaIterations(
-            experiment.stopping_criteria_iterations)
+            experiment.stopping_criteria_iterations
+        )
         gk_experiment.setStoppingCriteriaRGAP(experiment.stopping_criteria_rgap)
-    elif (experiment.engine_mode
-            == aimsun_config_utils.DynamicSimulationEngineMode.
-            ONE_SHOT_ASSIGNMENT):
-        aimsun_to_python_attributes.update({
-            "GKExperiment::routeChoiceTypeAtt":
-            int(experiment.stochastic_route_choice_model),
-            "GKExperiment::userDefinedCostWeigthAtt":
-            experiment.user_defined_cost_weight,
-            "GKExperiment::initialSPTreesAtt":
-            experiment.initial_shortest_paths_trees,
-            "GKExperiment::maxRoutesAtt": experiment.max_routes
-        })
-        if (experiment.stochastic_route_choice_model
-                == aimsun_config_utils.StochasticRouteChoiceModel.BINOMIAL):
-            aimsun_to_python_attributes.update({
-                "GKExperiment::probabilityAtt": experiment.probability
-            })
-        if (experiment.stochastic_route_choice_model
-                == aimsun_config_utils.StochasticRouteChoiceModel.LOGIT):
-            aimsun_to_python_attributes.update({
-                "GKExperiment::scaleFactorAtt": experiment.low_variance_factor
-            })
-        if (experiment.stochastic_route_choice_model
-                == aimsun_config_utils.StochasticRouteChoiceModel.C_LOGIT):
-            aimsun_to_python_attributes.update({
-                "GKExperiment::scaleFactorAtt": experiment.low_variance_factor,
-                "GKExperiment::betaFactorAtt": experiment.beta,
-                "GKExperiment::gammaFactorAtt": experiment.gamma,
-                "GKExperiment::pastCostReplicationAtt":
-                experiment.c_logit_past_cost_replication
-            })
+    elif (
+        experiment.engine_mode
+        == aimsun_config_utils.DynamicSimulationEngineMode.ONE_SHOT_ASSIGNMENT
+    ):
+        aimsun_to_python_attributes.update(
+            {
+                "GKExperiment::routeChoiceTypeAtt": int(
+                    experiment.stochastic_route_choice_model
+                ),
+                "GKExperiment::userDefinedCostWeigthAtt": experiment.user_defined_cost_weight,
+                "GKExperiment::initialSPTreesAtt": experiment.initial_shortest_paths_trees,
+                "GKExperiment::maxRoutesAtt": experiment.max_routes,
+            }
+        )
+        if (
+            experiment.stochastic_route_choice_model
+            == aimsun_config_utils.StochasticRouteChoiceModel.BINOMIAL
+        ):
+            aimsun_to_python_attributes.update(
+                {"GKExperiment::probabilityAtt": experiment.probability}
+            )
+        if (
+            experiment.stochastic_route_choice_model
+            == aimsun_config_utils.StochasticRouteChoiceModel.LOGIT
+        ):
+            aimsun_to_python_attributes.update(
+                {"GKExperiment::scaleFactorAtt": experiment.low_variance_factor}
+            )
+        if (
+            experiment.stochastic_route_choice_model
+            == aimsun_config_utils.StochasticRouteChoiceModel.C_LOGIT
+        ):
+            aimsun_to_python_attributes.update(
+                {
+                    "GKExperiment::scaleFactorAtt": experiment.low_variance_factor,
+                    "GKExperiment::betaFactorAtt": experiment.beta,
+                    "GKExperiment::gammaFactorAtt": experiment.gamma,
+                    "GKExperiment::pastCostReplicationAtt": experiment.c_logit_past_cost_replication,
+                }
+            )
         else:
             aimsun_model.reportError(
-                'create_dynamic_simulation',
-                'Wrong SRC routing model.')
+                "create_dynamic_simulation", "Wrong SRC routing model."
+            )
             sys.exit()
 
-    for aimsun_attribute_name, python_attribute in (
-            aimsun_to_python_attributes.items()):
+    for aimsun_attribute_name, python_attribute in aimsun_to_python_attributes.items():
         gk_experiment.setDataValue(
-            aimsun_model.getColumn(aimsun_attribute_name),
-            python_attribute)
+            aimsun_model.getColumn(aimsun_attribute_name), python_attribute
+        )
     return gk_experiment
 
 
@@ -2475,7 +2619,7 @@ def create_gk_scenario_and_experiment(
     aimsun_system,
     create_q_date,
     create_trajectory_condition,
-    aimsun_output_directory_path: str
+    aimsun_output_directory_path: str,
 ):
     """Creates a scenario and experiment based on the Python AimsunScenario
     object. The function finds the master control plan, demand, and real
@@ -2499,19 +2643,22 @@ def create_gk_scenario_and_experiment(
             database.
     """
     master_control_plan = get_object_per_external_id(
-        microscenario.master_control_plan_external_id, ["GKMasterControlPlan"],
-        aimsun_model)
+        microscenario.master_control_plan_external_id,
+        ["GKMasterControlPlan"],
+        aimsun_model,
+    )
     demand = get_object_per_external_id(
-        microscenario.traffic_demand_external_id,
-        ["GKTrafficDemand"], aimsun_model)
+        microscenario.traffic_demand_external_id, ["GKTrafficDemand"], aimsun_model
+    )
 
     def get_strategy(strategy_id: aimsun_input_utils.ExternalId) -> GKStrategy:
-        return get_object_per_external_id(
-            strategy_id, ['GKStrategy'], aimsun_model)
-    traffic_management_strategies = map(
-        get_strategy, microscenario.traffic_strategy_external_ids)
+        return get_object_per_external_id(strategy_id, ["GKStrategy"], aimsun_model)
 
-    gk_scenario = aimsun_system.newObject('GKScenario', aimsun_model)
+    traffic_management_strategies = map(
+        get_strategy, microscenario.traffic_strategy_external_ids
+    )
+
+    gk_scenario = aimsun_system.newObject("GKScenario", aimsun_model)
     gk_scenario.setName(microscenario.name)
     gk_scenario.setExternalId(microscenario.external_id)
     # setting control plan of the scenario
@@ -2521,22 +2668,30 @@ def create_gk_scenario_and_experiment(
 
     gk_scenario_input_data = set_gk_scenario_config(
         gk_scenario.getInputData(),
-        microscenario.scenario_input_data, aimsun_model, aimsun_system,
-        create_trajectory_condition)
+        microscenario.scenario_input_data,
+        aimsun_model,
+        aimsun_system,
+        create_trajectory_condition,
+    )
     gk_scenario.setInputData(gk_scenario_input_data)
 
     # setting the real data set and the date
     begin_date = microscenario.begin_date
-    gk_scenario.setDate(create_q_date(begin_date.year, begin_date.month,
-                                      begin_date.day))
+    gk_scenario.setDate(
+        create_q_date(begin_date.year, begin_date.month, begin_date.day)
+    )
 
     db_info = update_database_info(
-        gk_scenario.getDB(True), microscenario.database_info, aimsun_model,
-        aimsun_output_directory_path)
+        gk_scenario.getDB(True),
+        microscenario.database_info,
+        aimsun_model,
+        aimsun_output_directory_path,
+    )
     gk_scenario.setDB(db_info)
 
     gk_experiment = create_gk_experiment(
-        microscenario.experiment, aimsun_model, aimsun_system)
+        microscenario.experiment, aimsun_model, aimsun_system
+    )
 
     for traffic_management_strategy in traffic_management_strategies:
         if traffic_management_strategy is not None:
@@ -2546,5 +2701,6 @@ def create_gk_scenario_and_experiment(
 
     gk_scenario.addExperiment(gk_experiment)
 
-    aimsun_model.getCreateRootFolder().findFolder(
-        'GKModel::top::scenarios').append(gk_scenario)
+    aimsun_model.getCreateRootFolder().findFolder("GKModel::top::scenarios").append(
+        gk_scenario
+    )

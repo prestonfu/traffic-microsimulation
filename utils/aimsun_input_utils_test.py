@@ -24,7 +24,7 @@ from typing import Dict
 import unittest
 import warnings
 
-import aimsun_input_utils
+from utils import aimsun_input_utils
 
 
 class TestCentroidConfiguration(unittest.TestCase):
