@@ -1,0 +1,49 @@
+metric,road_name,scenario,mean,std
+Mean Flow (veh/h),I-680,System Un-coordinated,3958.515873015873,3958.515873015873
+Mean Flow (veh/h),I-680,Status Quo,3840.873015873016,3840.873015873016
+Mean Flow (veh/h),I-680,Mission Blvd Zero Offset,3767.325396825397,3767.325396825397
+Mean Flow (veh/h),I-680,Mission Blvd L/V Coordinated Northbound,3817.54365079365,3817.54365079365
+Mean Flow (veh/h),Mission Blvd,System Un-coordinated,330.0538461538462,330.0538461538462
+Mean Flow (veh/h),Mission Blvd,Status Quo,573.4803418803418,573.4803418803418
+Mean Flow (veh/h),Mission Blvd,Mission Blvd Zero Offset,654.0572649572649,654.0572649572649
+Mean Flow (veh/h),Mission Blvd,Mission Blvd L/V Coordinated Northbound,603.1615384615384,603.1615384615384
+Mean Speed (km/h),I-680,System Un-coordinated,88.88052506721209,88.88052506721209
+Mean Speed (km/h),I-680,Status Quo,91.46651213868746,91.46651213868746
+Mean Speed (km/h),I-680,Mission Blvd Zero Offset,91.81433009429973,91.81433009429973
+Mean Speed (km/h),I-680,Mission Blvd L/V Coordinated Northbound,91.6842318688972,91.6842318688972
+Mean Speed (km/h),Mission Blvd,System Un-coordinated,62.34462516371744,62.34462516371744
+Mean Speed (km/h),Mission Blvd,Status Quo,65.52846682161396,65.52846682161396
+Mean Speed (km/h),Mission Blvd,Mission Blvd Zero Offset,65.30364527696342,65.30364527696342
+Mean Speed (km/h),Mission Blvd,Mission Blvd L/V Coordinated Northbound,65.46536050067772,65.46536050067772
+Density by Lane (veh/km),I-680,System Un-coordinated,0.5212076955219046,0.5212076955219046
+Density by Lane (veh/km),I-680,Status Quo,0.5057179603704005,0.5057179603704005
+Density by Lane (veh/km),I-680,Mission Blvd Zero Offset,0.4960341328288104,0.4960341328288104
+Density by Lane (veh/km),I-680,Mission Blvd L/V Coordinated Northbound,0.5026462423323618,0.5026462423323618
+Density by Lane (veh/km),Mission Blvd,System Un-coordinated,0.4709250200042092,0.4709250200042092
+Density by Lane (veh/km),Mission Blvd,Status Quo,0.8182490360864824,0.8182490360864824
+Density by Lane (veh/km),Mission Blvd,Mission Blvd Zero Offset,0.9332172134128881,0.9332172134128881
+Density by Lane (veh/km),Mission Blvd,Mission Blvd L/V Coordinated Northbound,0.8605985443762102,0.8605985443762102
+Vehicle Count (veh),I-680,System Un-coordinated,989.6289682539682,989.6289682539682
+Vehicle Count (veh),I-680,Status Quo,960.218253968254,960.218253968254
+Vehicle Count (veh),I-680,Mission Blvd Zero Offset,941.8313492063493,941.8313492063493
+Vehicle Count (veh),I-680,Mission Blvd L/V Coordinated Northbound,954.3859126984125,954.3859126984125
+Vehicle Count (veh),Mission Blvd,System Un-coordinated,82.51346153846156,82.51346153846156
+Vehicle Count (veh),Mission Blvd,Status Quo,143.37008547008546,143.37008547008546
+Vehicle Count (veh),Mission Blvd,Mission Blvd Zero Offset,163.51431623931623,163.51431623931623
+Vehicle Count (veh),Mission Blvd,Mission Blvd L/V Coordinated Northbound,150.7903846153846,150.7903846153846
+Instantaneous Travel Time (s),I-680,System Un-coordinated,326.56882700657553,326.56882700657553
+Instantaneous Travel Time (s),I-680,Status Quo,272.8103369334354,272.8103369334354
+Instantaneous Travel Time (s),I-680,Mission Blvd Zero Offset,271.9146426323324,271.9146426323324
+Instantaneous Travel Time (s),I-680,Mission Blvd L/V Coordinated Northbound,270.9523849115073,270.9523849115073
+Instantaneous Travel Time (s),Mission Blvd,System Un-coordinated,528.482537272496,528.482537272496
+Instantaneous Travel Time (s),Mission Blvd,Status Quo,317.6040745744885,317.6040745744885
+Instantaneous Travel Time (s),Mission Blvd,Mission Blvd Zero Offset,327.0034684475161,327.0034684475161
+Instantaneous Travel Time (s),Mission Blvd,Mission Blvd L/V Coordinated Northbound,319.4620206474733,319.4620206474733
+Instantaneous Delay Time (s),I-680,System Un-coordinated,99.02980833296236,99.02980833296236
+Instantaneous Delay Time (s),I-680,Status Quo,45.192086712843555,45.192086712843555
+Instantaneous Delay Time (s),I-680,Mission Blvd Zero Offset,44.319613412734334,44.319613412734334
+Instantaneous Delay Time (s),I-680,Mission Blvd L/V Coordinated Northbound,43.34940517662707,43.34940517662707
+Instantaneous Delay Time (s),Mission Blvd,System Un-coordinated,293.5244005044821,293.5244005044821
+Instantaneous Delay Time (s),Mission Blvd,Status Quo,82.80039313030922,82.80039313030922
+Instantaneous Delay Time (s),Mission Blvd,Mission Blvd Zero Offset,92.09176398230879,92.09176398230879
+Instantaneous Delay Time (s),Mission Blvd,Mission Blvd L/V Coordinated Northbound,84.68312758704913,84.68312758704913
