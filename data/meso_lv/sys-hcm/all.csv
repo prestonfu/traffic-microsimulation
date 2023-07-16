@@ -1,33 +1,33 @@
 metric,scenario,mean,std
-Density of vehicles (PCU/km),System Un-coordinated,3.325217598955969,0.822996147394162
-Density of vehicles (PCU/km),Status Quo,2.9643034547105973,0.7006666977577839
-Density of vehicles (PCU/km),Mission Blvd Zero Offset,3.1230655173164297,0.6045275354471592
+Density of vehicles (PCU/km),Mission Blvd Uncoordinated,3.0167414638670347,0.6909623813634379
+Density of vehicles (PCU/km),Status Quo,2.976560079853519,0.710845169975656
+Density of vehicles (PCU/km),Mission Blvd Zero Offset,2.85416604806106,0.675612312768647
 Density of vehicles (PCU/km),Mission Blvd L/V Coordinated Northbound,3.022723858798576,0.7437064813903145
-Mean flow (veh/h),System Un-coordinated,15213.444444444443,2497.405863108471
-Mean flow (veh/h),Status Quo,15162.500000000002,2464.863055842651
-Mean flow (veh/h),Mission Blvd Zero Offset,15106.000000000002,2564.56787519329
+Mean flow (veh/h),Mission Blvd Uncoordinated,15162.444444444445,2466.6876197047145
+Mean flow (veh/h),Status Quo,15162.0,2463.1703854638404
+Mean flow (veh/h),Mission Blvd Zero Offset,15220.444444444443,2491.031524238584
 Mean flow (veh/h),Mission Blvd L/V Coordinated Northbound,15172.166666666664,2480.1695847425685
-Mean travel time (s/km),System Un-coordinated,65.40925093537693,7.217318189050491
-Mean travel time (s/km),Status Quo,59.43935353649797,6.018469046502873
-Mean travel time (s/km),Mission Blvd Zero Offset,60.722604441964336,5.805815220078417
-Mean travel time (s/km),Mission Blvd L/V Coordinated Northbound,59.740231816823126,6.626107568898922
-Mean speed (km/h),System Un-coordinated,62.87738929670635,6.6566112466205745
-Mean speed (km/h),Status Quo,67.36938949193093,6.235614567918684
-Mean speed (km/h),Mission Blvd Zero Offset,66.35153909626125,5.851098580202652
-Mean speed (km/h),Mission Blvd L/V Coordinated Northbound,66.76667372411232,6.7709984999182735
-Total distance traveled by exited vehicles (km),System Un-coordinated,28521.345346322425,4656.402255869418
-Total distance traveled by exited vehicles (km),Status Quo,27753.764482531,4533.7143195316385
-Total distance traveled by exited vehicles (km),Mission Blvd Zero Offset,27644.845245861186,4633.644468344083
-Total distance traveled by exited vehicles (km),Mission Blvd L/V Coordinated Northbound,27657.112761585373,4509.947857071404
-Number vehicles entering network (veh),System Un-coordinated,3849.5,568.4952338567795
-Number vehicles entering network (veh),Status Quo,3834.013888888889,552.2950576608359
-Number vehicles entering network (veh),Mission Blvd Zero Offset,3834.9027777777787,569.6950067930167
+Mean travel time (s/km),Mission Blvd Uncoordinated,59.94029068198872,5.627854274639368
+Mean travel time (s/km),Status Quo,59.602700450157585,6.248497918552135
+Mean travel time (s/km),Mission Blvd Zero Offset,57.84481682828221,5.7523646433122915
+Mean travel time (s/km),Mission Blvd L/V Coordinated Northbound,59.740231816823126,6.626107568898921
+Mean speed (km/h),Mission Blvd Uncoordinated,66.76931206247883,6.025042023181499
+Mean speed (km/h),Status Quo,67.23625891150668,6.391382639982958
+Mean speed (km/h),Mission Blvd Zero Offset,68.33650409705896,6.435317747716261
+Mean speed (km/h),Mission Blvd L/V Coordinated Northbound,66.76667372411232,6.770998499918275
+Total distance traveled by exited vehicles (km),Mission Blvd Uncoordinated,27911.426936418542,4583.010541558877
+Total distance traveled by exited vehicles (km),Status Quo,27766.963931046692,4519.556511033335
+Total distance traveled by exited vehicles (km),Mission Blvd Zero Offset,27556.532546736693,4480.731975081335
+Total distance traveled by exited vehicles (km),Mission Blvd L/V Coordinated Northbound,27657.112761585377,4509.9478570714045
+Number vehicles entering network (veh),Mission Blvd Uncoordinated,3834.0138888888887,551.773455920648
+Number vehicles entering network (veh),Status Quo,3834.01388888889,552.3051515919802
+Number vehicles entering network (veh),Mission Blvd Zero Offset,3845.25,561.3886875010097
 Number vehicles entering network (veh),Mission Blvd L/V Coordinated Northbound,3837.625,558.0693281304752
-"Total time, vehicles waiting to enter network (h)",System Un-coordinated,0.00102438449101485,0.001648238240570395
-"Total time, vehicles waiting to enter network (h)",Status Quo,0.35468751889888966,0.8778032608754741
-"Total time, vehicles waiting to enter network (h)",Mission Blvd Zero Offset,0.2996152839641038,0.8661582011409313
+"Total time, vehicles waiting to enter network (h)",Mission Blvd Uncoordinated,1.5027184322632865,3.2723819645073013
+"Total time, vehicles waiting to enter network (h)",Status Quo,0.3546853816561779,0.8778041607627874
+"Total time, vehicles waiting to enter network (h)",Mission Blvd Zero Offset,0.0009123940956274258,0.002394169352901445
 "Total time, vehicles waiting to enter network (h)",Mission Blvd L/V Coordinated Northbound,0.022919662855851577,0.10715078871392456
-Number of vehicles waiting to enter network (veh),System Un-coordinated,2.0,1.1378426913849577
-Number of vehicles waiting to enter network (veh),Status Quo,15.902777777777777,34.598941533426924
-Number of vehicles waiting to enter network (veh),Mission Blvd Zero Offset,10.388888888888888,21.68453369593882
+Number of vehicles waiting to enter network (veh),Mission Blvd Uncoordinated,37.430555555555564,67.9052678558629
+Number of vehicles waiting to enter network (veh),Status Quo,15.888888888888888,34.604831511353254
+Number of vehicles waiting to enter network (veh),Mission Blvd Zero Offset,1.583333333333333,1.03209369308428
 Number of vehicles waiting to enter network (veh),Mission Blvd L/V Coordinated Northbound,3.763888888888888,9.493694407045338

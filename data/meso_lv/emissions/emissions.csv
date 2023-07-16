@@ -1,9 +1,9 @@
 metric,scenario,mean,std
-Carbon Dioxide (g),System Un-coordinated,898134.5730820834,196184.9522171113
+Carbon Dioxide (g),Mission Blvd Uncoordinated,0.0,0.0
 Carbon Dioxide (g),Status Quo,0.0,0.0
-Carbon Dioxide (g),Mission Blvd Zero Offset,4616346.750964162,717003.0222444226
+Carbon Dioxide (g),Mission Blvd Zero Offset,4570368.906769111,692223.5066004292
 Carbon Dioxide (g),Mission Blvd L/V Coordinated Northbound,4613003.023543623,702237.9872522198
-Nitrogen Oxides (g),System Un-coordinated,132.08669682823492,31.64685324396735
+Nitrogen Oxides (g),Mission Blvd Uncoordinated,0.0,0.0
 Nitrogen Oxides (g),Status Quo,0.0,0.0
-Nitrogen Oxides (g),Mission Blvd Zero Offset,959.5059099010172,163.8155112326993
-Nitrogen Oxides (g),Mission Blvd L/V Coordinated Northbound,953.4130541355181,158.23945688147657
+Nitrogen Oxides (g),Mission Blvd Zero Offset,952.5954060542563,155.05163287053205
+Nitrogen Oxides (g),Mission Blvd L/V Coordinated Northbound,953.4130541355181,158.23945688147654
