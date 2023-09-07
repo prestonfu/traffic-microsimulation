@@ -1,28 +1,37 @@
 direction,road,scenario,mean,std
+Northbound,Mission Boulevard,Mission Blvd Uncoordinated,384.11642903362144,41.229731496311516
 Northbound,Mission Boulevard,Status Quo,177.24018681357748,38.19106655017225
 Northbound,Mission Boulevard,Mission Blvd Zero Offset,192.5223411705508,40.70591373457962
 Northbound,Mission Boulevard,Mission Blvd L/V Coordinated Northbound,175.6278453728586,37.107684757465556
+Northbound,Osgood Road,Mission Blvd Uncoordinated,321.17415724691654,26.300041685776623
 Northbound,Osgood Road,Status Quo,149.09931598226925,11.68189837472993
 Northbound,Osgood Road,Mission Blvd Zero Offset,174.64283645887573,24.92350036111836
 Northbound,Osgood Road,Mission Blvd L/V Coordinated Northbound,144.86755387828433,20.888147555986
+Northbound,I-680,Mission Blvd Uncoordinated,52.506585312296124,5.14830775869576
 Northbound,I-680,Status Quo,46.962888471410345,4.582223006794841
 Northbound,I-680,Mission Blvd Zero Offset,45.365461680497866,4.826191694217238
 Northbound,I-680,Mission Blvd L/V Coordinated Northbound,46.352274640637724,4.845796047705633
+Southbound,Mission Boulevard,Mission Blvd Uncoordinated,304.08365584927316,61.21859216843464
 Southbound,Mission Boulevard,Status Quo,174.5918921584432,53.083902351114
 Southbound,Mission Boulevard,Mission Blvd Zero Offset,182.44123046717928,47.813767783347544
 Southbound,Mission Boulevard,Mission Blvd L/V Coordinated Northbound,139.97174810106222,35.65600066525179
-Southbound,Osgood Road,Status Quo,182.19551880863847,27.04495618510522
-Southbound,Osgood Road,Mission Blvd Zero Offset,191.70759534324517,33.96006754118776
-Southbound,Osgood Road,Mission Blvd L/V Coordinated Northbound,201.8768226516967,30.893763143352245
+Southbound,Osgood Road,Mission Blvd Uncoordinated,313.62624214609735,25.922989604681767
+Southbound,Osgood Road,Status Quo,144.1117897268226,17.63218470488143
+Southbound,Osgood Road,Mission Blvd Zero Offset,152.46885991684343,22.76014046102125
+Southbound,Osgood Road,Mission Blvd L/V Coordinated Northbound,164.01652221190895,19.572488325511337
+Southbound,I-680,Mission Blvd Uncoordinated,154.42321459429863,86.13892843713201
 Southbound,I-680,Status Quo,138.41847980526944,86.53787309024695
 Southbound,I-680,Mission Blvd Zero Offset,139.18637829880765,77.78443842115665
 Southbound,I-680,Mission Blvd L/V Coordinated Northbound,144.26793540312693,86.223715364703
+Both Directions,Mission Boulevard,Mission Blvd Uncoordinated,688.2000848828947,94.34891294135252
 Both Directions,Mission Boulevard,Status Quo,351.8320789720207,90.04704021801378
 Both Directions,Mission Boulevard,Mission Blvd Zero Offset,374.96357163773,86.21823574392735
 Both Directions,Mission Boulevard,Mission Blvd L/V Coordinated Northbound,315.59959347392083,72.21300909720479
-Both Directions,Osgood Road,Status Quo,331.2948347909077,35.89929109060497
-Both Directions,Osgood Road,Mission Blvd Zero Offset,366.3504318021208,47.51868724938232
-Both Directions,Osgood Road,Mission Blvd L/V Coordinated Northbound,346.7443765299809,48.73941524404215
+Both Directions,Osgood Road,Mission Blvd Uncoordinated,634.8003993930137,42.31215553278864
+Both Directions,Osgood Road,Status Quo,293.21110570909184,24.998937321758966
+Both Directions,Osgood Road,Mission Blvd Zero Offset,327.1116963757192,36.80192785411887
+Both Directions,Osgood Road,Mission Blvd L/V Coordinated Northbound,308.8840760901932,36.73417307831095
+Both Directions,I-680,Mission Blvd Uncoordinated,206.92979990659475,90.44459276751469
 Both Directions,I-680,Status Quo,185.3813682766798,89.81787323063526
 Both Directions,I-680,Mission Blvd Zero Offset,184.55183997930556,81.29812432018599
 Both Directions,I-680,Mission Blvd L/V Coordinated Northbound,190.62021004376462,89.14214995413506
